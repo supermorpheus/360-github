@@ -59,7 +59,7 @@ function OnboardingIntro() {
               id="introduction"
               name="introduction"
               className="input-naked"
-              placeholder="Your introduction in 4-5 sentences or 100 words."
+              placeholder="We request you to write the introduction which captures the shades and colours of your life — the personal, the professional, the private, the crazy, the quiet and so on…"
               value={profileData.introduction}
               onChange={handleChange}
               rows={5}
