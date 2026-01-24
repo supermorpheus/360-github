@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ['main', 'claude/read-design-file-H5Ebx']
+    branches: ['main', 'test']
   workflow_dispatch:
 
 permissions:
