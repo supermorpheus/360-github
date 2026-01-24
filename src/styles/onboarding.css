@@ -139,6 +139,11 @@
   margin-bottom: 32px;
 }
 
+.welcome-logo-img {
+  width: 180px;
+  height: auto;
+}
+
 .welcome-logo-icon {
   width: 80px;
   height: 80px;
