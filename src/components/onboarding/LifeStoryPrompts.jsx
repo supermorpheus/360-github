@@ -33,6 +33,9 @@ function LifeStoryPrompts({ storyKey }) {
             <li key={idx}>{prompt}</li>
           ))}
         </ul>
+        {story.highlightText && (
+          <p className="prompt-highlight-text"><u>{story.highlightText}</u></p>
+        )}
       </>
     )
   }

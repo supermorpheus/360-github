@@ -1593,6 +1593,14 @@
   margin: 0 0 10px 0;
 }
 
+.prompt-highlight-text {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  color: var(--dark-gray);
+  margin: 12px 0 0 0;
+  font-weight: 500;
+}
+
 /* Audio Recording Section */
 .audio-recording-section {
   margin-bottom: 24px;
