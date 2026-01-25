@@ -49,7 +49,7 @@ function OnboardingContent() {
       <div className="onboarding-form">
         <div className="form-header">
           <h1 className="form-title">Content Links</h1>
-          <p className="form-subtitle">Few links of the content you have written/created and would like to share Blogs, videos, podcasts, etc.</p>
+          <p className="form-subtitle">Few links of the content you have written/created and would like to share Blogs, videos, podcasts, etc. <em>(This is optional. You can add content links later.)</em></p>
         </div>
 
         <div className="content-links-list">
@@ -105,8 +105,6 @@ function OnboardingContent() {
             </div>
           ))}
         </div>
-
-        <p className="skip-note">This is optional. You can add content links later.</p>
 
         <button type="button" className="add-content-link-btn" onClick={addLink}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
