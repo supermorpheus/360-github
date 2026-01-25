@@ -179,11 +179,13 @@
 }
 
 .welcome-subtitle {
-  font-family: var(--font-secondary);
-  font-size: 15px;
-  color: var(--medium-gray);
-  line-height: 1.5;
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark-gray);
+  line-height: 1.4;
   padding: 0 16px;
+  letter-spacing: 0.5px;
 }
 
 /* Welcome Features */
