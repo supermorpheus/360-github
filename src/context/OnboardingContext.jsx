@@ -96,17 +96,16 @@ export const lifeStoryPrompts = {
     title: 'Your Mid/Professional Life',
     subtitle: 'Share your mid-life journey — the choices, challenges, and growth',
     icon: '💼',
-    introText: 'The intent is to give a glimpse of your mid-life — the choices you made (or did not), your career journey, and the challenges you faced personally and professionally. Mid-life usually tests us and eventually reinforces our life choices. Walk us through your journey during those years:',
+    introText: 'Share your mid-life journey — the choices you made, the challenges you faced, and how they shaped who you are today:',
     prompts: [
-      'No. of years in your professional journey',
-      'Cover the various jobs including titles (analyst, director, etc.) / roles you have had as intern, employee, founder, owner, freelancer',
-      'Name the organisations you have worked with — what role and work you did, how long, which cities / countries',
-      'From each role — share specific learnings, experiences, or incidents that stand out',
-      'Personal milestones during this phase — family, relationships, life decisions',
-      'Challenges you faced — personally and professionally — and how you navigated them',
-      'Key choices that shaped your path — ones you made and ones you didn\'t'
+      'Years in your professional journey',
+      'Jobs and roles — titles, organisations, duration, locations',
+      'Key learnings and experiences that stand out',
+      'Personal milestones — family, relationships, life decisions',
+      'Challenges you navigated — personally and professionally',
+      'Choices that shaped your path — ones you made and ones you didn\'t'
     ],
-    highlightText: 'Cover all career and life experiences except what you are doing right now'
+    highlightText: 'Cover everything except what you are doing right now'
   },
   current: {
     title: 'Your Current Life',
