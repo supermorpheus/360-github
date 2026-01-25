@@ -23,9 +23,9 @@ function LifeStorySelection() {
   return (
     <div className="onboarding-form">
       <div className="form-header">
-        <h1 className="form-title">Share Your Life Story</h1>
+        <h1 className="form-title">Add your Life Stories</h1>
         <p className="form-subtitle">
-          Help gang members know you better by sharing your journey across three chapters of life.
+          Help gang members know you better by sharing your journey across various stages of life.
         </p>
       </div>
 
