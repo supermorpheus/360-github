@@ -44,7 +44,7 @@ function OnboardingQuote() {
               id="inspiringQuote"
               name="inspiringQuote"
               className="input-naked"
-              placeholder="e.g., The only way to do great work is to love what you do. - Steve Jobs"
+              placeholder="We request you to write the introduction which captures the shades and colours of your life — the personal, the professional, the private, the crazy, the quiet and so on…"
               value={profileData.inspiringQuote}
               onChange={handleChange}
               rows={5}
