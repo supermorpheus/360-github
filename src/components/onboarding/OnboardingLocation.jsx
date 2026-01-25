@@ -1,53 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import { useOnboarding } from '../../context/OnboardingContext'
 import OnboardingLayout from './OnboardingLayout'
-
-// Indian cities list for autocomplete
-const INDIAN_CITIES = [
-  'Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Surat', 'Pune', 'Jaipur',
-  'Lucknow', 'Kanpur', 'Nagpur', 'Indore', 'Thane', 'Bhopal', 'Visakhapatnam', 'Pimpri-Chinchwad', 'Patna', 'Vadodara',
-  'Ghaziabad', 'Ludhiana', 'Agra', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Kalyan-Dombivli', 'Vasai-Virar', 'Varanasi',
-  'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Navi Mumbai', 'Allahabad', 'Ranchi', 'Howrah', 'Coimbatore', 'Jabalpur',
-  'Gwalior', 'Vijayawada', 'Jodhpur', 'Madurai', 'Raipur', 'Kota', 'Guwahati', 'Chandigarh', 'Solapur', 'Hubli-Dharwad',
-  'Bareilly', 'Moradabad', 'Mysore', 'Gurgaon', 'Aligarh', 'Jalandhar', 'Tiruchirappalli', 'Bhubaneswar', 'Salem', 'Mira-Bhayandar',
-  'Thiruvananthapuram', 'Bhiwandi', 'Saharanpur', 'Gorakhpur', 'Guntur', 'Bikaner', 'Amravati', 'Noida', 'Jamshedpur', 'Bhilai',
-  'Warangal', 'Cuttack', 'Firozabad', 'Kochi', 'Bhavnagar', 'Dehradun', 'Durgapur', 'Asansol', 'Nanded', 'Kolhapur',
-  'Ajmer', 'Gulbarga', 'Jamnagar', 'Ujjain', 'Loni', 'Siliguri', 'Jhansi', 'Ulhasnagar', 'Jammu', 'Sangli-Miraj',
-  'Mangalore', 'Erode', 'Belgaum', 'Ambattur', 'Tirunelveli', 'Malegaon', 'Gaya', 'Jalgaon', 'Udaipur', 'Maheshtala'
-]
 
 function OnboardingLocation() {
   const { profileData, updateProfileData, nextStep } = useOnboarding()
   const [errors, setErrors] = useState({})
-  const [citySearch, setCitySearch] = useState(profileData.city || '')
-  const [showCitySuggestions, setShowCitySuggestions] = useState(false)
-  const [filteredCities, setFilteredCities] = useState([])
-  const cityInputRef = useRef(null)
-  const suggestionsRef = useRef(null)
-
-  useEffect(() => {
-    if (citySearch.length >= 2) {
-      const filtered = INDIAN_CITIES.filter(city =>
-        city.toLowerCase().includes(citySearch.toLowerCase())
-      ).slice(0, 6)
-      setFilteredCities(filtered)
-      setShowCitySuggestions(filtered.length > 0)
-    } else {
-      setFilteredCities([])
-      setShowCitySuggestions(false)
-    }
-  }, [citySearch])
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (suggestionsRef.current && !suggestionsRef.current.contains(event.target) &&
-          cityInputRef.current && !cityInputRef.current.contains(event.target)) {
-        setShowCitySuggestions(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -58,38 +15,16 @@ function OnboardingLocation() {
     }
   }
 
-  const handleCityChange = (e) => {
-    const value = e.target.value
-    setCitySearch(value)
-    updateProfileData({ city: value })
-
-    if (errors.city) {
-      setErrors(prev => ({ ...prev, city: null }))
-    }
-  }
-
-  const selectCity = (city) => {
-    setCitySearch(city)
-    updateProfileData({ city })
-    setShowCitySuggestions(false)
-    if (errors.city) {
-      setErrors(prev => ({ ...prev, city: null }))
-    }
-  }
-
   const validateAndNext = () => {
     const newErrors = {}
 
-    if (!profileData.locality?.trim()) {
-      newErrors.locality = 'Locality is required'
-    }
-    if (!profileData.city?.trim()) {
-      newErrors.city = 'City is required'
+    if (!profileData.livesIn?.trim()) {
+      newErrors.livesIn = 'Location is required'
     }
     if (!profileData.pincode?.trim()) {
-      newErrors.pincode = 'Pin code is required'
+      newErrors.pincode = 'Pincode is required'
     } else if (!/^\d{6}$/.test(profileData.pincode.trim())) {
-      newErrors.pincode = 'Please enter a valid 6-digit pin code'
+      newErrors.pincode = 'Please enter a valid 6-digit pincode'
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -108,63 +43,64 @@ function OnboardingLocation() {
           <p className="form-subtitle">Help members near you connect</p>
         </div>
 
+        {/* Lives In */}
         <div className="input-group">
-          <label className="input-label" htmlFor="locality">Locality / Area *</label>
-          <input
-            type="text"
-            id="locality"
-            name="locality"
-            className={`input-field ${errors.locality ? 'input-error' : ''}`}
-            placeholder="e.g., Koramangala, Bandra West"
-            value={profileData.locality || ''}
-            onChange={handleChange}
-          />
-          {errors.locality && <span className="error-text">{errors.locality}</span>}
+          <label className="input-label" htmlFor="livesIn">Lives in *</label>
+          <div className={`input-with-icon-inline ${errors.livesIn ? 'input-error' : ''}`}>
+            <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <input
+              type="text"
+              id="livesIn"
+              name="livesIn"
+              className="input-field input-field-icon"
+              placeholder="e.g., Bengaluru, India"
+              value={profileData.livesIn || ''}
+              onChange={handleChange}
+            />
+          </div>
+          {errors.livesIn && <span className="error-text">{errors.livesIn}</span>}
         </div>
 
-        <div className="input-group city-autocomplete">
-          <label className="input-label" htmlFor="city">City *</label>
-          <input
-            ref={cityInputRef}
-            type="text"
-            id="city"
-            name="city"
-            className={`input-field ${errors.city ? 'input-error' : ''}`}
-            placeholder="Start typing your city..."
-            value={citySearch}
-            onChange={handleCityChange}
-            onFocus={() => citySearch.length >= 2 && filteredCities.length > 0 && setShowCitySuggestions(true)}
-            autoComplete="off"
-          />
-          {showCitySuggestions && (
-            <div className="city-suggestions" ref={suggestionsRef}>
-              {filteredCities.map((city, index) => (
-                <div
-                  key={index}
-                  className="city-suggestion-item"
-                  onClick={() => selectCity(city)}
-                >
-                  {city}
-                </div>
-              ))}
-            </div>
-          )}
-          {errors.city && <span className="error-text">{errors.city}</span>}
-        </div>
-
+        {/* Pincode */}
         <div className="input-group">
-          <label className="input-label" htmlFor="pincode">Pin Code *</label>
-          <input
-            type="text"
-            id="pincode"
-            name="pincode"
-            className={`input-field ${errors.pincode ? 'input-error' : ''}`}
-            placeholder="e.g., 560034"
-            value={profileData.pincode || ''}
-            onChange={handleChange}
-            maxLength={6}
-          />
+          <label className="input-label" htmlFor="pincode">Pincode *</label>
+          <div className={`input-with-icon-inline ${errors.pincode ? 'input-error' : ''}`}>
+            <span className="field-icon hash-icon">#</span>
+            <input
+              type="text"
+              id="pincode"
+              name="pincode"
+              className="input-field input-field-icon"
+              placeholder="e.g., 560001"
+              value={profileData.pincode || ''}
+              onChange={handleChange}
+              maxLength={6}
+            />
+          </div>
           {errors.pincode && <span className="error-text">{errors.pincode}</span>}
+        </div>
+
+        {/* Locality */}
+        <div className="input-group">
+          <label className="input-label" htmlFor="locality">Locality / Area</label>
+          <div className="input-with-icon-inline">
+            <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <input
+              type="text"
+              id="locality"
+              name="locality"
+              className="input-field input-field-icon"
+              placeholder="e.g., Whitefield/Kormangala/Sector 23 Dwarka"
+              value={profileData.locality || ''}
+              onChange={handleChange}
+            />
+          </div>
         </div>
 
         <button className="btn-primary" onClick={validateAndNext}>
