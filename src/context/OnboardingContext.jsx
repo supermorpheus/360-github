@@ -136,7 +136,7 @@ export function OnboardingProvider({ children }) {
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'
   const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'confirm'
 
-  const totalSteps = 11 // Welcome, BasicInfo, Professional, Quote, Intro, Location, Joy, Social, Content, LifeStories, Complete
+  const totalSteps = 12 // Welcome, Share360, BasicInfo, Professional, Quote, Intro, Location, Joy, Social, Content, LifeStories, Complete
 
   const updateProfileData = (updates) => {
     setProfileData(prev => ({ ...prev, ...updates }))

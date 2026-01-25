@@ -246,6 +246,48 @@
 }
 
 /* ==================== */
+/* Share 360 Screen */
+/* ==================== */
+.share360-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
+  padding-top: 20px;
+}
+
+.share360-content {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.share360-title {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 32px;
+}
+
+.share360-message {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  color: var(--dark-gray);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 0 8px;
+}
+
+.share360-highlight {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-top: 24px;
+  font-style: italic;
+}
+
+/* ==================== */
 /* Onboarding Form */
 /* ==================== */
 .onboarding-form {

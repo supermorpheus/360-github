@@ -1,5 +1,6 @@
 import { useOnboarding } from '../../context/OnboardingContext'
 import OnboardingWelcome from './OnboardingWelcome'
+import OnboardingShare360 from './OnboardingShare360'
 import OnboardingBasicInfo from './OnboardingBasicInfo'
 import OnboardingProfessional from './OnboardingProfessional'
 import OnboardingQuote from './OnboardingQuote'
@@ -16,6 +17,7 @@ function Onboarding() {
 
   const steps = [
     <OnboardingWelcome key="welcome" />,
+    <OnboardingShare360 key="share360" />,
     <OnboardingBasicInfo key="basic-info" />,
     <OnboardingProfessional key="professional" />,
     <OnboardingQuote key="quote" />,
