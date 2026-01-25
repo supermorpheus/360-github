@@ -5,8 +5,12 @@ import '../../styles/onboarding.css'
 function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null }) {
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
-  // Calculate progress percentage based on steps (excluding welcome and complete)
-  const progressPercentage = Math.round((currentStep / (totalSteps - 1)) * 100)
+  // Calculate progress percentage based on steps
+  // Content page (step 9) should be 100% - Life Stories is optional/bonus
+  const contentStep = 9 // Content page is the "100% complete" milestone
+  const progressPercentage = currentStep >= contentStep
+    ? 100
+    : Math.round((currentStep / contentStep) * 100)
 
   // Use custom back handler if provided, otherwise use default prevStep
   const handleBack = customBackHandler || prevStep
