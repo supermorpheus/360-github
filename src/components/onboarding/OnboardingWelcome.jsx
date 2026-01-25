@@ -20,7 +20,7 @@ function OnboardingWelcome() {
         <div className="welcome-content">
           <h1 className="welcome-title">Welcome to Gang 360</h1>
           <p className="welcome-subtitle">
-            Join our community built on Truth, Progress, Generosity, Perseverance, Sincerity, Courage, and Aspiration.
+            Gang 360 is all about sharing 360 degrees of our life with our fellow community members who we trust as friends. It all stays inside private in Gang 360. As you proceed be silent, self-aware, authentic, open, fearless, funny, intense or whatever you truly are.. Unmask yourself..
           </p>
         </div>
 
