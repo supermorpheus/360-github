@@ -106,6 +106,8 @@ function OnboardingContent() {
           ))}
         </div>
 
+        <p className="skip-note">This is optional. You can add content links later.</p>
+
         <button type="button" className="add-content-link-btn" onClick={addLink}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="12" y1="5" x2="12" y2="19"/>
@@ -117,8 +119,6 @@ function OnboardingContent() {
         <button className="btn-primary" onClick={handleSubmit}>
           Submit for Review
         </button>
-
-        <p className="skip-note">This is optional. You can add content links later.</p>
       </div>
 
       {/* Submit Confirmation Popup */}
