@@ -127,7 +127,20 @@ function LifeStoryEarlyConfirm1() {
     }
   }
 
+  // Validation check
+  const isValid = () => {
+    if (!summary.trim()) return false
+    if (!bornIn.trim()) return false
+    if (!hometown.trim()) return false
+    // At least one school with name and location
+    const validSchools = schools.filter(s => s.name.trim() && s.location.trim())
+    if (validSchools.length === 0) return false
+    return true
+  }
+
   const handleContinue = () => {
+    if (!isValid()) return
+
     // Save thumbnail
     const thumbnailData = selectedThumbnail === 'custom'
       ? customThumbnailPreview
@@ -151,7 +164,7 @@ function LifeStoryEarlyConfirm1() {
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
         <h1 className="form-title">Early Life</h1>
-        <p className="form-subtitle">{isTextInput ? 'Fill in the details below' : 'Review and edit the information below'}</p>
+        <p className="form-subtitle">{isTextInput ? 'Add your details below' : 'Review and edit the information below'}</p>
       </div>
 
       {/* Thumbnail Selection - Only for video */}
@@ -348,7 +361,7 @@ function LifeStoryEarlyConfirm1() {
         </button>
       </div>
 
-      <button className="btn-primary" onClick={handleContinue}>
+      <button className="btn-primary" onClick={handleContinue} disabled={!isValid()}>
         Continue
       </button>
     </div>

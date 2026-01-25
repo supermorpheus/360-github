@@ -191,9 +191,9 @@ export function OnboardingProvider({ children }) {
 
   const selectInputMethod = (method) => {
     updateLifeStory(selectedLifeStory, { inputMethod: method })
-    // For text, skip input and go directly to confirm
+    // For text, skip input and go directly to confirm1 (the form fields)
     if (method === 'text') {
-      setLifeStorySubStep('confirm')
+      setLifeStorySubStep('confirm1')
     } else {
       setLifeStorySubStep('input')
     }

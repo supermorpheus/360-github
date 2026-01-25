@@ -132,7 +132,19 @@ function LifeStoryProfessionalConfirm1() {
     }
   }
 
+  // Validation check
+  const isValid = () => {
+    if (!summary.trim()) return false
+    // First job with company and at least one title
+    if (!firstJob.company.trim()) return false
+    const validTitles = firstJob.titles.filter(t => t.trim())
+    if (validTitles.length === 0) return false
+    return true
+  }
+
   const handleContinue = () => {
+    if (!isValid()) return
+
     const thumbnailData = selectedThumbnail === 'custom'
       ? customThumbnailPreview
       : generatedThumbnails[selectedThumbnail] || storyData.thumbnail
@@ -156,7 +168,7 @@ function LifeStoryProfessionalConfirm1() {
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
         <h1 className="form-title">Mid/Professional Life</h1>
-        <p className="form-subtitle">{isTextInput ? 'Fill in the details below' : 'Review and edit the information below'}</p>
+        <p className="form-subtitle">{isTextInput ? 'Add your details below' : 'Review and edit the information below'}</p>
       </div>
 
       {/* Thumbnail Selection - Only for video */}
@@ -317,7 +329,7 @@ function LifeStoryProfessionalConfirm1() {
         </div>
       </div>
 
-      <button className="btn-primary" onClick={handleContinue}>
+      <button className="btn-primary" onClick={handleContinue} disabled={!isValid()}>
         Continue
       </button>
     </div>

@@ -80,7 +80,16 @@ function LifeStoryProfessionalConfirm2() {
     }
   }
 
+  // Validation check
+  const isValid = () => {
+    // At least one tag required
+    if (tags.length === 0) return false
+    return true
+  }
+
   const handleSubmit = () => {
+    if (!isValid()) return
+
     updateLifeStory('professional', {
       subsequentJobs: subsequentJobs
         .filter(j => j.company.trim())
@@ -105,7 +114,7 @@ function LifeStoryProfessionalConfirm2() {
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
         <h1 className="form-title">Mid/Professional Life</h1>
-        <p className="form-subtitle">{isTextInput ? 'Fill in the details below' : 'Review and edit the information below'}</p>
+        <p className="form-subtitle">{isTextInput ? 'Add your details below' : 'Review and edit the information below'}</p>
       </div>
 
       {/* Subsequent Jobs */}
@@ -191,7 +200,7 @@ function LifeStoryProfessionalConfirm2() {
         </p>
       </div>
 
-      <button className="btn-primary btn-with-icon" onClick={handleSubmit}>
+      <button className="btn-primary btn-with-icon" onClick={handleSubmit} disabled={!isValid()}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
           <polyline points="14 2 14 8 20 8"/>
