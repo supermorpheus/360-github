@@ -77,7 +77,7 @@ function OnboardingBasicInfo() {
               />
             ) : (
               <div className="profile-picture-placeholder">
-                <span className="profile-initials">{getInitials()}</span>
+                <span className="profile-upload-text">Click to upload</span>
               </div>
             )}
           </div>
