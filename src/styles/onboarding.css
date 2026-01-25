@@ -423,13 +423,8 @@
   line-height: 1.6;
 }
 
-/* Textarea placeholder vertical centering using padding trick */
+/* Textarea placeholder - normal line-height for proper text wrapping */
 .textarea-field::placeholder {
-  line-height: 90px;
-}
-
-.textarea-field:focus::placeholder,
-.textarea-field:not(:placeholder-shown)::placeholder {
   line-height: 1.6;
 }
 
