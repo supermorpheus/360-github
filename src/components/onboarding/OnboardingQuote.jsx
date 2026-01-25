@@ -44,7 +44,7 @@ function OnboardingQuote() {
               id="inspiringQuote"
               name="inspiringQuote"
               className="input-naked"
-              placeholder="This quote will be displayed as a part of your profile. Please provide the full quote along with the source."
+              placeholder="e.g., The only way to do great work is to love what you do. - Steve Jobs"
               value={profileData.inspiringQuote}
               onChange={handleChange}
               rows={5}
