@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext'
 
 function LifeStoryVideoInput({ storyKey }) {
-  const { profileData, updateLifeStory, goToUploadComplete, goToConfirmation } = useOnboarding()
+  const { profileData, updateLifeStory, goToUploadComplete } = useOnboarding()
   const storyData = profileData.lifeStories[storyKey]
   const story = lifeStoryPrompts[storyKey]
 
@@ -17,6 +17,7 @@ function LifeStoryVideoInput({ storyKey }) {
   const chunksRef = useRef([])
   const timerRef = useRef(null)
   const streamRef = useRef(null)
+  const fileInputRef = useRef(null)
 
   useEffect(() => {
     return () => {
@@ -116,11 +117,21 @@ function LifeStoryVideoInput({ storyKey }) {
     updateLifeStory(storyKey, { videoBlob: null, videoUrl: null })
   }
 
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0]
+    if (file && file.type.startsWith('video/')) {
+      const url = URL.createObjectURL(file)
+      setVideoUrl(url)
+      updateLifeStory(storyKey, { videoBlob: file, videoUrl: url })
+      if (videoRef.current) {
+        videoRef.current.src = url
+      }
+    }
+  }
+
   const handleSave = () => {
     if (videoUrl) {
       setShowSavePopup(true)
-    } else {
-      goToConfirmation()
     }
   }
 
@@ -260,11 +271,37 @@ function LifeStoryVideoInput({ storyKey }) {
         </div>
       </div>
 
-      <button className="btn-primary" onClick={handleSave}>
-        {videoUrl ? 'Save & Continue' : 'Skip for now'}
-      </button>
+      {/* Upload from device option */}
+      {!videoUrl && !isRecording && (
+        <>
+          <div className="upload-divider">
+            <span>or</span>
+          </div>
+          <input
+            type="file"
+            ref={fileInputRef}
+            accept="video/*"
+            onChange={handleFileUpload}
+            style={{ display: 'none' }}
+          />
+          <button
+            type="button"
+            className="btn-upload-file"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            Upload Video from Device
+          </button>
+        </>
+      )}
 
-      <p className="skip-note">You can record this video later from your profile.</p>
+      <button className="btn-primary" onClick={handleSave} disabled={!videoUrl}>
+        Submit
+      </button>
 
       {/* Prompts Popup */}
       {showPrompts && (

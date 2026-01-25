@@ -39,13 +39,14 @@ const initialProfileData = {
       audioBlob: null,
       audioUrl: null,
       text: '',
+      thumbnail: null,
       // Extracted/editable content
-      interests: [],
+      tags: [], // renamed from interests, max 15
       bornIn: '',
       hometown: '',
       schools: [], // { name, location }
-      universities: [], // { name, location, major }
-      summary: ''
+      universities: [], // { name, location, course }
+      summary: '' // max 100 words
     },
     professional: {
       inputMethod: null,
@@ -54,11 +55,12 @@ const initialProfileData = {
       audioBlob: null,
       audioUrl: null,
       text: '',
+      thumbnail: null,
       // Extracted/editable content
-      skills: [],
+      tags: [], // renamed from skills, max 15
       firstJob: null, // { company, titles: [] }
       subsequentJobs: [], // { company, titles: [] }
-      summary: ''
+      summary: '' // max 100 words
     },
     current: {
       inputMethod: null,
@@ -67,11 +69,13 @@ const initialProfileData = {
       audioBlob: null,
       audioUrl: null,
       text: '',
+      thumbnail: null,
       // Extracted/editable content
-      interests: [],
-      rolesOrganizations: [], // { organization, role }
-      travelCities: [],
-      summary: ''
+      tags: [], // renamed from interests, max 15
+      currentCities: [], // mandatory
+      organizations: [], // { name, role } - renamed from rolesOrganizations
+      travelCities: [], // optional
+      summary: '' // max 100 words
     }
   }
 }
@@ -136,7 +140,7 @@ export function OnboardingProvider({ children }) {
 
   // Life stories flow state
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'
-  const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'uploadComplete', 'processing', 'thumbnail', 'confirm'
+  const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'uploadComplete', 'processing', 'thumbnail', 'confirm1', 'confirm2'
 
   const totalSteps = 12 // Welcome, Share360, BasicInfo, Professional, Quote, Intro, Location, Joy, Social, Content, LifeStories, Complete
 
@@ -208,7 +212,15 @@ export function OnboardingProvider({ children }) {
   }
 
   const goToConfirmation = () => {
-    setLifeStorySubStep('confirm')
+    setLifeStorySubStep('confirm1')
+  }
+
+  const goToConfirm2 = () => {
+    setLifeStorySubStep('confirm2')
+  }
+
+  const backToConfirm1 = () => {
+    setLifeStorySubStep('confirm1')
   }
 
   const backToLifeStorySelection = () => {
@@ -235,7 +247,13 @@ export function OnboardingProvider({ children }) {
   }
 
   const backToThumbnail = () => {
-    setLifeStorySubStep('thumbnail')
+    const story = profileData.lifeStories[selectedLifeStory]
+    // For audio or text, go back to input method since there's no thumbnail
+    if (story.inputMethod === 'audio' || story.inputMethod === 'text') {
+      setLifeStorySubStep('inputMethod')
+    } else {
+      setLifeStorySubStep('thumbnail')
+    }
   }
 
   const completeLifeStory = () => {
@@ -288,6 +306,8 @@ export function OnboardingProvider({ children }) {
     goToProcessing,
     goToThumbnail,
     goToConfirmation,
+    goToConfirm2,
+    backToConfirm1,
     backToLifeStorySelection,
     backToPrompts,
     backToInputMethod,

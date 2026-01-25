@@ -10,18 +10,27 @@ function LifeStoryThumbnail({ storyKey }) {
   const [customThumbnail, setCustomThumbnail] = useState(null)
   const [customThumbnailPreview, setCustomThumbnailPreview] = useState(null)
   const [generatedThumbnails, setGeneratedThumbnails] = useState([])
+  const [isGenerating, setIsGenerating] = useState(false)
   const fileInputRef = useRef(null)
   const videoRef = useRef(null)
 
   // Generate thumbnails from video
-  useEffect(() => {
+  const generateThumbnails = () => {
     if (storyData.videoUrl && videoRef.current) {
+      setIsGenerating(true)
       const video = videoRef.current
       video.src = storyData.videoUrl
 
       video.onloadeddata = () => {
         const duration = video.duration
-        const timestamps = [0.1, 0.25, 0.5, 0.75].map(t => t * duration)
+        // Use random offsets for refresh functionality
+        const offsets = [
+          Math.random() * 0.2,
+          0.2 + Math.random() * 0.2,
+          0.4 + Math.random() * 0.2,
+          0.6 + Math.random() * 0.3
+        ]
+        const timestamps = offsets.map(t => t * duration)
         const thumbnails = []
 
         const canvas = document.createElement('canvas')
@@ -40,12 +49,22 @@ function LifeStoryThumbnail({ storyKey }) {
 
             if (loadedCount === timestamps.length) {
               setGeneratedThumbnails(thumbnails)
+              setIsGenerating(false)
+              setSelectedThumbnail(0)
             }
           }
         })
       }
     }
+  }
+
+  useEffect(() => {
+    generateThumbnails()
   }, [storyData.videoUrl])
+
+  const handleRefresh = () => {
+    generateThumbnails()
+  }
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0]
@@ -70,8 +89,8 @@ function LifeStoryThumbnail({ storyKey }) {
     goToConfirmation()
   }
 
-  // For audio, skip directly to confirmation
-  if (storyData.inputMethod === 'audio') {
+  // For audio or text, skip directly to confirmation
+  if (storyData.inputMethod === 'audio' || storyData.inputMethod === 'text') {
     goToConfirmation()
     return null
   }
@@ -80,59 +99,41 @@ function LifeStoryThumbnail({ storyKey }) {
     <div className="onboarding-form thumbnail-screen">
       <video ref={videoRef} style={{ display: 'none' }} />
 
-      <div className="form-header">
-        <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">Select Video Thumbnail</h1>
-        <p className="form-subtitle">
-          Choose a thumbnail that best represents your {story.title.toLowerCase()} story
-        </p>
-      </div>
-
-      <div className="thumbnail-grid">
-        {generatedThumbnails.length > 0 ? (
-          generatedThumbnails.map((thumb, index) => (
+      <div className="thumbnail-section-card">
+        <div className="thumbnail-section-header">
+          <h2 className="thumbnail-section-title">Thumbnail Selection</h2>
+          <div className="thumbnail-header-actions">
             <button
-              key={index}
               type="button"
-              className={`thumbnail-option ${selectedThumbnail === index ? 'selected' : ''}`}
-              onClick={() => setSelectedThumbnail(index)}
+              className="thumbnail-action-btn"
+              onClick={handleRefresh}
+              disabled={isGenerating}
+              title="Refresh thumbnails"
             >
-              <img src={thumb} alt={`Thumbnail ${index + 1}`} />
-              {selectedThumbnail === index && (
-                <div className="thumbnail-selected-badge">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-              )}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={isGenerating ? 'spin' : ''}>
+                <path d="M23 4v6h-6M1 20v-6h6"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
             </button>
-          ))
-        ) : (
-          // Placeholder thumbnails while loading
-          [0, 1, 2, 3].map((index) => (
-            <div key={index} className="thumbnail-option placeholder">
-              <div className="thumbnail-loading">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="spin">
-                  <line x1="12" y1="2" x2="12" y2="6"/>
-                  <line x1="12" y1="18" x2="12" y2="22"/>
-                  <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
-                  <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
-                  <line x1="2" y1="12" x2="6" y2="12"/>
-                  <line x1="18" y1="12" x2="22" y2="12"/>
-                  <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
-                  <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
-                </svg>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
+            <button
+              type="button"
+              className="thumbnail-action-btn"
+              onClick={() => fileInputRef.current?.click()}
+              title="Upload custom thumbnail"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </button>
+          </div>
+        </div>
 
-      <div className="thumbnail-divider">
-        <span>or</span>
-      </div>
+        <p className="thumbnail-section-description">
+          These thumbnails are automatically generated from your video. You can select one, upload a custom thumbnail, or refresh to generate new options.
+        </p>
 
-      <div className="upload-thumbnail-section">
         <input
           type="file"
           ref={fileInputRef}
@@ -141,44 +142,77 @@ function LifeStoryThumbnail({ storyKey }) {
           style={{ display: 'none' }}
         />
 
-        {customThumbnailPreview ? (
-          <button
-            type="button"
-            className={`custom-thumbnail-preview ${selectedThumbnail === 'custom' ? 'selected' : ''}`}
-            onClick={() => setSelectedThumbnail('custom')}
-          >
-            <img src={customThumbnailPreview} alt="Custom thumbnail" />
-            {selectedThumbnail === 'custom' && (
-              <div className="thumbnail-selected-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
+        <div className="thumbnail-grid">
+          {generatedThumbnails.length > 0 ? (
+            generatedThumbnails.map((thumb, index) => (
+              <button
+                key={index}
+                type="button"
+                className={`thumbnail-option ${selectedThumbnail === index ? 'selected' : ''}`}
+                onClick={() => setSelectedThumbnail(index)}
+              >
+                <img src={thumb} alt={`Thumbnail ${index + 1}`} />
+                {selectedThumbnail === index && (
+                  <div className="thumbnail-selected-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                )}
+              </button>
+            ))
+          ) : (
+            // Placeholder thumbnails while loading
+            [0, 1, 2, 3].map((index) => (
+              <div key={index} className="thumbnail-option placeholder">
+                <div className="thumbnail-loading">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="spin">
+                    <line x1="12" y1="2" x2="12" y2="6"/>
+                    <line x1="12" y1="18" x2="12" y2="22"/>
+                    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+                    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+                    <line x1="2" y1="12" x2="6" y2="12"/>
+                    <line x1="18" y1="12" x2="22" y2="12"/>
+                    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
+                    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
+                  </svg>
+                </div>
               </div>
-            )}
+            ))
+          )}
+        </div>
+
+        {/* Custom thumbnail preview */}
+        {customThumbnailPreview && (
+          <>
+            <div className="thumbnail-divider">
+              <span>Custom Upload</span>
+            </div>
             <button
               type="button"
-              className="change-thumbnail-btn"
-              onClick={(e) => {
-                e.stopPropagation()
-                fileInputRef.current?.click()
-              }}
+              className={`custom-thumbnail-preview ${selectedThumbnail === 'custom' ? 'selected' : ''}`}
+              onClick={() => setSelectedThumbnail('custom')}
             >
-              Change
+              <img src={customThumbnailPreview} alt="Custom thumbnail" />
+              {selectedThumbnail === 'custom' && (
+                <div className="thumbnail-selected-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+              )}
+              <button
+                type="button"
+                className="change-thumbnail-btn"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  fileInputRef.current?.click()
+                }}
+              >
+                Change
+              </button>
             </button>
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="upload-thumbnail-btn"
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="17 8 12 3 7 8"/>
-              <line x1="12" y1="3" x2="12" y2="15"/>
-            </svg>
-            Upload Custom Thumbnail
-          </button>
+          </>
         )}
       </div>
 

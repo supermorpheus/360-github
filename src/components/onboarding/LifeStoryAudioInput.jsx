@@ -17,6 +17,7 @@ function LifeStoryAudioInput({ storyKey }) {
   const chunksRef = useRef([])
   const timerRef = useRef(null)
   const streamRef = useRef(null)
+  const fileInputRef = useRef(null)
 
   useEffect(() => {
     return () => {
@@ -112,11 +113,18 @@ function LifeStoryAudioInput({ storyKey }) {
     updateLifeStory(storyKey, { audioBlob: null, audioUrl: null })
   }
 
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0]
+    if (file && file.type.startsWith('audio/')) {
+      const url = URL.createObjectURL(file)
+      setAudioUrl(url)
+      updateLifeStory(storyKey, { audioBlob: file, audioUrl: url })
+    }
+  }
+
   const handleSave = () => {
     if (audioUrl) {
       setShowSavePopup(true)
-    } else {
-      goToConfirmation()
     }
   }
 
@@ -266,11 +274,37 @@ function LifeStoryAudioInput({ storyKey }) {
         </div>
       </div>
 
-      <button className="btn-primary" onClick={handleSave}>
-        {audioUrl ? 'Save & Continue' : 'Skip for now'}
-      </button>
+      {/* Upload from device option */}
+      {!audioUrl && !isRecording && (
+        <>
+          <div className="upload-divider">
+            <span>or</span>
+          </div>
+          <input
+            type="file"
+            ref={fileInputRef}
+            accept="audio/*"
+            onChange={handleFileUpload}
+            style={{ display: 'none' }}
+          />
+          <button
+            type="button"
+            className="btn-upload-file"
+            onClick={() => fileInputRef.current?.click()}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            Upload Audio from Device
+          </button>
+        </>
+      )}
 
-      <p className="skip-note">You can record this audio later from your profile.</p>
+      <button className="btn-primary" onClick={handleSave} disabled={!audioUrl}>
+        Submit
+      </button>
 
       {/* Prompts Popup */}
       {showPrompts && (

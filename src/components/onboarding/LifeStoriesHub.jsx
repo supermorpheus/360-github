@@ -9,9 +9,12 @@ import LifeStoryTextInput from './LifeStoryTextInput'
 import LifeStoryUploadComplete from './LifeStoryUploadComplete'
 import LifeStoryProcessing from './LifeStoryProcessing'
 import LifeStoryThumbnail from './LifeStoryThumbnail'
-import LifeStoryEarlyConfirm from './LifeStoryEarlyConfirm'
-import LifeStoryProfessionalConfirm from './LifeStoryProfessionalConfirm'
-import LifeStoryCurrentConfirm from './LifeStoryCurrentConfirm'
+import LifeStoryEarlyConfirm1 from './LifeStoryEarlyConfirm1'
+import LifeStoryEarlyConfirm2 from './LifeStoryEarlyConfirm2'
+import LifeStoryProfessionalConfirm1 from './LifeStoryProfessionalConfirm1'
+import LifeStoryProfessionalConfirm2 from './LifeStoryProfessionalConfirm2'
+import LifeStoryCurrentConfirm1 from './LifeStoryCurrentConfirm1'
+import LifeStoryCurrentConfirm2 from './LifeStoryCurrentConfirm2'
 
 function LifeStoriesHub() {
   const {
@@ -21,8 +24,8 @@ function LifeStoriesHub() {
     backToLifeStorySelection,
     backToPrompts,
     backToInputMethod,
-    backToInput,
-    backToThumbnail
+    backToThumbnail,
+    backToConfirm1
   } = useOnboarding()
 
   // Get current input method for the selected story
@@ -45,8 +48,10 @@ function LifeStoriesHub() {
         return null
       case 'thumbnail':
         return null // No back during thumbnail selection
-      case 'confirm':
+      case 'confirm1':
         return backToThumbnail
+      case 'confirm2':
+        return backToConfirm1
       default:
         return null
     }
@@ -54,7 +59,7 @@ function LifeStoriesHub() {
 
   // Calculate progress for life story sub-flow
   // Progress shows what's completed across the expanded flow
-  // prompts (0%) -> inputMethod (15%) -> input (30%) -> uploadComplete (45%) -> processing (55%) -> thumbnail (70%) -> confirm (85%)
+  // prompts (0%) -> inputMethod (15%) -> input (30%) -> uploadComplete (45%) -> processing (55%) -> thumbnail (65%) -> confirm1 (75%) -> confirm2 (90%)
   const getLifeStoryProgress = () => {
     switch (lifeStorySubStep) {
       case 'prompts':
@@ -68,23 +73,39 @@ function LifeStoriesHub() {
       case 'processing':
         return 55
       case 'thumbnail':
-        return 70
-      case 'confirm':
-        return 85
+        return 65
+      case 'confirm1':
+        return 75
+      case 'confirm2':
+        return 90
       default:
         return null // Use default progress for selection screen
     }
   }
 
-  // Render confirmation component based on selected life story
-  const renderConfirmComponent = () => {
+  // Render confirm1 component based on selected life story
+  const renderConfirm1Component = () => {
     switch (selectedLifeStory) {
       case 'earlyLife':
-        return <LifeStoryEarlyConfirm />
+        return <LifeStoryEarlyConfirm1 />
       case 'professional':
-        return <LifeStoryProfessionalConfirm />
+        return <LifeStoryProfessionalConfirm1 />
       case 'current':
-        return <LifeStoryCurrentConfirm />
+        return <LifeStoryCurrentConfirm1 />
+      default:
+        return null
+    }
+  }
+
+  // Render confirm2 component based on selected life story
+  const renderConfirm2Component = () => {
+    switch (selectedLifeStory) {
+      case 'earlyLife':
+        return <LifeStoryEarlyConfirm2 />
+      case 'professional':
+        return <LifeStoryProfessionalConfirm2 />
+      case 'current':
+        return <LifeStoryCurrentConfirm2 />
       default:
         return null
     }
@@ -121,8 +142,11 @@ function LifeStoriesHub() {
       case 'thumbnail':
         return <LifeStoryThumbnail storyKey={selectedLifeStory} />
 
-      case 'confirm':
-        return renderConfirmComponent()
+      case 'confirm1':
+        return renderConfirm1Component()
+
+      case 'confirm2':
+        return renderConfirm2Component()
 
       default:
         return <LifeStorySelection />
