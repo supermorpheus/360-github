@@ -43,17 +43,17 @@ function LifeStoriesHub() {
   }
 
   // Calculate progress for life story sub-flow
-  // Steps: prompts (25%) -> inputMethod (50%) -> input (75%) -> confirm (100%)
+  // Progress shows what's completed: prompts (0%) -> inputMethod (25%) -> input (50%) -> confirm (75%)
   const getLifeStoryProgress = () => {
     switch (lifeStorySubStep) {
       case 'prompts':
-        return 25
+        return 0
       case 'inputMethod':
-        return 50
+        return 25
       case 'input':
-        return 75
+        return 50
       case 'confirm':
-        return 100
+        return 75
       default:
         return null // Use default progress for selection screen
     }
