@@ -42,7 +42,7 @@ function LifeStoryInputMethod({ storyKey }) {
         </svg>
       ),
       title: 'Write Text',
-      description: 'Share your story through written text'
+      description: 'Share your story by typing in the details'
     }
   ]
 

@@ -7,17 +7,24 @@ function LifeStoryAudioInput({ storyKey }) {
   const story = lifeStoryPrompts[storyKey]
 
   const [isRecording, setIsRecording] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const [audioUrl, setAudioUrl] = useState(storyData.audioUrl || null)
   const [recordingTime, setRecordingTime] = useState(0)
+  const [showPrompts, setShowPrompts] = useState(false)
+  const [showSavePopup, setShowSavePopup] = useState(false)
   const audioRef = useRef(null)
   const mediaRecorderRef = useRef(null)
   const chunksRef = useRef([])
   const timerRef = useRef(null)
+  const streamRef = useRef(null)
 
   useEffect(() => {
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current)
+      }
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => track.stop())
       }
     }
   }, [])
@@ -31,6 +38,7 @@ function LifeStoryAudioInput({ storyKey }) {
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      streamRef.current = stream
 
       mediaRecorderRef.current = new MediaRecorder(stream)
       chunksRef.current = []
@@ -49,10 +57,12 @@ function LifeStoryAudioInput({ storyKey }) {
 
         // Stop all tracks
         stream.getTracks().forEach(track => track.stop())
+        streamRef.current = null
       }
 
       mediaRecorderRef.current.start()
       setIsRecording(true)
+      setIsPaused(false)
       setRecordingTime(0)
 
       // Start timer
@@ -65,10 +75,31 @@ function LifeStoryAudioInput({ storyKey }) {
     }
   }
 
+  const pauseRecording = () => {
+    if (mediaRecorderRef.current && isRecording && !isPaused) {
+      mediaRecorderRef.current.pause()
+      setIsPaused(true)
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
+    }
+  }
+
+  const resumeRecording = () => {
+    if (mediaRecorderRef.current && isRecording && isPaused) {
+      mediaRecorderRef.current.resume()
+      setIsPaused(false)
+      timerRef.current = setInterval(() => {
+        setRecordingTime(prev => prev + 1)
+      }, 1000)
+    }
+  }
+
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop()
       setIsRecording(false)
+      setIsPaused(false)
       if (timerRef.current) {
         clearInterval(timerRef.current)
       }
@@ -82,7 +113,47 @@ function LifeStoryAudioInput({ storyKey }) {
   }
 
   const handleSave = () => {
+    if (audioUrl) {
+      setShowSavePopup(true)
+    } else {
+      goToConfirmation()
+    }
+  }
+
+  const handlePopupContinue = () => {
+    setShowSavePopup(false)
     goToConfirmation()
+  }
+
+  const renderPromptList = () => {
+    if (story.sections) {
+      return story.sections.map((section, idx) => (
+        <div key={idx} className="prompt-section">
+          <p className="prompt-section-title"><strong>{section.title}:</strong></p>
+          <ul>
+            {section.prompts.map((prompt, pIdx) => (
+              <li key={pIdx}>{prompt}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+
+    return (
+      <>
+        {story.introText && (
+          <p className="prompt-intro-text">{story.introText}</p>
+        )}
+        <ul>
+          {story.prompts.map((prompt, idx) => (
+            <li key={idx}>{prompt}</li>
+          ))}
+        </ul>
+        {story.highlightText && (
+          <p className="prompt-highlight-text"><u>{story.highlightText}</u></p>
+        )}
+      </>
+    )
   }
 
   return (
@@ -105,7 +176,7 @@ function LifeStoryAudioInput({ storyKey }) {
                   <line x1="8" y1="23" x2="16" y2="23"/>
                 </svg>
               </div>
-              <span>Ready to record</span>
+              <span>Ready to Record</span>
             </div>
           )}
 
@@ -121,7 +192,7 @@ function LifeStoryAudioInput({ storyKey }) {
                 </svg>
               </div>
               <span className="recording-time">{formatTime(recordingTime)}</span>
-              <span className="recording-label">Recording...</span>
+              <span className="recording-label">{isPaused ? 'Paused' : 'Recording...'}</span>
             </div>
           )}
 
@@ -130,6 +201,20 @@ function LifeStoryAudioInput({ storyKey }) {
               <audio ref={audioRef} src={audioUrl} controls className="audio-player" />
             </div>
           )}
+
+          {/* Info button for prompts */}
+          <button
+            type="button"
+            className="info-prompts-btn audio-info-btn"
+            onClick={() => setShowPrompts(true)}
+            title="View prompts"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+          </button>
         </div>
 
         <div className="audio-controls">
@@ -141,10 +226,28 @@ function LifeStoryAudioInput({ storyKey }) {
                   Start Recording
                 </button>
               ) : (
-                <button type="button" className="btn-stop-record" onClick={stopRecording}>
-                  <span className="stop-square"></span>
-                  Stop Recording
-                </button>
+                <div className="recording-control-buttons">
+                  {!isPaused ? (
+                    <button type="button" className="btn-pause-record" onClick={pauseRecording}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="4" width="4" height="16"/>
+                        <rect x="14" y="4" width="4" height="16"/>
+                      </svg>
+                      Pause
+                    </button>
+                  ) : (
+                    <button type="button" className="btn-resume-record" onClick={resumeRecording}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                      </svg>
+                      Resume
+                    </button>
+                  )}
+                  <button type="button" className="btn-stop-record" onClick={stopRecording}>
+                    <span className="stop-square"></span>
+                    Stop
+                  </button>
+                </div>
               )}
             </>
           ) : (
@@ -168,6 +271,55 @@ function LifeStoryAudioInput({ storyKey }) {
       </button>
 
       <p className="skip-note">You can record this audio later from your profile.</p>
+
+      {/* Prompts Popup */}
+      {showPrompts && (
+        <div className="popup-overlay" onClick={() => setShowPrompts(false)}>
+          <div className="popup-content prompts-popup" onClick={(e) => e.stopPropagation()}>
+            <div className="prompts-popup-header">
+              <h3>What you can talk about</h3>
+              <button
+                type="button"
+                className="popup-close-btn"
+                onClick={() => setShowPrompts(false)}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+            <div className="prompts-popup-content">
+              {renderPromptList()}
+            </div>
+            <button className="btn-primary" onClick={() => setShowPrompts(false)}>
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Save Confirmation Popup */}
+      {showSavePopup && (
+        <div className="popup-overlay">
+          <div className="popup-content save-warning-popup" onClick={(e) => e.stopPropagation()}>
+            <div className="popup-icon warning-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </div>
+            <h2 className="popup-title">Important Note</h2>
+            <p className="popup-message">
+              Your audio will be visible on your profile once uploaded. Please do not navigate away from this tab while your audio is being uploaded and processed.
+            </p>
+            <button className="btn-primary" onClick={handlePopupContinue}>
+              I Understand, Continue
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
