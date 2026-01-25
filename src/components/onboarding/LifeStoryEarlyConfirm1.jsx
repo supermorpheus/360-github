@@ -17,6 +17,7 @@ function LifeStoryEarlyConfirm1() {
   const [schools, setSchools] = useState(
     storyData.schools.length > 0 ? storyData.schools : [{ name: '', location: '' }]
   )
+  const [showErrors, setShowErrors] = useState(false)
 
   const fileInputRef = useRef(null)
   const videoRef = useRef(null)
@@ -138,8 +139,22 @@ function LifeStoryEarlyConfirm1() {
     return true
   }
 
+  // Individual field error checks
+  const getErrors = () => ({
+    summary: !summary.trim() ? 'Please share a brief summary of your early life' : '',
+    bornIn: !bornIn.trim() ? 'Please enter the city where you were born' : '',
+    hometown: !hometown.trim() ? 'Please enter your hometown' : '',
+    schools: schools.filter(s => s.name.trim() && s.location.trim()).length === 0
+      ? 'Please add at least one school with name and location' : ''
+  })
+
+  const errors = getErrors()
+
   const handleContinue = () => {
-    if (!isValid()) return
+    if (!isValid()) {
+      setShowErrors(true)
+      return
+    }
 
     // Save thumbnail
     const thumbnailData = selectedThumbnail === 'custom'
@@ -272,12 +287,15 @@ function LifeStoryEarlyConfirm1() {
         </label>
         <p className="field-hint">Max {maxWords} words</p>
         <textarea
-          className="input-field textarea-field"
+          className={`input-field textarea-field ${showErrors && errors.summary ? 'input-error' : ''}`}
           placeholder="A brief summary of your early life..."
           value={summary}
           onChange={handleSummaryChange}
           rows={4}
         />
+        {showErrors && errors.summary && (
+          <p className="field-error">{errors.summary}</p>
+        )}
         <p className={`word-counter ${wordCount > maxWords ? 'over-limit' : ''}`}>
           {wordCount} / {maxWords} words
         </p>
@@ -290,11 +308,14 @@ function LifeStoryEarlyConfirm1() {
         </label>
         <input
           type="text"
-          className="input-field"
+          className={`input-field ${showErrors && errors.bornIn ? 'input-error' : ''}`}
           placeholder="City where you were born"
           value={bornIn}
           onChange={(e) => setBornIn(e.target.value)}
         />
+        {showErrors && errors.bornIn && (
+          <p className="field-error">{errors.bornIn}</p>
+        )}
       </div>
 
       {/* Hometown */}
@@ -304,16 +325,22 @@ function LifeStoryEarlyConfirm1() {
         </label>
         <input
           type="text"
-          className="input-field"
+          className={`input-field ${showErrors && errors.hometown ? 'input-error' : ''}`}
           placeholder="Your hometown"
           value={hometown}
           onChange={(e) => setHometown(e.target.value)}
         />
+        {showErrors && errors.hometown && (
+          <p className="field-error">{errors.hometown}</p>
+        )}
       </div>
 
       {/* Schools */}
       <div className="confirm-section">
         <h3 className="section-title-bold">Schools</h3>
+        {showErrors && errors.schools && (
+          <p className="field-error section-error">{errors.schools}</p>
+        )}
         {schools.map((school, idx) => (
           <div key={idx} className="entry-card">
             <div className="entry-fields">
@@ -323,7 +350,7 @@ function LifeStoryEarlyConfirm1() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.schools && !school.name.trim() ? 'input-error' : ''}`}
                   placeholder="School name"
                   value={school.name}
                   onChange={(e) => updateSchool(idx, 'name', e.target.value)}
@@ -335,7 +362,7 @@ function LifeStoryEarlyConfirm1() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.schools && !school.location.trim() ? 'input-error' : ''}`}
                   placeholder="Location"
                   value={school.location}
                   onChange={(e) => updateSchool(idx, 'location', e.target.value)}

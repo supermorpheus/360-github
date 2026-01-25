@@ -14,6 +14,7 @@ function LifeStoryCurrentConfirm1() {
   const [summary, setSummary] = useState(storyData.summary || storyData.text || '')
   const [currentCities, setCurrentCities] = useState(storyData.currentCities || [])
   const [newCity, setNewCity] = useState('')
+  const [showErrors, setShowErrors] = useState(false)
 
   const fileInputRef = useRef(null)
   const videoRef = useRef(null)
@@ -133,8 +134,19 @@ function LifeStoryCurrentConfirm1() {
     return true
   }
 
+  // Individual field error checks
+  const getErrors = () => ({
+    summary: !summary.trim() ? 'Please share a brief summary of your current life' : '',
+    currentCities: currentCities.length === 0 ? 'Please add at least one city where you currently live' : ''
+  })
+
+  const errors = getErrors()
+
   const handleContinue = () => {
-    if (!isValid()) return
+    if (!isValid()) {
+      setShowErrors(true)
+      return
+    }
 
     const thumbnailData = selectedThumbnail === 'custom'
       ? customThumbnailPreview
@@ -264,12 +276,15 @@ function LifeStoryCurrentConfirm1() {
         </label>
         <p className="field-hint">Max {maxWords} words</p>
         <textarea
-          className="input-field textarea-field"
+          className={`input-field textarea-field ${showErrors && errors.summary ? 'input-error' : ''}`}
           placeholder="A brief summary of your current life..."
           value={summary}
           onChange={handleSummaryChange}
           rows={4}
         />
+        {showErrors && errors.summary && (
+          <p className="field-error">{errors.summary}</p>
+        )}
         <p className={`word-counter ${wordCount > maxWords ? 'over-limit' : ''}`}>
           {wordCount} / {maxWords} words
         </p>
@@ -294,12 +309,15 @@ function LifeStoryCurrentConfirm1() {
         </div>
         <input
           type="text"
-          className="input-field"
+          className={`input-field ${showErrors && errors.currentCities ? 'input-error' : ''}`}
           placeholder="Add a city and press Enter"
           value={newCity}
           onChange={(e) => setNewCity(e.target.value)}
           onKeyPress={handleCityKeyPress}
         />
+        {showErrors && errors.currentCities && (
+          <p className="field-error">{errors.currentCities}</p>
+        )}
       </div>
 
       <button className="btn-primary" onClick={handleContinue} disabled={!isValid()}>

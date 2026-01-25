@@ -2980,3 +2980,42 @@
 .btn-upload-file svg {
   stroke: currentColor;
 }
+
+/* ==================== */
+/* Field Error Styles */
+/* ==================== */
+.input-error {
+  border-color: #DC3545 !important;
+  background-color: rgba(220, 53, 69, 0.02);
+}
+
+.input-error:focus {
+  border-color: #DC3545 !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.field-error {
+  color: #DC3545;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  margin-top: 6px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23DC3545' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.section-error {
+  margin-bottom: 12px;
+}

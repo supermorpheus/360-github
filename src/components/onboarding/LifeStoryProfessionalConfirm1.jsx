@@ -16,6 +16,7 @@ function LifeStoryProfessionalConfirm1() {
     storyData.firstJob || { company: '', titles: [''] }
   )
   const [newTitle, setNewTitle] = useState('')
+  const [showErrors, setShowErrors] = useState(false)
 
   const fileInputRef = useRef(null)
   const videoRef = useRef(null)
@@ -142,8 +143,20 @@ function LifeStoryProfessionalConfirm1() {
     return true
   }
 
+  // Individual field error checks
+  const getErrors = () => ({
+    summary: !summary.trim() ? 'Please share a brief summary of your professional journey' : '',
+    company: !firstJob.company.trim() ? 'Please enter your first company name' : '',
+    titles: firstJob.titles.filter(t => t.trim()).length === 0 ? 'Please add at least one job title' : ''
+  })
+
+  const errors = getErrors()
+
   const handleContinue = () => {
-    if (!isValid()) return
+    if (!isValid()) {
+      setShowErrors(true)
+      return
+    }
 
     const thumbnailData = selectedThumbnail === 'custom'
       ? customThumbnailPreview
@@ -276,12 +289,15 @@ function LifeStoryProfessionalConfirm1() {
         </label>
         <p className="field-hint">Max {maxWords} words</p>
         <textarea
-          className="input-field textarea-field"
+          className={`input-field textarea-field ${showErrors && errors.summary ? 'input-error' : ''}`}
           placeholder="A brief summary of your professional journey..."
           value={summary}
           onChange={handleSummaryChange}
           rows={4}
         />
+        {showErrors && errors.summary && (
+          <p className="field-error">{errors.summary}</p>
+        )}
         <p className={`word-counter ${wordCount > maxWords ? 'over-limit' : ''}`}>
           {wordCount} / {maxWords} words
         </p>
@@ -298,11 +314,14 @@ function LifeStoryProfessionalConfirm1() {
               </label>
               <input
                 type="text"
-                className="input-field"
+                className={`input-field ${showErrors && errors.company ? 'input-error' : ''}`}
                 placeholder="eg: Google, Facebook, etc"
                 value={firstJob.company}
                 onChange={(e) => updateFirstJobCompany(e.target.value)}
               />
+              {showErrors && errors.company && (
+                <p className="field-error">{errors.company}</p>
+              )}
             </div>
             <div className="input-group">
               <label className="input-label small">
@@ -318,12 +337,15 @@ function LifeStoryProfessionalConfirm1() {
               </div>
               <input
                 type="text"
-                className="input-field"
+                className={`input-field ${showErrors && errors.titles ? 'input-error' : ''}`}
                 placeholder="Add a title (eg: Analyst, Director, etc..) and press Enter"
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
                 onKeyPress={handleTitleKeyPress}
               />
+              {showErrors && errors.titles && (
+                <p className="field-error">{errors.titles}</p>
+              )}
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ function LifeStoryEarlyConfirm2() {
   const [tags, setTags] = useState(storyData.tags || storyData.interests || [])
   const [newTag, setNewTag] = useState('')
   const [showSubmitPopup, setShowSubmitPopup] = useState(false)
+  const [showErrors, setShowErrors] = useState(false)
 
   const maxTags = 15
 
@@ -64,8 +65,20 @@ function LifeStoryEarlyConfirm2() {
     return true
   }
 
+  // Individual field error checks
+  const getErrors = () => ({
+    universities: universities.filter(u => u.name.trim() && u.course.trim() && u.location.trim()).length === 0
+      ? 'Please add at least one university with name, course, and location' : '',
+    tags: tags.length === 0 ? 'Please add at least one tag to describe your early life interests' : ''
+  })
+
+  const errors = getErrors()
+
   const handleSubmit = () => {
-    if (!isValid()) return
+    if (!isValid()) {
+      setShowErrors(true)
+      return
+    }
 
     updateLifeStory('earlyLife', {
       universities: universities.filter(u => u.name.trim()),
@@ -92,6 +105,9 @@ function LifeStoryEarlyConfirm2() {
       {/* Universities */}
       <div className="confirm-section">
         <h3 className="section-title-bold">Universities</h3>
+        {showErrors && errors.universities && (
+          <p className="field-error section-error">{errors.universities}</p>
+        )}
         {universities.map((uni, idx) => (
           <div key={idx} className="entry-card">
             <div className="entry-fields">
@@ -101,7 +117,7 @@ function LifeStoryEarlyConfirm2() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.universities && !uni.name.trim() ? 'input-error' : ''}`}
                   placeholder="University name"
                   value={uni.name}
                   onChange={(e) => updateUniversity(idx, 'name', e.target.value)}
@@ -113,7 +129,7 @@ function LifeStoryEarlyConfirm2() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.universities && !(uni.course || '').trim() ? 'input-error' : ''}`}
                   placeholder="Course / Degree"
                   value={uni.course || uni.major || ''}
                   onChange={(e) => updateUniversity(idx, 'course', e.target.value)}
@@ -125,7 +141,7 @@ function LifeStoryEarlyConfirm2() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.universities && !uni.location.trim() ? 'input-error' : ''}`}
                   placeholder="Location"
                   value={uni.location}
                   onChange={(e) => updateUniversity(idx, 'location', e.target.value)}
@@ -167,13 +183,16 @@ function LifeStoryEarlyConfirm2() {
         </div>
         <input
           type="text"
-          className="input-field"
+          className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
           placeholder="Add a tag and press Enter"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
           disabled={tags.length >= maxTags}
         />
+        {showErrors && errors.tags && (
+          <p className="field-error">{errors.tags}</p>
+        )}
         <p className={`tag-counter ${tags.length >= maxTags ? 'at-limit' : ''}`}>
           {tags.length} / {maxTags} tags
         </p>

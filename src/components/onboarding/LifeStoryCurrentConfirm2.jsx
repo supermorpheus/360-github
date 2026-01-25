@@ -19,6 +19,7 @@ function LifeStoryCurrentConfirm2() {
   const [tags, setTags] = useState(storyData.tags || storyData.interests || [])
   const [newTag, setNewTag] = useState('')
   const [showSubmitPopup, setShowSubmitPopup] = useState(false)
+  const [showErrors, setShowErrors] = useState(false)
 
   const maxTags = 15
 
@@ -87,8 +88,20 @@ function LifeStoryCurrentConfirm2() {
     return true
   }
 
+  // Individual field error checks
+  const getErrors = () => ({
+    organizations: organizations.filter(o => o.name.trim() && o.role.trim()).length === 0
+      ? 'Please add at least one organization with name and role' : '',
+    tags: tags.length === 0 ? 'Please add at least one tag to describe your current interests' : ''
+  })
+
+  const errors = getErrors()
+
   const handleSubmit = () => {
-    if (!isValid()) return
+    if (!isValid()) {
+      setShowErrors(true)
+      return
+    }
 
     updateLifeStory('current', {
       organizations: organizations.filter(o => o.name.trim()),
@@ -116,6 +129,9 @@ function LifeStoryCurrentConfirm2() {
       {/* Current Organizations */}
       <div className="confirm-section">
         <h3 className="section-title-bold">Current Organizations</h3>
+        {showErrors && errors.organizations && (
+          <p className="field-error section-error">{errors.organizations}</p>
+        )}
         {organizations.map((org, idx) => (
           <div key={idx} className="entry-card">
             <div className="entry-fields">
@@ -125,7 +141,7 @@ function LifeStoryCurrentConfirm2() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.organizations && !org.name.trim() ? 'input-error' : ''}`}
                   placeholder="Organization name"
                   value={org.name}
                   onChange={(e) => updateOrganization(idx, 'name', e.target.value)}
@@ -137,7 +153,7 @@ function LifeStoryCurrentConfirm2() {
                 </label>
                 <input
                   type="text"
-                  className="input-field"
+                  className={`input-field ${showErrors && errors.organizations && !org.role.trim() ? 'input-error' : ''}`}
                   placeholder="Your role"
                   value={org.role}
                   onChange={(e) => updateOrganization(idx, 'role', e.target.value)}
@@ -206,13 +222,16 @@ function LifeStoryCurrentConfirm2() {
         </div>
         <input
           type="text"
-          className="input-field"
+          className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
           placeholder="Add a tag and press Enter"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
           disabled={tags.length >= maxTags}
         />
+        {showErrors && errors.tags && (
+          <p className="field-error">{errors.tags}</p>
+        )}
         <p className={`tag-counter ${tags.length >= maxTags ? 'at-limit' : ''}`}>
           {tags.length} / {maxTags} tags
         </p>

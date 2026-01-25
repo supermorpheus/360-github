@@ -18,6 +18,7 @@ function LifeStoryProfessionalConfirm2() {
   const [tags, setTags] = useState(storyData.tags || storyData.skills || [])
   const [newTag, setNewTag] = useState('')
   const [showSubmitPopup, setShowSubmitPopup] = useState(false)
+  const [showErrors, setShowErrors] = useState(false)
 
   const maxTags = 15
 
@@ -87,8 +88,18 @@ function LifeStoryProfessionalConfirm2() {
     return true
   }
 
+  // Individual field error checks
+  const getErrors = () => ({
+    tags: tags.length === 0 ? 'Please add at least one tag to describe your professional skills' : ''
+  })
+
+  const errors = getErrors()
+
   const handleSubmit = () => {
-    if (!isValid()) return
+    if (!isValid()) {
+      setShowErrors(true)
+      return
+    }
 
     updateLifeStory('professional', {
       subsequentJobs: subsequentJobs
@@ -188,13 +199,16 @@ function LifeStoryProfessionalConfirm2() {
         </div>
         <input
           type="text"
-          className="input-field"
+          className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
           placeholder="Add a tag and press Enter"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
           disabled={tags.length >= maxTags}
         />
+        {showErrors && errors.tags && (
+          <p className="field-error">{errors.tags}</p>
+        )}
         <p className={`tag-counter ${tags.length >= maxTags ? 'at-limit' : ''}`}>
           {tags.length} / {maxTags} tags
         </p>
