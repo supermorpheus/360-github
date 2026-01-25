@@ -44,7 +44,7 @@ function OnboardingQuote() {
               id="inspiringQuote"
               name="inspiringQuote"
               className="input-naked"
-              placeholder="We request you to write the introduction which captures the shades and colours of your life — the personal, the professional, the private, the crazy, the quiet and so on…"
+              placeholder="This quote will be displayed as a part of your profile. Please provide the full quote along with the source."
               value={profileData.inspiringQuote}
               onChange={handleChange}
               rows={5}
