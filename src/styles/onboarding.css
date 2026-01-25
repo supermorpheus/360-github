@@ -193,25 +193,25 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 20px;
+  margin-bottom: 40px;
 }
 
 .welcome-feature {
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  padding: 16px;
+  padding: 20px;
   background-color: var(--light-gray);
   border-radius: 12px;
 }
 
 .feature-icon {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
   background-color: var(--primary-green-light);
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,17 +220,18 @@
 
 .feature-text h3 {
   font-family: var(--font-primary);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--dark-gray);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .feature-text p {
-  font-family: var(--font-secondary);
-  font-size: 13px;
-  color: var(--medium-gray);
-  line-height: 1.4;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-gray);
+  line-height: 1.5;
 }
 
 .welcome-cta {
