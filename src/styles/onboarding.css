@@ -1975,3 +1975,62 @@
 .add-title-btn:hover {
   background-color: var(--primary-green-light);
 }
+
+/* ==================== */
+/* Submit Popup */
+/* ==================== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.popup-icon {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary-green-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--primary-green);
+}
+
+.popup-title {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 12px;
+}
+
+.popup-message {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  color: var(--medium-gray);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.popup-content .btn-primary {
+  width: 100%;
+}

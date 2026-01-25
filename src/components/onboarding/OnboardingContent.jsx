@@ -5,6 +5,7 @@ import OnboardingLayout from './OnboardingLayout'
 function OnboardingContent() {
   const { profileData, updateProfileData, nextStep } = useOnboarding()
   const [links, setLinks] = useState(profileData.contentLinks || [{ url: '', description: '' }])
+  const [showSubmitPopup, setShowSubmitPopup] = useState(false)
 
   const updateLinks = (newLinks) => {
     setLinks(newLinks)
@@ -30,11 +31,16 @@ function OnboardingContent() {
     }
   }
 
-  const validateAndNext = () => {
-    // Content links are optional, just move forward
+  const handleSubmit = () => {
+    // Content links are optional
     // Filter out empty links before saving
     const validLinks = links.filter(link => link.url.trim() !== '')
     updateProfileData({ contentLinks: validLinks })
+    setShowSubmitPopup(true)
+  }
+
+  const handlePopupClose = () => {
+    setShowSubmitPopup(false)
     nextStep()
   }
 
@@ -108,12 +114,33 @@ function OnboardingContent() {
           Add Content Link
         </button>
 
-        <button className="btn-primary" onClick={validateAndNext}>
-          Continue
+        <button className="btn-primary" onClick={handleSubmit}>
+          Submit for Review
         </button>
 
         <p className="skip-note">This is optional. You can add content links later.</p>
       </div>
+
+      {/* Submit Confirmation Popup */}
+      {showSubmitPopup && (
+        <div className="popup-overlay" onClick={handlePopupClose}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <div className="popup-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h2 className="popup-title">Thank You!</h2>
+            <p className="popup-message">
+              Your profile has been submitted for review. Our admin team will review your submission and get back to you soon.
+            </p>
+            <button className="btn-primary" onClick={handlePopupClose}>
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
     </OnboardingLayout>
   )
 }
