@@ -20,7 +20,7 @@ function OnboardingWelcome() {
         <div className="welcome-content">
           <h1 className="welcome-title">Welcome to Gang 360</h1>
           <p className="welcome-subtitle">
-            Trusted Circle. True Self.
+            Trust. Share. Belong.
           </p>
         </div>
 
