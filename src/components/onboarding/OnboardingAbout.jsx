@@ -6,7 +6,7 @@ function OnboardingAbout() {
   const { profileData, updateProfileData, nextStep } = useOnboarding()
   const [errors, setErrors] = useState({})
 
-  const MAX_INTRO_WORDS = 100
+  const MAX_WORDS = 100
 
   const countWords = (text) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length
@@ -18,7 +18,7 @@ function OnboardingAbout() {
     // Word limit for introduction
     if (name === 'introduction') {
       const wordCount = countWords(value)
-      if (wordCount > MAX_INTRO_WORDS) {
+      if (wordCount > MAX_WORDS) {
         return // Don't update if over limit
       }
     }
@@ -41,8 +41,8 @@ function OnboardingAbout() {
     }
     if (!profileData.pincode?.trim()) {
       newErrors.pincode = 'Pincode is required'
-    } else if (!/^\d+$/.test(profileData.pincode)) {
-      newErrors.pincode = 'Pincode must be numeric'
+    } else if (!/^\d{6}$/.test(profileData.pincode.trim())) {
+      newErrors.pincode = 'Please enter a valid 6-digit pincode'
     }
     if (!profileData.joyOutsideWork?.trim()) {
       newErrors.joyOutsideWork = 'This field is required'
@@ -56,75 +56,93 @@ function OnboardingAbout() {
     nextStep()
   }
 
-  const introWordCount = countWords(profileData.introduction || '')
+  const wordCount = countWords(profileData.introduction || '')
 
   return (
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title">About You</h1>
-          <p className="form-subtitle">Help others get to know you better</p>
+          <h1 className="form-title">About</h1>
         </div>
 
         {/* Introduction */}
         <div className="input-group">
-          <div className="label-with-counter">
-            <label className="input-label" htmlFor="introduction">Introduction *</label>
-            <span className={`word-counter ${introWordCount >= MAX_INTRO_WORDS ? 'limit-reached' : ''}`}>
-              {introWordCount}/{MAX_INTRO_WORDS} words
+          <label className="input-label" htmlFor="introduction">Introduction *</label>
+          <div className={`input-field-with-icon textarea-field ${errors.introduction ? 'input-error' : ''}`}>
+            <span className="input-icon intro-icon">📝</span>
+            <textarea
+              id="introduction"
+              name="introduction"
+              className="input-naked"
+              placeholder="Your introduction in 4-5 sentences or 100 words."
+              value={profileData.introduction}
+              onChange={handleChange}
+              rows={5}
+            />
+          </div>
+          <div className="word-counter-row">
+            <span className={`word-counter ${wordCount >= MAX_WORDS ? 'limit-reached' : ''}`}>
+              {wordCount} / {MAX_WORDS} words
             </span>
           </div>
-          <textarea
-            id="introduction"
-            name="introduction"
-            className={`input-field textarea-field ${errors.introduction ? 'input-error' : ''}`}
-            placeholder="Write a brief introduction about yourself in 4-5 sentences. What drives you? What's your story?"
-            value={profileData.introduction}
-            onChange={handleChange}
-            rows={5}
-          />
           {errors.introduction && <span className="error-text">{errors.introduction}</span>}
         </div>
 
-        {/* Location Fields */}
+        {/* Lives In */}
         <div className="input-group">
-          <label className="input-label" htmlFor="livesIn">Lives In *</label>
-          <input
-            type="text"
-            id="livesIn"
-            name="livesIn"
-            className={`input-field ${errors.livesIn ? 'input-error' : ''}`}
-            placeholder="e.g., Bengaluru, India"
-            value={profileData.livesIn}
-            onChange={handleChange}
-          />
+          <label className="input-label" htmlFor="livesIn">Lives in *</label>
+          <div className={`input-with-icon-inline ${errors.livesIn ? 'input-error' : ''}`}>
+            <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <input
+              type="text"
+              id="livesIn"
+              name="livesIn"
+              className="input-field input-field-icon"
+              placeholder="e.g., Bengaluru, India"
+              value={profileData.livesIn || ''}
+              onChange={handleChange}
+            />
+          </div>
           {errors.livesIn && <span className="error-text">{errors.livesIn}</span>}
         </div>
 
-        <div className="form-row">
-          <div className="input-group">
-            <label className="input-label" htmlFor="pincode">Pincode *</label>
+        {/* Pincode */}
+        <div className="input-group">
+          <label className="input-label" htmlFor="pincode">Pincode *</label>
+          <div className={`input-with-icon-inline ${errors.pincode ? 'input-error' : ''}`}>
+            <span className="field-icon hash-icon">#</span>
             <input
               type="text"
               id="pincode"
               name="pincode"
-              className={`input-field ${errors.pincode ? 'input-error' : ''}`}
+              className="input-field input-field-icon"
               placeholder="e.g., 560001"
-              value={profileData.pincode}
+              value={profileData.pincode || ''}
               onChange={handleChange}
+              maxLength={6}
             />
-            {errors.pincode && <span className="error-text">{errors.pincode}</span>}
           </div>
+          {errors.pincode && <span className="error-text">{errors.pincode}</span>}
+        </div>
 
-          <div className="input-group">
-            <label className="input-label" htmlFor="locality">Locality / Area</label>
+        {/* Locality */}
+        <div className="input-group">
+          <label className="input-label" htmlFor="locality">Locality / Area</label>
+          <div className="input-with-icon-inline">
+            <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
             <input
               type="text"
               id="locality"
               name="locality"
-              className="input-field"
-              placeholder="e.g., Whitefield"
-              value={profileData.locality}
+              className="input-field input-field-icon"
+              placeholder="e.g., Whitefield/Kormangala/Sector 23 Dwarka"
+              value={profileData.locality || ''}
               onChange={handleChange}
             />
           </div>
@@ -132,19 +150,19 @@ function OnboardingAbout() {
 
         {/* Joy Outside Work */}
         <div className="input-group">
-          <label className="input-label" htmlFor="joyOutsideWork">
-            What fills you with joy, outside your work? *
-          </label>
-          <textarea
-            id="joyOutsideWork"
-            name="joyOutsideWork"
-            className={`input-field textarea-field ${errors.joyOutsideWork ? 'input-error' : ''}`}
-            placeholder="Keep it short - hobbies, interests, passions that energize you"
-            value={profileData.joyOutsideWork}
-            onChange={handleChange}
-            rows={2}
-          />
-          <span className="input-hint">Keep short, max 2 lines</span>
+          <label className="input-label" htmlFor="joyOutsideWork">What fills you with joy, outside your work? *</label>
+          <div className={`input-field-with-icon textarea-field ${errors.joyOutsideWork ? 'input-error' : ''}`}>
+            <span className="input-icon joy-icon">☺</span>
+            <textarea
+              id="joyOutsideWork"
+              name="joyOutsideWork"
+              className="input-naked"
+              placeholder="Keep this short and concise not more than 2 lines."
+              value={profileData.joyOutsideWork || ''}
+              onChange={handleChange}
+              rows={4}
+            />
+          </div>
           {errors.joyOutsideWork && <span className="error-text">{errors.joyOutsideWork}</span>}
         </div>
 

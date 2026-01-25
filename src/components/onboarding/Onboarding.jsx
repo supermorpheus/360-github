@@ -1,11 +1,7 @@
 import { useOnboarding } from '../../context/OnboardingContext'
 import OnboardingWelcome from './OnboardingWelcome'
 import OnboardingBasicInfo from './OnboardingBasicInfo'
-import OnboardingProfessional from './OnboardingProfessional'
-import OnboardingQuote from './OnboardingQuote'
-import OnboardingJoy from './OnboardingJoy'
-import OnboardingIntro from './OnboardingIntro'
-import OnboardingLocation from './OnboardingLocation'
+import OnboardingAbout from './OnboardingAbout'
 import OnboardingSocial from './OnboardingSocial'
 import OnboardingContent from './OnboardingContent'
 import LifeStoriesHub from './LifeStoriesHub'
@@ -17,12 +13,8 @@ function Onboarding() {
   const steps = [
     <OnboardingWelcome key="welcome" />,
     <OnboardingBasicInfo key="basic-info" />,
-    <OnboardingProfessional key="professional" />,
-    <OnboardingQuote key="quote" />,
-    <OnboardingJoy key="joy" />,
-    <OnboardingIntro key="intro" />,
-    <OnboardingLocation key="location" />,
-    <OnboardingSocial key="social" />,
+    <OnboardingAbout key="about" />,
+    <OnboardingSocial key="coordinates" />,
     <OnboardingContent key="content" />,
     <LifeStoriesHub key="life-stories" />,
     <OnboardingComplete key="complete" />
