@@ -131,7 +131,7 @@ function OnboardingContent() {
             </div>
             <h2 className="popup-title">Thank You!</h2>
             <p className="popup-message">
-              Your profile is 100% complete and has been submitted for review. Our admin team will review your submission and get back to you soon.
+              Your profile has been submitted for review. Our admin team will review your submission and get back to you soon.
             </p>
             <button className="btn-primary" onClick={handlePopupClose}>
               Continue
