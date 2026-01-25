@@ -136,7 +136,7 @@ export function OnboardingProvider({ children }) {
 
   // Life stories flow state
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'
-  const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'confirm'
+  const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'uploadComplete', 'processing', 'thumbnail', 'confirm'
 
   const totalSteps = 12 // Welcome, Share360, BasicInfo, Professional, Quote, Intro, Location, Joy, Social, Content, LifeStories, Complete
 
@@ -195,6 +195,18 @@ export function OnboardingProvider({ children }) {
     }
   }
 
+  const goToUploadComplete = () => {
+    setLifeStorySubStep('uploadComplete')
+  }
+
+  const goToProcessing = () => {
+    setLifeStorySubStep('processing')
+  }
+
+  const goToThumbnail = () => {
+    setLifeStorySubStep('thumbnail')
+  }
+
   const goToConfirmation = () => {
     setLifeStorySubStep('confirm')
   }
@@ -220,6 +232,10 @@ export function OnboardingProvider({ children }) {
     } else {
       setLifeStorySubStep('input')
     }
+  }
+
+  const backToThumbnail = () => {
+    setLifeStorySubStep('thumbnail')
   }
 
   const completeLifeStory = () => {
@@ -268,11 +284,15 @@ export function OnboardingProvider({ children }) {
     selectLifeStory,
     goToInputMethodSelection,
     selectInputMethod,
+    goToUploadComplete,
+    goToProcessing,
+    goToThumbnail,
     goToConfirmation,
     backToLifeStorySelection,
     backToPrompts,
     backToInputMethod,
     backToInput,
+    backToThumbnail,
     completeLifeStory,
     isLifeStoryComplete
   }

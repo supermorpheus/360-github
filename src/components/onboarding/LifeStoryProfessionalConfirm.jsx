@@ -16,6 +16,7 @@ function LifeStoryProfessionalConfirm() {
       : [{ company: '', titles: [''] }]
   )
   const [summary, setSummary] = useState(storyData.summary || storyData.text || '')
+  const [showSubmitPopup, setShowSubmitPopup] = useState(false)
 
   const addSkill = () => {
     if (newSkill.trim()) {
@@ -93,13 +94,18 @@ function LifeStoryProfessionalConfirm() {
     }
   }
 
-  const handleSave = () => {
+  const handleSubmit = () => {
     updateLifeStory('professional', {
       skills,
       firstJob: firstJob.company.trim() ? firstJob : null,
       subsequentJobs: subsequentJobs.filter(j => j.company.trim()),
       summary
     })
+    setShowSubmitPopup(true)
+  }
+
+  const handlePopupClose = () => {
+    setShowSubmitPopup(false)
     completeLifeStory()
   }
 
@@ -276,9 +282,29 @@ function LifeStoryProfessionalConfirm() {
         </div>
       </div>
 
-      <button className="btn-primary" onClick={handleSave}>
-        Save & Continue
+      <button className="btn-primary" onClick={handleSubmit}>
+        Submit for Review
       </button>
+
+      {/* Submit Popup */}
+      {showSubmitPopup && (
+        <div className="popup-overlay" onClick={handlePopupClose}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <div className="popup-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h2 className="popup-title">Thank You!</h2>
+            <p className="popup-message">
+              Your Mid/Professional Life story has been submitted for review. Our admin team will review your submission and get back to you soon.
+            </p>
+            <button className="btn-primary" onClick={handlePopupClose}>
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

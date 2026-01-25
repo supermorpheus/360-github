@@ -6,6 +6,9 @@ import LifeStoryInputMethod from './LifeStoryInputMethod'
 import LifeStoryVideoInput from './LifeStoryVideoInput'
 import LifeStoryAudioInput from './LifeStoryAudioInput'
 import LifeStoryTextInput from './LifeStoryTextInput'
+import LifeStoryUploadComplete from './LifeStoryUploadComplete'
+import LifeStoryProcessing from './LifeStoryProcessing'
+import LifeStoryThumbnail from './LifeStoryThumbnail'
 import LifeStoryEarlyConfirm from './LifeStoryEarlyConfirm'
 import LifeStoryProfessionalConfirm from './LifeStoryProfessionalConfirm'
 import LifeStoryCurrentConfirm from './LifeStoryCurrentConfirm'
@@ -18,7 +21,8 @@ function LifeStoriesHub() {
     backToLifeStorySelection,
     backToPrompts,
     backToInputMethod,
-    backToInput
+    backToInput,
+    backToThumbnail
   } = useOnboarding()
 
   // Get current input method for the selected story
@@ -35,25 +39,38 @@ function LifeStoriesHub() {
         return backToPrompts
       case 'input':
         return backToInputMethod
+      case 'uploadComplete':
+      case 'processing':
+        // No back during upload/processing
+        return null
+      case 'thumbnail':
+        return null // No back during thumbnail selection
       case 'confirm':
-        return backToInput
+        return backToThumbnail
       default:
         return null
     }
   }
 
   // Calculate progress for life story sub-flow
-  // Progress shows what's completed: prompts (0%) -> inputMethod (25%) -> input (50%) -> confirm (75%)
+  // Progress shows what's completed across the expanded flow
+  // prompts (0%) -> inputMethod (15%) -> input (30%) -> uploadComplete (45%) -> processing (55%) -> thumbnail (70%) -> confirm (85%)
   const getLifeStoryProgress = () => {
     switch (lifeStorySubStep) {
       case 'prompts':
         return 0
       case 'inputMethod':
-        return 25
+        return 15
       case 'input':
-        return 50
+        return 30
+      case 'uploadComplete':
+        return 45
+      case 'processing':
+        return 55
+      case 'thumbnail':
+        return 70
       case 'confirm':
-        return 75
+        return 85
       default:
         return null // Use default progress for selection screen
     }
@@ -95,6 +112,15 @@ function LifeStoriesHub() {
         }
         return null
 
+      case 'uploadComplete':
+        return <LifeStoryUploadComplete storyKey={selectedLifeStory} />
+
+      case 'processing':
+        return <LifeStoryProcessing storyKey={selectedLifeStory} />
+
+      case 'thumbnail':
+        return <LifeStoryThumbnail storyKey={selectedLifeStory} />
+
       case 'confirm':
         return renderConfirmComponent()
 
@@ -112,9 +138,16 @@ function LifeStoriesHub() {
     )
   }
 
+  // For upload/processing screens, hide back button
+  const showBack = !['uploadComplete', 'processing', 'thumbnail'].includes(lifeStorySubStep)
+
   // For other substeps, show custom back handler and custom progress
   return (
-    <OnboardingLayout customBackHandler={getBackHandler()} customProgress={getLifeStoryProgress()}>
+    <OnboardingLayout
+      customBackHandler={getBackHandler()}
+      customProgress={getLifeStoryProgress()}
+      showBack={showBack}
+    >
       {renderSubStep()}
     </OnboardingLayout>
   )

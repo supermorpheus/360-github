@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext'
 
 function LifeStoryAudioInput({ storyKey }) {
-  const { profileData, updateLifeStory, goToConfirmation } = useOnboarding()
+  const { profileData, updateLifeStory, goToUploadComplete, goToConfirmation } = useOnboarding()
   const storyData = profileData.lifeStories[storyKey]
   const story = lifeStoryPrompts[storyKey]
 
@@ -122,7 +122,7 @@ function LifeStoryAudioInput({ storyKey }) {
 
   const handlePopupContinue = () => {
     setShowSavePopup(false)
-    goToConfirmation()
+    goToUploadComplete()
   }
 
   const renderPromptList = () => {

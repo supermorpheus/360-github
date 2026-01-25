@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext'
 
 function LifeStoryVideoInput({ storyKey }) {
-  const { profileData, updateLifeStory, goToConfirmation } = useOnboarding()
+  const { profileData, updateLifeStory, goToUploadComplete, goToConfirmation } = useOnboarding()
   const storyData = profileData.lifeStories[storyKey]
   const story = lifeStoryPrompts[storyKey]
 
@@ -126,7 +126,7 @@ function LifeStoryVideoInput({ storyKey }) {
 
   const handlePopupContinue = () => {
     setShowSavePopup(false)
-    goToConfirmation()
+    goToUploadComplete()
   }
 
   const renderPromptList = () => {
