@@ -24,7 +24,7 @@ function OnboardingShare360() {
         </div>
 
         <button className="btn-primary" onClick={nextStep}>
-          I'm Ready
+          I am Ready
         </button>
       </div>
     </OnboardingLayout>
