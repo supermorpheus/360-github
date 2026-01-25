@@ -327,14 +327,16 @@ function LifeStoryProfessionalConfirm1() {
               <label className="input-label small">
                 Job Titles <span className="required-asterisk">*</span>
               </label>
-              <div className="tags-container">
-                {firstJob.titles.filter(t => t).map((title, idx) => (
-                  <span key={idx} className="tag">
-                    {title}
-                    <button type="button" className="tag-remove" onClick={() => removeTitle(idx)}>×</button>
-                  </span>
-                ))}
-              </div>
+              {firstJob.titles.filter(t => t).length > 0 && (
+                <div className="tags-container">
+                  {firstJob.titles.filter(t => t).map((title, idx) => (
+                    <span key={idx} className="tag">
+                      {title}
+                      <button type="button" className="tag-remove" onClick={() => removeTitle(idx)}>×</button>
+                    </span>
+                  ))}
+                </div>
+              )}
               <input
                 type="text"
                 className={`input-field ${showErrors && errors.titles ? 'input-error' : ''}`}

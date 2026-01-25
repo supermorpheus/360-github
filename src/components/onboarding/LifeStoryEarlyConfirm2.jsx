@@ -173,14 +173,16 @@ function LifeStoryEarlyConfirm2() {
           Early Life Tags <span className="required-asterisk">*</span>
         </label>
         <p className="field-hint">Max {maxTags} tags</p>
-        <div className="tags-container">
-          {tags.map((tag, idx) => (
-            <span key={idx} className="tag">
-              {tag}
-              <button type="button" className="tag-remove" onClick={() => removeTag(idx)}>×</button>
-            </span>
-          ))}
-        </div>
+        {tags.length > 0 && (
+          <div className="tags-container">
+            {tags.map((tag, idx) => (
+              <span key={idx} className="tag">
+                {tag}
+                <button type="button" className="tag-remove" onClick={() => removeTag(idx)}>×</button>
+              </span>
+            ))}
+          </div>
+        )}
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}

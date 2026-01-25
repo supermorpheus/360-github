@@ -146,14 +146,16 @@ function LifeStoryProfessionalConfirm2() {
               </div>
               <div className="input-group">
                 <label className="input-label small">Job Titles</label>
-                <div className="tags-container">
-                  {(job.titles || []).map((title, titleIdx) => (
-                    <span key={titleIdx} className="tag">
-                      {title}
-                      <button type="button" className="tag-remove" onClick={() => removeSubsequentJobTitle(jobIdx, titleIdx)}>×</button>
-                    </span>
-                  ))}
-                </div>
+                {(job.titles || []).length > 0 && (
+                  <div className="tags-container">
+                    {(job.titles || []).map((title, titleIdx) => (
+                      <span key={titleIdx} className="tag">
+                        {title}
+                        <button type="button" className="tag-remove" onClick={() => removeSubsequentJobTitle(jobIdx, titleIdx)}>×</button>
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <input
                   type="text"
                   className="input-field"
@@ -189,14 +191,16 @@ function LifeStoryProfessionalConfirm2() {
           Professional Life Tags <span className="required-asterisk">*</span>
         </label>
         <p className="field-hint">Max {maxTags} tags</p>
-        <div className="tags-container">
-          {tags.map((tag, idx) => (
-            <span key={idx} className="tag">
-              {tag}
-              <button type="button" className="tag-remove" onClick={() => removeTag(idx)}>×</button>
-            </span>
-          ))}
-        </div>
+        {tags.length > 0 && (
+          <div className="tags-container">
+            {tags.map((tag, idx) => (
+              <span key={idx} className="tag">
+                {tag}
+                <button type="button" className="tag-remove" onClick={() => removeTag(idx)}>×</button>
+              </span>
+            ))}
+          </div>
+        )}
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}

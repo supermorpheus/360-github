@@ -184,18 +184,20 @@ function LifeStoryCurrentConfirm2() {
         <label className="input-label">
           Frequent Travel Cities
         </label>
-        <div className="tags-container">
-          {travelCities.map((city, idx) => (
-            <span key={idx} className="tag tag-location">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              {city}
-              <button type="button" className="tag-remove" onClick={() => removeTravelCity(idx)}>×</button>
-            </span>
-          ))}
-        </div>
+        {travelCities.length > 0 && (
+          <div className="tags-container">
+            {travelCities.map((city, idx) => (
+              <span key={idx} className="tag tag-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                {city}
+                <button type="button" className="tag-remove" onClick={() => removeTravelCity(idx)}>×</button>
+              </span>
+            ))}
+          </div>
+        )}
         <input
           type="text"
           className="input-field"
@@ -212,14 +214,16 @@ function LifeStoryCurrentConfirm2() {
           Current Life Tags <span className="required-asterisk">*</span>
         </label>
         <p className="field-hint">Max {maxTags} tags</p>
-        <div className="tags-container">
-          {tags.map((tag, idx) => (
-            <span key={idx} className="tag">
-              {tag}
-              <button type="button" className="tag-remove" onClick={() => removeTag(idx)}>×</button>
-            </span>
-          ))}
-        </div>
+        {tags.length > 0 && (
+          <div className="tags-container">
+            {tags.map((tag, idx) => (
+              <span key={idx} className="tag">
+                {tag}
+                <button type="button" className="tag-remove" onClick={() => removeTag(idx)}>×</button>
+              </span>
+            ))}
+          </div>
+        )}
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
