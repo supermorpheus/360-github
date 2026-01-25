@@ -2,15 +2,18 @@ import { useOnboarding } from '../../context/OnboardingContext'
 import StatusBar from '../StatusBar'
 import '../../styles/onboarding.css'
 
-function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null }) {
+function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customProgress = null }) {
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
   // Calculate progress percentage based on steps
   // Life Stories page (step 10) and beyond should be 100% - after Submit for Review
+  // If customProgress is provided (for life story sub-flows), use that instead
   const completeStep = 10 // Life Stories page is the "100% complete" milestone
-  const progressPercentage = currentStep >= completeStep
+  const defaultProgress = currentStep >= completeStep
     ? 100
     : Math.round((currentStep / completeStep) * 100)
+
+  const progressPercentage = customProgress !== null ? customProgress : defaultProgress
 
   // Use custom back handler if provided, otherwise use default prevStep
   const handleBack = customBackHandler || prevStep

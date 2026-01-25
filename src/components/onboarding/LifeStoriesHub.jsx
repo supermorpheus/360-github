@@ -42,6 +42,23 @@ function LifeStoriesHub() {
     }
   }
 
+  // Calculate progress for life story sub-flow
+  // Steps: prompts (25%) -> inputMethod (50%) -> input (75%) -> confirm (100%)
+  const getLifeStoryProgress = () => {
+    switch (lifeStorySubStep) {
+      case 'prompts':
+        return 25
+      case 'inputMethod':
+        return 50
+      case 'input':
+        return 75
+      case 'confirm':
+        return 100
+      default:
+        return null // Use default progress for selection screen
+    }
+  }
+
   // Render confirmation component based on selected life story
   const renderConfirmComponent = () => {
     switch (selectedLifeStory) {
@@ -95,9 +112,9 @@ function LifeStoriesHub() {
     )
   }
 
-  // For other substeps, show custom back handler
+  // For other substeps, show custom back handler and custom progress
   return (
-    <OnboardingLayout customBackHandler={getBackHandler()}>
+    <OnboardingLayout customBackHandler={getBackHandler()} customProgress={getLifeStoryProgress()}>
       {renderSubStep()}
     </OnboardingLayout>
   )
