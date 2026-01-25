@@ -320,7 +320,7 @@ function LifeStoryCurrentConfirm1() {
         )}
       </div>
 
-      <button className="btn-primary" onClick={handleContinue} disabled={!isValid()}>
+      <button className="btn-primary" onClick={handleContinue}>
         Continue
       </button>
     </div>

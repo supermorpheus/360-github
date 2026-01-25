@@ -351,7 +351,7 @@ function LifeStoryProfessionalConfirm1() {
         </div>
       </div>
 
-      <button className="btn-primary" onClick={handleContinue} disabled={!isValid()}>
+      <button className="btn-primary" onClick={handleContinue}>
         Continue
       </button>
     </div>

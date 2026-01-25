@@ -388,7 +388,7 @@ function LifeStoryEarlyConfirm1() {
         </button>
       </div>
 
-      <button className="btn-primary" onClick={handleContinue} disabled={!isValid()}>
+      <button className="btn-primary" onClick={handleContinue}>
         Continue
       </button>
     </div>
