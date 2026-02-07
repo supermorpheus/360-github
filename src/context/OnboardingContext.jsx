@@ -136,15 +136,7 @@ export const lifeStoryPrompts = {
 
 export function OnboardingProvider({ children }) {
   const [profileData, setProfileData] = useState(initialProfileData)
-  // Allow deep-linking via ?step= query param (works with hash routing)
-  const getInitialStep = () => {
-    // Check both regular query params and hash-based query params
-    const hashQuery = window.location.hash.includes('?') ? window.location.hash.split('?')[1] : ''
-    const params = new URLSearchParams(window.location.search || hashQuery)
-    const step = parseInt(params.get('step'), 10)
-    return isNaN(step) ? 0 : step
-  }
-  const [currentStep, setCurrentStep] = useState(getInitialStep)
+  const [currentStep, setCurrentStep] = useState(10) // Start at Life Stories screen
 
   // Life stories flow state
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'
