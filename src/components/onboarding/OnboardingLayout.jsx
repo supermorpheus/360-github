@@ -46,7 +46,7 @@ function OnboardingLayout({ children, showProgress = true, showBack = true, cust
           )}
 
           {/* Content */}
-          <div className="onboarding-content">
+          <div className={`onboarding-content ${!showProgress && currentStep > 0 ? 'no-progress' : ''}`}>
             {children}
           </div>
         </div>

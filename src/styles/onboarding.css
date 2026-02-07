@@ -144,6 +144,10 @@
   flex-direction: column;
 }
 
+.onboarding-content.no-progress {
+  padding-top: 48px;
+}
+
 /* ==================== */
 /* Welcome Screen */
 /* ==================== */
