@@ -172,18 +172,7 @@ function LifeStoryEarlyConfirm2() {
         <label className="input-label">
           My Early Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">No more than {maxTags} tags.</p>
-        <p className="tag-description">Add some descriptive tags that will give people a feel of your early life.</p>
-        <div className="tag-samples-box">
-          <span className="tag tag-sample">Reading Comics</span>
-          <span className="tag tag-sample">Flying kites</span>
-          <span className="tag tag-sample">Cycling</span>
-          <span className="tag tag-sample">DAV College</span>
-          <span className="tag tag-sample">Train colony</span>
-          <span className="tag tag-sample">Abohar</span>
-          <span className="tag tag-sample">Patiala</span>
-          <span className="tag tag-sample">NITK</span>
-        </div>
+        <p className="tag-description">Add some descriptive tags that will give people a feel of your early life. (Example: Reading Comics, Flying kites, Cycling, DAV College, Train colony, Abohar, Patiala, NITK etc)</p>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (

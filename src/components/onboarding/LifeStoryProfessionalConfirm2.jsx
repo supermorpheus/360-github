@@ -190,7 +190,7 @@ function LifeStoryProfessionalConfirm2() {
         <label className="input-label">
           My Mid Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="tag-description">No more than {maxTags} tags. Add some descriptive tags that will give people a feel of your mid life. (Example: First Job, Mumbai, Marketing, Startup life, MBA, Marriage, Parenthood, Leadership etc)</p>
+        <p className="tag-description">Add some descriptive tags that will give people a feel of your mid life. (Example: First Job, Mumbai, Marketing, Startup life, MBA, Marriage, Parenthood, Leadership etc)</p>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (
