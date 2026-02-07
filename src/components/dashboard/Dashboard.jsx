@@ -36,84 +36,116 @@ function Dashboard() {
     <>
       <StatusBar />
       <div className="page-content dashboard-page">
-        {/* Card 1: Revolving Welcome Card Carousel */}
-        <div className="welcome-carousel" onClick={handleCardClick}>
-          <div className="carousel-track" style={{ transform: `translateX(-${activeSlide * 100}%)` }}>
+        {/* Card 1: Welcome Card with revolving messages below */}
+        <div className="welcome-card" onClick={handleCardClick}>
+          {/* Fixed: Name + Avatar + Org */}
+          <div className="welcome-card-header">
+            <div className="welcome-card-avatar">
+              {currentUser.profilePicture ? (
+                <img src={currentUser.profilePicture} alt={currentUser.firstName} />
+              ) : (
+                <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
+              )}
+            </div>
+            <div className="welcome-card-info">
+              <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
+              <p className="welcome-card-role">
+                {currentUser.currentRole} at {currentUser.currentOrganization}
+              </p>
+            </div>
+          </div>
 
-            {/* Screen 1: Complete Onboarding */}
-            <div className="carousel-slide">
-              <div className="welcome-card welcome-card-screen1">
-                <span className="screen-label">Screen 1</span>
-                <div className="screen-icon">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="8.5" cy="7" r="4"/>
-                    <line x1="20" y1="8" x2="20" y2="14"/>
-                    <line x1="23" y1="11" x2="17" y2="11"/>
-                  </svg>
-                </div>
-                <h2 className="screen-title">Complete Your Onboarding</h2>
-                <p className="screen-desc">Tell us about yourself — your story, your passions, and what makes you, you.</p>
-                <div className="welcome-card-completion">
-                  <div className="completion-label">
-                    <span>Profile Completion</span>
-                    <span className="completion-value">0%</span>
+          {/* Revolving onboarding messages */}
+          <div className="welcome-carousel-inner">
+            <div className="carousel-track" style={{ transform: `translateX(-${activeSlide * 100}%)` }}>
+
+              {/* Screen 1: Complete Onboarding */}
+              <div className="carousel-slide">
+                <div className="carousel-slide-content">
+                  <span className="screen-label">Screen 1</span>
+                  <div className="screen-message">
+                    <div className="screen-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="8.5" cy="7" r="4"/>
+                        <line x1="20" y1="8" x2="20" y2="14"/>
+                        <line x1="23" y1="11" x2="17" y2="11"/>
+                      </svg>
+                    </div>
+                    <div className="screen-text">
+                      <h3 className="screen-title">Complete Your Onboarding</h3>
+                      <p className="screen-desc">Tell us about yourself — your story, your passions, and what makes you, you.</p>
+                    </div>
                   </div>
-                  <div className="completion-progress">
-                    <div className="completion-bar" style={{ width: '0%' }} />
+                  <div className="completion-mini">
+                    <div className="completion-label">
+                      <span>Profile Completion</span>
+                      <span className="completion-value">0%</span>
+                    </div>
+                    <div className="completion-progress">
+                      <div className="completion-bar" style={{ width: '0%' }} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Screen 2: Add Life Stories */}
-            <div className="carousel-slide">
-              <div className="welcome-card welcome-card-screen2">
-                <span className="screen-label">Screen 2</span>
-                <div className="screen-icon">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 20h9"/>
-                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                  </svg>
-                </div>
-                <h2 className="screen-title">Add Your Life Stories</h2>
-                <p className="screen-desc">Share your early life, mid life, and current life — the gang wants to know you better!</p>
-                <div className="welcome-card-completion">
-                  <div className="completion-label">
-                    <span>Profile Completion</span>
-                    <span className="completion-value">50%</span>
+              {/* Screen 2: Add Life Stories */}
+              <div className="carousel-slide">
+                <div className="carousel-slide-content">
+                  <span className="screen-label">Screen 2</span>
+                  <div className="screen-message">
+                    <div className="screen-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M12 20h9"/>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                      </svg>
+                    </div>
+                    <div className="screen-text">
+                      <h3 className="screen-title">Add Your Life Stories</h3>
+                      <p className="screen-desc">Share your early life, mid life, and current life — the gang wants to know you!</p>
+                    </div>
                   </div>
-                  <div className="completion-progress">
-                    <div className="completion-bar" style={{ width: '50%' }} />
+                  <div className="completion-mini">
+                    <div className="completion-label">
+                      <span>Profile Completion</span>
+                      <span className="completion-value">50%</span>
+                    </div>
+                    <div className="completion-progress">
+                      <div className="completion-bar" style={{ width: '50%' }} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Screen 3: Profile Complete */}
-            <div className="carousel-slide">
-              <div className="welcome-card welcome-card-screen3">
-                <span className="screen-label">Screen 3</span>
-                <div className="screen-icon">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                </div>
-                <h2 className="screen-title">Your Profile is Complete!</h2>
-                <p className="screen-desc">You're all set, {currentUser.firstName}! Explore the gang, connect, and make things happen.</p>
-                <div className="welcome-card-completion">
-                  <div className="completion-label">
-                    <span>Profile Completion</span>
-                    <span className="completion-value">100%</span>
+              {/* Screen 3: Profile Complete */}
+              <div className="carousel-slide">
+                <div className="carousel-slide-content">
+                  <span className="screen-label">Screen 3</span>
+                  <div className="screen-message">
+                    <div className="screen-icon">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                      </svg>
+                    </div>
+                    <div className="screen-text">
+                      <h3 className="screen-title">Your Profile is Complete!</h3>
+                      <p className="screen-desc">You're all set! Explore the gang, connect, and make things happen.</p>
+                    </div>
                   </div>
-                  <div className="completion-progress">
-                    <div className="completion-bar" style={{ width: '100%' }} />
+                  <div className="completion-mini">
+                    <div className="completion-label">
+                      <span>Profile Completion</span>
+                      <span className="completion-value">100%</span>
+                    </div>
+                    <div className="completion-progress">
+                      <div className="completion-bar" style={{ width: '100%' }} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
 
           {/* Carousel Dots */}
@@ -122,7 +154,7 @@ function Dashboard() {
               <button
                 key={i}
                 className={`carousel-dot ${activeSlide === i ? 'active' : ''}`}
-                onClick={() => setActiveSlide(i)}
+                onClick={(e) => { e.stopPropagation(); setActiveSlide(i) }}
               />
             ))}
           </div>
