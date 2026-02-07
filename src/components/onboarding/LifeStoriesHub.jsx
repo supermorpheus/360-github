@@ -57,27 +57,28 @@ function LifeStoriesHub() {
     }
   }
 
-  // Calculate progress for life story sub-flow
-  // Arriving at step 10 (Life Stories) = 89% (8 of 9 data steps completed)
-  // Sub-steps fill the remaining 89% to 99% range
+  // Life Stories has its own independent progress counter (0% to 100%)
+  // Separate from the main onboarding progress
   const getLifeStoryProgress = () => {
     switch (lifeStorySubStep) {
+      case 'selection':
+        return 0
       case 'prompts':
-        return 90
+        return 15
       case 'input':
-        return 92
+        return 30
       case 'uploadComplete':
-        return 93
+        return 45
       case 'processing':
-        return 94
+        return 55
       case 'thumbnail':
-        return 95
+        return 65
       case 'confirm1':
-        return 97
+        return 80
       case 'confirm2':
-        return 99
+        return 95
       default:
-        return null // Use default progress (89%) for selection screen
+        return 0
     }
   }
 
