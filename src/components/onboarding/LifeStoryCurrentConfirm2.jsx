@@ -213,7 +213,8 @@ function LifeStoryCurrentConfirm2() {
         <label className="input-label">
           My Current Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">No more than {maxTags} tags. Add some descriptive tags that will give people a feel of your current life.</p>
+        <p className="field-hint">No more than {maxTags} tags.</p>
+        <p className="tag-description">Add some descriptive tags that will give people a feel of your current life.</p>
         <div className="tag-samples-box">
           <span className="tag tag-sample">Bengaluru</span>
           <span className="tag tag-sample">AI Enthusiast</span>
