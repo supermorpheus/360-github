@@ -58,27 +58,44 @@ function LifeStoriesHub() {
   }
 
   // Life Stories has its own independent progress counter (0% to 100%)
-  // Separate from the main onboarding progress
+  // Different input methods have different step counts:
+  //   Video (5 data steps): prompts → input(record) → thumbnail → confirm1 → confirm2
+  //   Audio (4 data steps): prompts → input(record) → confirm1 → confirm2
+  //   Text  (3 data steps): prompts → confirm1 → confirm2
+  // Progress only updates AFTER a step where the user enters data is completed.
+  // uploadComplete/processing are automated steps — progress stays at the previous value.
   const getLifeStoryProgress = () => {
-    switch (lifeStorySubStep) {
-      case 'selection':
-        return 0
-      case 'prompts':
-        return 15
-      case 'input':
-        return 30
-      case 'uploadComplete':
-        return 45
-      case 'processing':
-        return 55
-      case 'thumbnail':
-        return 65
-      case 'confirm1':
-        return 80
-      case 'confirm2':
-        return 95
-      default:
-        return 0
+    if (currentInputMethod === 'video') {
+      // 5 data steps — each completed = 20%
+      switch (lifeStorySubStep) {
+        case 'prompts':       return 0    // nothing done yet
+        case 'input':         return 20   // prompts done (1/5)
+        case 'uploadComplete': return 40  // input done (2/5)
+        case 'processing':    return 40   // auto step, same as upload
+        case 'thumbnail':     return 40   // auto step, same
+        case 'confirm1':      return 60   // thumbnail done (3/5)
+        case 'confirm2':      return 80   // confirm1 done (4/5)
+        default:              return 0
+      }
+    } else if (currentInputMethod === 'audio') {
+      // 4 data steps — each completed = 25%
+      switch (lifeStorySubStep) {
+        case 'prompts':       return 0    // nothing done yet
+        case 'input':         return 25   // prompts done (1/4)
+        case 'uploadComplete': return 50  // input done (2/4)
+        case 'processing':    return 50   // auto step, same
+        case 'confirm1':      return 50   // processing done (2/4)
+        case 'confirm2':      return 75   // confirm1 done (3/4)
+        default:              return 0
+      }
+    } else {
+      // Text: 3 data steps — each completed = 33%
+      switch (lifeStorySubStep) {
+        case 'prompts':       return 0    // nothing done yet
+        case 'confirm1':      return 33   // prompts done (1/3)
+        case 'confirm2':      return 67   // confirm1 done (2/3)
+        default:              return 0
+      }
     }
   }
 
