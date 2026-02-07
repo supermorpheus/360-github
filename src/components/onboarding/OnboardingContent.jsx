@@ -49,8 +49,8 @@ function OnboardingContent() {
       <div className="onboarding-form">
         <div className="form-header">
           <h2 className="form-subtitle">Creating Profile</h2>
-          <h1 className="form-title form-title-small">Content Links</h1>
-          <p className="form-helper-text">Few links of the content you have written/created and would like to share Blogs, videos, podcasts, etc. <em>(This is optional. You can add content links later.)</em></p>
+          <h1 className="form-title form-title-small">Content I've created</h1>
+          <p className="form-helper-text">Add links to the content you would like to share with others in the community, here. <em>(It's optional. You can add later too.)</em></p>
         </div>
 
         <div className="content-links-list">
@@ -116,7 +116,7 @@ function OnboardingContent() {
         </button>
 
         <button className="btn-primary" onClick={handleSubmit}>
-          Submit for Review
+          Save & Submit for Review
         </button>
       </div>
 
@@ -132,7 +132,7 @@ function OnboardingContent() {
             </div>
             <h2 className="popup-title">Thank You!</h2>
             <p className="popup-message">
-              Your profile has been submitted for review. Our admin team will review your submission and get back to you soon.
+              Yay! You have completed the profile overview. It is waiting for review. Soon, the admin team will make it live or get back to you.
             </p>
             <button className="btn-primary" onClick={handlePopupClose}>
               Continue
