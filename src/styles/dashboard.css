@@ -83,7 +83,7 @@
 
 .screen-message {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
