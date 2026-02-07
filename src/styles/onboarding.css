@@ -151,39 +151,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .welcome-logo {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
 
 .welcome-logo-img {
-  width: 280px;
-  height: 200px;
+  width: 340px;
+  height: 240px;
   object-fit: cover;
   object-position: center 45%;
 }
 
 .welcome-content {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .welcome-title {
   font-family: var(--font-primary);
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--primary-green);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .welcome-subtitle {
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--dark-gray);
   line-height: 1.4;
@@ -194,13 +194,13 @@
 /* Welcome Tagline */
 .welcome-tagline {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   padding: 0 20px;
 }
 
 .welcome-tagline p {
   font-family: var(--font-primary);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--primary-green);
   line-height: 1.4;
@@ -212,7 +212,7 @@
 
 .welcome-time-note {
   font-family: var(--font-secondary);
-  font-size: 15px;
+  font-size: 16px;
   color: var(--dark-gray);
   margin-top: 16px;
 }
