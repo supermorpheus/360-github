@@ -23,9 +23,9 @@ function LifeStorySelection() {
   return (
     <div className="onboarding-form">
       <div className="form-header">
-        <h1 className="form-title">Add your Life Stories</h1>
+        <h1 className="form-title form-title-small">My Life Stories</h1>
         <p className="form-subtitle">
-          Help gang members know you better by sharing your journey across various stages of life.
+          The more real and interesting your stories are, the better the gang gets to know you. So go on…
         </p>
       </div>
 
@@ -64,11 +64,11 @@ function LifeStorySelection() {
       </div>
 
       <button className="btn-primary" onClick={nextStep}>
-        {allComplete ? 'Continue' : someComplete ? 'Continue (you can add more later)' : 'Skip for now'}
+        {allComplete ? 'Continue' : someComplete ? 'Continue (you can add more later)' : "I'll do this later"}
       </button>
 
-      <p className="skip-note">
-        You can add or update your life stories anytime from your profile.
+      <p className="skip-note skip-note-visible">
+        You can add/ update "My Life Stories" from "My Profile" anytime.
       </p>
     </div>
   )

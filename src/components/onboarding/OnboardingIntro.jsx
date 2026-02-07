@@ -59,7 +59,9 @@ function OnboardingIntro() {
               id="introduction"
               name="introduction"
               className="input-naked"
-              placeholder="Please don't copy-paste a standard introduction from elsewhere. Share something that captures the shades and colours of your life—the personal and the professional, the private and the public, the crazy and the quiet, the peculiar parts that make you you."
+              placeholder={`Please don't copy-paste a standard introduction from elsewhere.
+
+Share something that captures the shades and colours of your life—the personal and the professional, the private and the public, the crazy and the quiet, the peculiar parts that make you you.`}
               value={profileData.introduction}
               onChange={handleChange}
               rows={8}

@@ -412,7 +412,7 @@
 
 /* Textarea */
 .textarea-field {
-  min-height: 120px;
+  min-height: 200px;
   resize: vertical;
   font-family: var(--font-secondary);
   line-height: 1.6;
@@ -587,6 +587,13 @@
   color: var(--medium-gray);
   text-align: center;
   margin-top: 8px;
+}
+
+.skip-note-visible {
+  font-size: 14px;
+  color: var(--dark-gray);
+  font-weight: 500;
+  margin-top: 16px;
 }
 
 /* ==================== */
@@ -918,6 +925,7 @@
 
 .input-naked::placeholder {
   color: var(--medium-gray);
+  white-space: pre-line;
 }
 
 .input-field-with-icon .intro-icon {

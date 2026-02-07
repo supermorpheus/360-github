@@ -83,8 +83,8 @@ const initialProfileData = {
 // Life story prompts data
 export const lifeStoryPrompts = {
   earlyLife: {
-    title: 'Your Early Life',
-    subtitle: 'Tell gang members the story of your early life',
+    title: 'My Early Life',
+    subtitle: 'Jab Main Chhota Baccha Tha! (When I was little…)',
     icon: '🌱',
     prompts: [
       'Places where you were born and grew up',
@@ -97,8 +97,8 @@ export const lifeStoryPrompts = {
     ]
   },
   professional: {
-    title: 'Your Mid/Professional Life',
-    subtitle: 'Share your mid-life journey — the choices, challenges, and growth',
+    title: 'My Mid Life',
+    subtitle: 'My first job was awesome / terrible…I moved to a new city…. I got married / broke up…',
     icon: '💼',
     introText: 'Share your mid-life journey — the choices you made, the challenges you faced, and how they shaped who you are today:',
     prompts: [
@@ -112,8 +112,8 @@ export const lifeStoryPrompts = {
     highlightText: 'Cover everything except what you are doing right now'
   },
   current: {
-    title: 'Your Current Life',
-    subtitle: 'Tell us about your life and work right now',
+    title: 'My Current Life',
+    subtitle: "Here & Now, give us the deets! And don't just talk about work…",
     icon: '✨',
     sections: [
       {
@@ -136,7 +136,15 @@ export const lifeStoryPrompts = {
 
 export function OnboardingProvider({ children }) {
   const [profileData, setProfileData] = useState(initialProfileData)
-  const [currentStep, setCurrentStep] = useState(0) // Start at Welcome screen
+  // Allow deep-linking via ?step= query param (works with hash routing)
+  const getInitialStep = () => {
+    // Check both regular query params and hash-based query params
+    const hashQuery = window.location.hash.includes('?') ? window.location.hash.split('?')[1] : ''
+    const params = new URLSearchParams(window.location.search || hashQuery)
+    const step = parseInt(params.get('step'), 10)
+    return isNaN(step) ? 0 : step
+  }
+  const [currentStep, setCurrentStep] = useState(getInitialStep)
 
   // Life stories flow state
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'

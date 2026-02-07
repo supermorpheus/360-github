@@ -156,7 +156,7 @@ function LifeStoriesHub() {
   // For selection screen, don't show custom back - use default layout back
   if (lifeStorySubStep === 'selection') {
     return (
-      <OnboardingLayout>
+      <OnboardingLayout showProgress={false}>
         {renderSubStep()}
       </OnboardingLayout>
     )
