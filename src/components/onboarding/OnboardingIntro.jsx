@@ -62,7 +62,7 @@ function OnboardingIntro() {
               placeholder="Please don't copy-paste a standard introduction from elsewhere. Share something that captures the shades and colours of your life—the personal and the professional, the private and the public, the crazy and the quiet, the peculiar parts that make you you."
               value={profileData.introduction}
               onChange={handleChange}
-              rows={5}
+              rows={8}
             />
           </div>
           <div className="word-counter-row">
