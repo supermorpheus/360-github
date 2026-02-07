@@ -59,12 +59,12 @@ function OnboardingBasicInfo() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title">Basic Information</h1>
+          <h2 className="form-subtitle">Creating Profile</h2>
+          <h1 className="form-title form-title-small">Basic Information</h1>
         </div>
 
         {/* Profile Picture */}
         <div className="profile-picture-section">
-          <label className="input-label centered-label">Profile Picture *</label>
           <div
             className="profile-picture-upload"
             onClick={handleProfilePictureClick}
@@ -77,7 +77,7 @@ function OnboardingBasicInfo() {
               />
             ) : (
               <div className="profile-picture-placeholder">
-                <span className="profile-upload-text">Click to upload</span>
+                <span className="profile-upload-text">Click to upload Photo</span>
               </div>
             )}
           </div>
