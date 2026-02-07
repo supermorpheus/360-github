@@ -1583,6 +1583,14 @@
   margin-bottom: 24px;
 }
 
+.input-method-label {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin: 0 0 10px;
+}
+
 .input-method-row {
   flex-direction: row;
   gap: 10px;
