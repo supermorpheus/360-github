@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
-import { currentUser, newMembers, events, stats } from '../../data/mockData'
+import { currentUser, newMembers, stats } from '../../data/mockData'
 import '../../styles/dashboard.css'
 
 function Dashboard() {
@@ -20,64 +20,43 @@ function Dashboard() {
     <>
       <StatusBar />
       <div className="page-content dashboard-page">
-        {/* Header */}
-        <div className="dashboard-header">
-          <div className="header-left">
-            <h1 className="welcome-greeting">Welcome, {currentUser.firstName}!</h1>
-            <p className="welcome-subtitle">
-              {stats.newMembersThisWeek} new people joined this week
-            </p>
-          </div>
-          <div className="header-right">
-            <button className="notification-btn">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-              </svg>
-              <span className="notification-badge">3</span>
-            </button>
-            <div className="user-avatar-small">
+        {/* Card 1: Welcome + Profile Completion */}
+        <div className="welcome-card">
+          <div className="welcome-card-header">
+            <div className="welcome-card-avatar">
               {currentUser.profilePicture ? (
                 <img src={currentUser.profilePicture} alt={currentUser.firstName} />
               ) : (
                 <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
               )}
             </div>
-          </div>
-        </div>
-
-        {/* Profile Completion Card */}
-        <div className="profile-completion-card">
-          <div className="completion-header">
-            <div className="completion-info">
-              <h3>Complete Your Profile</h3>
-              <p>Add more details to unlock all features</p>
+            <div className="welcome-card-info">
+              <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
+              <p className="welcome-card-role">
+                {currentUser.currentRole} at {currentUser.currentOrganization}
+              </p>
             </div>
-            <div className="completion-percentage">{currentUser.profileCompletion}%</div>
           </div>
-          <div className="completion-progress">
-            <div
-              className="completion-bar"
-              style={{ width: `${currentUser.profileCompletion}%` }}
-            />
-          </div>
-          <div className="completion-actions">
-            <Link to="/profile/videos" className="completion-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polygon points="23 7 16 12 23 17 23 7"/>
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-              </svg>
-              Add Story Videos
-            </Link>
-            <span className="completion-badge">Become Super</span>
+          <div className="welcome-card-completion">
+            <div className="completion-label">
+              <span>Profile Completion</span>
+              <span className="completion-value">{currentUser.profileCompletion}%</span>
+            </div>
+            <div className="completion-progress">
+              <div
+                className="completion-bar"
+                style={{ width: `${currentUser.profileCompletion}%` }}
+              />
+            </div>
           </div>
         </div>
 
-        {/* New Members Section */}
-        <div className="section">
-          <div className="section-header">
-            <h2 className="section-title">New Members</h2>
-            <Link to="/members" className="section-link">See all</Link>
+        {/* Card 2: Members Joined */}
+        <div className="members-joined-card">
+          <div className="members-joined-header">
+            <h2 className="members-joined-title">
+              {stats.newMembersRecent} members have joined in the past 2 weeks
+            </h2>
           </div>
           <div className="new-members-scroll">
             {newMembers.map((member) => (
@@ -94,46 +73,13 @@ function Dashboard() {
               </div>
             ))}
           </div>
+          <Link to="/members" className="browse-all-btn">
+            Browse All Members
+          </Link>
         </div>
 
-        {/* Event Card */}
-        {events.length > 0 && (
-          <div className="section">
-            <div className="section-header">
-              <h2 className="section-title">Upcoming Event</h2>
-            </div>
-            <Link to="/gurukul" className="event-card">
-              <div className="event-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-              </div>
-              <div className="event-content">
-                <h3 className="event-title">{events[0].title}</h3>
-                <p className="event-subtitle">{events[0].subtitle}</p>
-                <div className="event-meta">
-                  <span className="event-date">{events[0].date}</span>
-                  <span className="event-attendees">{events[0].attendeesCount} attending</span>
-                </div>
-              </div>
-              <svg className="event-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </Link>
-          </div>
-        )}
-
-        {/* Browse Members Section */}
+        {/* Card 3: Search Bar */}
         <div className="section">
-          <div className="section-header">
-            <h2 className="section-title">All Members</h2>
-            <span className="member-count">{stats.totalMembers}</span>
-          </div>
-
-          {/* Search Bar */}
           <Link to="/members" className="search-bar-link">
             <div className="search-bar">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -143,27 +89,6 @@ function Dashboard() {
               <span>Search by name, passion, location</span>
             </div>
           </Link>
-
-          {/* Quick Actions */}
-          <div className="quick-actions">
-            <Link to="/members" className="quick-action-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-              Browse Members
-            </Link>
-            <Link to="/gurukul" className="quick-action-btn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
-              </svg>
-              Gurukul 2025
-            </Link>
-          </div>
         </div>
 
         {/* Bottom Navigation */}

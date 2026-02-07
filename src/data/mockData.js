@@ -104,20 +104,7 @@ export const members = [
 
 export const newMembers = members.slice(0, 4) // Last 4 members as "new"
 
-export const events = [
-  {
-    id: 'event-001',
-    title: 'Gurukul 2025',
-    subtitle: 'Annual Retreat - Goa',
-    date: 'March 15-18, 2025',
-    location: 'Goa, India',
-    attendeesCount: 45,
-    image: null
-  }
-]
-
 export const stats = {
   totalMembers: 789,
-  newMembersThisWeek: 12,
-  upcomingEvents: 1
+  newMembersRecent: 24
 }
