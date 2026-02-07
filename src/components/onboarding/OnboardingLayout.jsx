@@ -5,12 +5,13 @@ import '../../styles/onboarding.css'
 function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customProgress = null }) {
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
-  // Calculate progress percentage based on steps
-  // Total completable steps = totalSteps - 2 (exclude welcome step 0 and complete step 11)
-  // Each completed step adds (100 / completableSteps)%
-  // Progress shows after completing a step, so step 1 completed = 1 unit done
+  // Calculate progress percentage based on COMPLETED steps
+  // Steps 1-10 are the onboarding flow (step 0 = welcome, step 11 = complete)
+  // Progress only increases after a step is completed, not when you arrive at it
+  // So: on step 1 (Share360 info page) = 0%, on step 2 (BasicInfo) = 10%, on step 3 = 20%, etc.
   const completableSteps = totalSteps - 2 // 10 completable steps (steps 1-10)
-  const stepProgress = Math.round((currentStep / completableSteps) * 100)
+  const completedSteps = Math.max(0, currentStep - 1) // steps completed before current
+  const stepProgress = Math.round((completedSteps / completableSteps) * 100)
   const defaultProgress = Math.min(stepProgress, 100)
 
   const progressPercentage = customProgress !== null ? customProgress : defaultProgress
