@@ -172,8 +172,17 @@ function LifeStoryEarlyConfirm2() {
         <label className="input-label">
           My Early Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">No more than {maxTags} tags</p>
-        <p className="tag-guideline">Add some descriptive tags that will give people a feel of your early life (Example: Reading Comics, Flying kites, Cycling, DAV College, Train colony, Abohar, Patiala, NITK etc)</p>
+        <p className="field-hint">No more than {maxTags} tags. Add some descriptive tags that will give people a feel of your early life.</p>
+        <div className="tag-samples-box">
+          <span className="tag tag-sample">Reading Comics</span>
+          <span className="tag tag-sample">Flying kites</span>
+          <span className="tag tag-sample">Cycling</span>
+          <span className="tag tag-sample">DAV College</span>
+          <span className="tag tag-sample">Train colony</span>
+          <span className="tag tag-sample">Abohar</span>
+          <span className="tag tag-sample">Patiala</span>
+          <span className="tag tag-sample">NITK</span>
+        </div>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (
@@ -187,7 +196,7 @@ function LifeStoryEarlyConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="e.g. Reading Comics, Flying kites, DAV College..."
+          placeholder="Press Enter after adding a Tag"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}

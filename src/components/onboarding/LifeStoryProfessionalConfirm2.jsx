@@ -190,8 +190,17 @@ function LifeStoryProfessionalConfirm2() {
         <label className="input-label">
           My Mid Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">No more than {maxTags} tags</p>
-        <p className="tag-guideline">Add some descriptive tags that will give people a feel of your mid life (Example: First Job, Mumbai, Marketing, Startup life, MBA, Marriage, Parenthood, Leadership etc)</p>
+        <p className="field-hint">No more than {maxTags} tags. Add some descriptive tags that will give people a feel of your mid life.</p>
+        <div className="tag-samples-box">
+          <span className="tag tag-sample">First Job</span>
+          <span className="tag tag-sample">Mumbai</span>
+          <span className="tag tag-sample">Marketing</span>
+          <span className="tag tag-sample">Startup life</span>
+          <span className="tag tag-sample">MBA</span>
+          <span className="tag tag-sample">Marriage</span>
+          <span className="tag tag-sample">Parenthood</span>
+          <span className="tag tag-sample">Leadership</span>
+        </div>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (
@@ -205,7 +214,7 @@ function LifeStoryProfessionalConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="e.g. First Job, Mumbai, Marketing, Startup life..."
+          placeholder="Press Enter after adding a Tag"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}

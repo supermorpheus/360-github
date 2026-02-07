@@ -213,8 +213,17 @@ function LifeStoryCurrentConfirm2() {
         <label className="input-label">
           My Current Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">No more than {maxTags} tags</p>
-        <p className="tag-guideline">Add some descriptive tags that will give people a feel of your current life (Example: Bengaluru, AI Enthusiast, Fitness, Travel, Podcasts, Cooking, Remote work, Mentoring etc)</p>
+        <p className="field-hint">No more than {maxTags} tags. Add some descriptive tags that will give people a feel of your current life.</p>
+        <div className="tag-samples-box">
+          <span className="tag tag-sample">Bengaluru</span>
+          <span className="tag tag-sample">AI Enthusiast</span>
+          <span className="tag tag-sample">Fitness</span>
+          <span className="tag tag-sample">Travel</span>
+          <span className="tag tag-sample">Podcasts</span>
+          <span className="tag tag-sample">Cooking</span>
+          <span className="tag tag-sample">Remote work</span>
+          <span className="tag tag-sample">Mentoring</span>
+        </div>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (
@@ -228,7 +237,7 @@ function LifeStoryCurrentConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="e.g. Bengaluru, AI Enthusiast, Fitness, Travel..."
+          placeholder="Press Enter after adding a Tag"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
