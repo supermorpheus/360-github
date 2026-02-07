@@ -37,8 +37,8 @@ function OnboardingProfessional() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title">What do you do?</h1>
-          <p className="form-subtitle">Tell us about your professional life</p>
+          <h2 className="form-subtitle">Creating Profile</h2>
+          <h1 className="form-title form-title-small">What do you do?</h1>
         </div>
 
         <div className="input-group">

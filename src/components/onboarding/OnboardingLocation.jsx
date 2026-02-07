@@ -39,8 +39,8 @@ function OnboardingLocation() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title">Where do you live?</h1>
-          <p className="form-subtitle">Help members near you connect</p>
+          <h2 className="form-subtitle">Creating Profile</h2>
+          <h1 className="form-title form-title-small">Where do you live?</h1>
         </div>
 
         {/* Lives In */}

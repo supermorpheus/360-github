@@ -69,7 +69,8 @@ function OnboardingSocial() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title">{firstName}'s Coordinates</h1>
+          <h2 className="form-subtitle">Creating Profile</h2>
+          <h1 className="form-title form-title-small">{firstName}'s Coordinates</h1>
         </div>
 
         {/* Email */}
