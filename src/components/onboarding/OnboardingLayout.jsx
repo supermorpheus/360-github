@@ -5,14 +5,16 @@ import '../../styles/onboarding.css'
 function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customProgress = null }) {
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
-  // Calculate progress percentage based on COMPLETED onboarding pages
-  // 9 onboarding pages: Share360(1), BasicInfo(2), Professional(3), Quote(4),
-  // Intro(5), Location(6), Joy(7), Social(8), Content(9)
-  // Each completed page adds 100/9 ≈ 11%. Reaches 100% after Content is done.
-  // Life Stories (step 10) has its own independent progress counter.
-  const onboardingPages = 9
-  const completedPages = Math.max(0, currentStep - 1) // step 1 = page 1 (Share360), starts at 0 completed
-  const stepProgress = Math.round((completedPages / onboardingPages) * 100)
+  // Calculate progress percentage based on COMPLETED data-entry pages
+  // 9 data-entry pages: BasicInfo(2), Professional(3), Quote(4), Intro(5),
+  // Location(6), Joy(7), Social(8), Content(9), LifeStories(10)
+  // Share360(1) is info-only and doesn't count.
+  // Progress only increases AFTER completing a data page.
+  // On BasicInfo (step 2) = 0%, on Professional (step 3) = 11% (1/9), etc.
+  const dataPages = 9
+  const firstDataStep = 2 // BasicInfo
+  const completedDataPages = Math.max(0, currentStep - firstDataStep)
+  const stepProgress = Math.round((completedDataPages / dataPages) * 100)
   const defaultProgress = Math.min(stepProgress, 100)
 
   const progressPercentage = customProgress !== null ? customProgress : defaultProgress
