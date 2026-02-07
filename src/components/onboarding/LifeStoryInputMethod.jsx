@@ -50,29 +50,18 @@ function LifeStoryInputMethod({ storyKey }) {
     <div className="onboarding-form">
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">How would you like to share?</h1>
-        <p className="form-subtitle">
-          Choose the format that feels most natural to you for sharing your {story.title.toLowerCase()}.
-        </p>
+        <h1 className="form-title">I'd like to:</h1>
       </div>
 
-      <div className="input-method-cards">
+      <div className="input-method-cards input-method-row">
         {inputMethods.map((method) => (
           <button
             key={method.key}
-            className="input-method-card"
+            className="input-method-card input-method-compact"
             onClick={() => selectInputMethod(method.key)}
           >
             <div className="method-card-icon">{method.icon}</div>
-            <div className="method-card-content">
-              <h3 className="method-card-title">{method.title}</h3>
-              <p className="method-card-description">{method.description}</p>
-            </div>
-            <div className="method-card-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </div>
+            <h3 className="method-card-title">{method.title}</h3>
           </button>
         ))}
       </div>
