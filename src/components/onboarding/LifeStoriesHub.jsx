@@ -41,7 +41,7 @@ function LifeStoriesHub() {
       case 'inputMethod':
         return backToPrompts
       case 'input':
-        return backToInputMethod
+        return backToPrompts
       case 'uploadComplete':
       case 'processing':
         // No back during upload/processing

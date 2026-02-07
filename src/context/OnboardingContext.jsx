@@ -238,9 +238,9 @@ export function OnboardingProvider({ children }) {
 
   const backToInput = () => {
     const story = profileData.lifeStories[selectedLifeStory]
-    // For text, go back to input method since there's no separate input step
+    // For text, go back to prompts since input method is now on prompts page
     if (story.inputMethod === 'text') {
-      setLifeStorySubStep('inputMethod')
+      setLifeStorySubStep('prompts')
     } else {
       setLifeStorySubStep('input')
     }
@@ -248,9 +248,9 @@ export function OnboardingProvider({ children }) {
 
   const backToThumbnail = () => {
     const story = profileData.lifeStories[selectedLifeStory]
-    // For audio or text, go back to input method since there's no thumbnail
+    // For audio or text, go back to prompts since input method is now on prompts page
     if (story.inputMethod === 'audio' || story.inputMethod === 'text') {
-      setLifeStorySubStep('inputMethod')
+      setLifeStorySubStep('prompts')
     } else {
       setLifeStorySubStep('thumbnail')
     }
