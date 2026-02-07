@@ -66,7 +66,6 @@ function Dashboard() {
               </div>
               <div className="screen-text">
                 <h3 className="screen-title">Complete Your Onboarding</h3>
-                <p className="screen-desc">Tell us about yourself — your story, your passions, and what makes you, you.</p>
               </div>
             </div>
             <div className="completion-mini">
@@ -105,7 +104,6 @@ function Dashboard() {
               </div>
               <div className="screen-text">
                 <h3 className="screen-title">Add My Life Stories</h3>
-                <p className="screen-desc">Share my early life, mid life, and current life — the gang wants to know me!</p>
               </div>
             </div>
             <div className="completion-mini">
