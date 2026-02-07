@@ -40,6 +40,9 @@ function OnboardingBasicInfo() {
   const validateAndNext = () => {
     const newErrors = {}
 
+    if (!profileData.profilePicture) {
+      newErrors.profilePicture = 'Profile picture is required'
+    }
     if (!profileData.firstName?.trim()) {
       newErrors.firstName = 'First name is required'
     }
@@ -66,7 +69,7 @@ function OnboardingBasicInfo() {
         {/* Profile Picture */}
         <div className="profile-picture-section">
           <div
-            className="profile-picture-upload"
+            className={`profile-picture-upload ${errors.profilePicture ? 'upload-error' : ''}`}
             onClick={handleProfilePictureClick}
           >
             {profileData.profilePicturePreview ? (
@@ -81,6 +84,7 @@ function OnboardingBasicInfo() {
               </div>
             )}
           </div>
+          {errors.profilePicture && <span className="error-text">{errors.profilePicture}</span>}
           <input
             ref={fileInputRef}
             type="file"
