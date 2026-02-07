@@ -35,7 +35,11 @@ function Login() {
         <div className="auth-screen">
           {/* Logo */}
           <div className="auth-logo">
-            <div className="auth-logo-icon">G</div>
+            <img
+              src="/360-github/SM_Color_Whole.jpeg"
+              alt="Super Morpheus"
+              className="auth-logo-img"
+            />
           </div>
 
           {/* Welcome Text */}
