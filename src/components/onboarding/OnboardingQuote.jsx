@@ -45,7 +45,7 @@ function OnboardingQuote() {
               id="inspiringQuote"
               name="inspiringQuote"
               className="input-naked"
-              placeholder="This quote will be displayed as a part of your profile. Please provide the full quote along with the source."
+              placeholder="Share a quote that you have tried to live your life by, it will be displayed as part of your Profile. Please share the quote in its entirety and share its source."
               value={profileData.inspiringQuote}
               onChange={handleChange}
               rows={5}
