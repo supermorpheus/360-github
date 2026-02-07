@@ -35,7 +35,7 @@ function OnboardingJoy() {
       <div className="onboarding-form">
         <div className="form-header">
           <h2 className="form-subtitle">Creating Profile</h2>
-          <h1 className="form-title form-title-small">What fills you with joy, outside your work?</h1>
+          <h1 className="form-title form-title-small">Outside work, I find joy in…</h1>
         </div>
 
         <div className="input-group">
@@ -45,7 +45,7 @@ function OnboardingJoy() {
               id="joyOutsideWork"
               name="joyOutsideWork"
               className="input-naked"
-              placeholder="Keep this short and concise not more than 2 lines."
+              placeholder="Here is an example of what can be written here: I love to fly kites and race bikes"
               value={profileData.joyOutsideWork}
               onChange={handleChange}
               rows={5}
