@@ -40,12 +40,12 @@ function OnboardingLocation() {
       <div className="onboarding-form">
         <div className="form-header">
           <h2 className="form-subtitle">Creating Profile</h2>
-          <h1 className="form-title form-title-small">Where do you live?</h1>
+          <h1 className="form-title form-title-small">Where do you currently live?</h1>
         </div>
 
-        {/* Lives In */}
+        {/* City */}
         <div className="input-group">
-          <label className="input-label" htmlFor="livesIn">Lives in *</label>
+          <label className="input-label" htmlFor="livesIn">City *</label>
           <div className={`input-with-icon-inline ${errors.livesIn ? 'input-error' : ''}`}>
             <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
