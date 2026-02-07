@@ -2836,6 +2836,18 @@
   margin: 0 0 8px 0;
 }
 
+.tag-guideline {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  color: var(--medium-gray);
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  padding: 10px 14px;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+}
+
 /* ==================== */
 /* Word Counter */
 /* ==================== */

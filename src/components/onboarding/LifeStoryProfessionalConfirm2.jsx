@@ -124,8 +124,8 @@ function LifeStoryProfessionalConfirm2() {
     <div className="onboarding-form">
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">Mid/Professional Life</h1>
-        <p className="form-subtitle">{isTextInput ? 'Add your details below' : 'Review and edit the information below'}</p>
+        <h1 className="form-title">{story.title}</h1>
+        <p className="form-subtitle-method">{storyData.inputMethod === 'video' ? 'Record Video' : storyData.inputMethod === 'audio' ? 'Record Audio' : 'Write Text'}</p>
       </div>
 
       {/* Subsequent Jobs */}
@@ -188,9 +188,10 @@ function LifeStoryProfessionalConfirm2() {
       {/* Professional Life Tags */}
       <div className="confirm-section">
         <label className="input-label">
-          Professional Life Tags <span className="required-asterisk">*</span>
+          My Mid Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">Max {maxTags} tags</p>
+        <p className="field-hint">No more than {maxTags} tags</p>
+        <p className="tag-guideline">Add some descriptive tags that will give people a feel of your mid life (Example: First Job, Mumbai, Marketing, Startup life, MBA, Marriage, Parenthood, Leadership etc)</p>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (
@@ -204,7 +205,7 @@ function LifeStoryProfessionalConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="Add a tag and press Enter"
+          placeholder="e.g. First Job, Mumbai, Marketing, Startup life..."
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}

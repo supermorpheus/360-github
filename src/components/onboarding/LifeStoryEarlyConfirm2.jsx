@@ -98,8 +98,8 @@ function LifeStoryEarlyConfirm2() {
     <div className="onboarding-form">
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">Early Life</h1>
-        <p className="form-subtitle">{isTextInput ? 'Add your details below' : 'Review and edit the information below'}</p>
+        <h1 className="form-title">{story.title}</h1>
+        <p className="form-subtitle-method">{storyData.inputMethod === 'video' ? 'Record Video' : storyData.inputMethod === 'audio' ? 'Record Audio' : 'Write Text'}</p>
       </div>
 
       {/* Universities */}
@@ -170,9 +170,10 @@ function LifeStoryEarlyConfirm2() {
       {/* Early Life Tags */}
       <div className="confirm-section">
         <label className="input-label">
-          Early Life Tags <span className="required-asterisk">*</span>
+          My Early Life Tags <span className="required-asterisk">*</span>
         </label>
-        <p className="field-hint">Max {maxTags} tags</p>
+        <p className="field-hint">No more than {maxTags} tags</p>
+        <p className="tag-guideline">Add some descriptive tags that will give people a feel of your early life (Example: Reading Comics, Flying kites, Cycling, DAV College, Train colony, Abohar, Patiala, NITK etc)</p>
         {tags.length > 0 && (
           <div className="tags-container">
             {tags.map((tag, idx) => (
@@ -186,7 +187,7 @@ function LifeStoryEarlyConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="Add a tag and press Enter"
+          placeholder="e.g. Reading Comics, Flying kites, DAV College..."
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
