@@ -301,6 +301,14 @@
   margin-bottom: 4px;
 }
 
+.form-subtitle-method {
+  font-family: var(--font-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--primary-green);
+  margin-top: 2px;
+}
+
 .form-helper-text {
   font-family: var(--font-secondary);
   font-size: 13px;
@@ -1391,6 +1399,23 @@
   font-size: 13px;
   color: var(--medium-gray);
   margin: 0;
+}
+
+/* Recording Tip - prominent */
+.recording-tip {
+  background-color: var(--primary-green-light);
+  border-left: 3px solid var(--primary-green);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.recording-tip p {
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-gray);
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* Video Prompt List */

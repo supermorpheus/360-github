@@ -168,8 +168,8 @@ function LifeStoryAudioInput({ storyKey }) {
     <div className="onboarding-form">
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">Record Your Audio</h1>
-        <p className="form-subtitle">{story.subtitle}</p>
+        <h1 className="form-title">{story.title}</h1>
+        <p className="form-subtitle-method">Record Audio</p>
       </div>
 
       <div className="audio-recording-section">
@@ -269,8 +269,8 @@ function LifeStoryAudioInput({ storyKey }) {
           )}
         </div>
 
-        <div className="video-tips">
-          <p>Find a quiet space for the best audio quality.</p>
+        <div className="recording-tip">
+          <p>Find a quiet place with no echo. Test your mic. Narrate your story slowly as if you were having a conversation!</p>
         </div>
       </div>
 

@@ -175,8 +175,8 @@ function LifeStoryVideoInput({ storyKey }) {
     <div className="onboarding-form">
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">Record Your Video</h1>
-        <p className="form-subtitle">{story.subtitle}</p>
+        <h1 className="form-title">{story.title}</h1>
+        <p className="form-subtitle-method">Record Video</p>
       </div>
 
       <div className="video-recording-section">
@@ -266,8 +266,8 @@ function LifeStoryVideoInput({ storyKey }) {
           )}
         </div>
 
-        <div className="video-tips">
-          <p>Find a quiet, well-lit space for best results.</p>
+        <div className="recording-tip">
+          <p>Find a quiet, well-lit place with no echo. Test your camera and mic. Narrate your story slowly as if you were having a conversation!</p>
         </div>
       </div>
 
