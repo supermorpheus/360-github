@@ -61,23 +61,23 @@
 
 /* Carousel inside welcome card */
 .welcome-carousel-inner {
-  overflow: hidden;
+  position: relative;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 .carousel-slide {
-  min-width: 100%;
-  flex-shrink: 0;
+  padding: 12px 14px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease-in-out;
 }
 
-.carousel-slide-content {
-  padding: 12px 14px;
+.carousel-slide.active {
+  opacity: 1;
+  height: auto;
 }
 
 .screen-label {
