@@ -6,12 +6,12 @@ function OnboardingLayout({ children, showProgress = true, showBack = true, cust
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
   // Calculate progress percentage based on steps
-  // Life Stories page (step 10) and beyond should be 100% - after Submit for Review
-  // If customProgress is provided (for life story sub-flows), use that instead
-  const completeStep = 10 // Life Stories page is the "100% complete" milestone
-  const defaultProgress = currentStep >= completeStep
-    ? 100
-    : Math.round((currentStep / completeStep) * 100)
+  // Total completable steps = totalSteps - 2 (exclude welcome step 0 and complete step 11)
+  // Each completed step adds (100 / completableSteps)%
+  // Progress shows after completing a step, so step 1 completed = 1 unit done
+  const completableSteps = totalSteps - 2 // 10 completable steps (steps 1-10)
+  const stepProgress = Math.round((currentStep / completableSteps) * 100)
+  const defaultProgress = Math.min(stepProgress, 100)
 
   const progressPercentage = customProgress !== null ? customProgress : defaultProgress
 

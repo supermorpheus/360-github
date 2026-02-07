@@ -58,26 +58,26 @@ function LifeStoriesHub() {
   }
 
   // Calculate progress for life story sub-flow
-  // Progress shows what's completed across the expanded flow
-  // prompts (0%) -> inputMethod (15%) -> input (30%) -> uploadComplete (45%) -> processing (55%) -> thumbnail (65%) -> confirm1 (75%) -> confirm2 (90%)
+  // Step 10 (Life Stories) is the last completable step
+  // Main flow: steps 1-9 = 10% each = 90% by step 9 complete
+  // Step 10 sub-steps fill the remaining 90% to 100% range
+  // selection (90%) -> prompts (91%) -> input (93%) -> uploadComplete (94%) -> processing (95%) -> thumbnail (96%) -> confirm1 (97%) -> confirm2 (99%)
   const getLifeStoryProgress = () => {
     switch (lifeStorySubStep) {
       case 'prompts':
-        return 0
-      case 'inputMethod':
-        return 15
+        return 91
       case 'input':
-        return 30
+        return 93
       case 'uploadComplete':
-        return 45
+        return 94
       case 'processing':
-        return 55
+        return 95
       case 'thumbnail':
-        return 65
+        return 96
       case 'confirm1':
-        return 75
+        return 97
       case 'confirm2':
-        return 90
+        return 99
       default:
         return null // Use default progress for selection screen
     }
