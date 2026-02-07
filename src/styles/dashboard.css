@@ -6,15 +6,25 @@
   overflow: hidden;
 }
 
+/* Welcome Carousel Container */
+.welcome-carousel {
+  position: relative;
+  margin: 12px 0 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 /* Welcome Card */
 .welcome-card {
   background: linear-gradient(135deg, var(--primary-green) 0%, #4a6b35 100%);
   border-radius: 16px;
   padding: 16px 20px;
-  margin: 12px 0 16px;
   color: white;
-  cursor: pointer;
-  flex-shrink: 0;
+  display: none;
+}
+
+.welcome-card.active {
+  display: block;
 }
 
 .welcome-card-header {
@@ -57,27 +67,6 @@
   font-family: var(--font-secondary);
   font-size: 12px;
   opacity: 0.8;
-}
-
-/* Carousel inside welcome card */
-.welcome-carousel-inner {
-  position: relative;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-.carousel-slide {
-  padding: 12px 14px;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.carousel-slide.active {
-  opacity: 1;
-  height: auto;
 }
 
 .screen-label {
@@ -165,6 +154,22 @@
   transition: width 0.3s ease;
 }
 
+/* Screen 3 Complete Message */
+.screen-complete-msg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  opacity: 0.9;
+  line-height: 1.4;
+  color: white;
+}
+
+.screen-complete-msg svg {
+  min-width: 24px;
+}
+
 /* Carousel Dots */
 .carousel-dots {
   display: flex;
@@ -178,16 +183,18 @@
   height: 6px;
   border-radius: 50%;
   border: none;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--medium-gray);
   cursor: pointer;
   padding: 0;
   transition: all 0.3s ease;
+  opacity: 0.4;
 }
 
 .carousel-dot.active {
-  background-color: white;
+  background-color: var(--primary-green);
   width: 20px;
   border-radius: 3px;
+  opacity: 1;
 }
 
 /* Members Joined Card */
