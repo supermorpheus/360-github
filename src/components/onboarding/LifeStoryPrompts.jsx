@@ -74,6 +74,10 @@ function LifeStoryPrompts({ storyKey }) {
         )}
       </div>
 
+      <div className="prompts-action-note">
+        <p>Relax, take your time and make notes if you wish to! When you click on I am ready, you can choose if you'll share your story through a Video, Audio or Text.</p>
+      </div>
+
       <p className="input-method-label">I'd like to:</p>
       <div className="input-method-cards input-method-row">
         <button className="input-method-card input-method-compact" onClick={() => selectInputMethod('video')}>

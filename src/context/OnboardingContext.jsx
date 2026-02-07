@@ -87,13 +87,13 @@ export const lifeStoryPrompts = {
     subtitle: 'Jab Main Chhota Baccha Tha! (When I was little…)',
     icon: '🌱',
     prompts: [
-      'Places where you were born and grew up',
-      'Various cities you lived in and experienced',
-      'Family and parents',
-      'Who were your friends — what did you do together?',
-      'What were the things that interested you?',
-      'Educational institutes you attended — schools, colleges, universities. Give some idea of timelines.',
-      'Anything else that feels natural'
+      'Where you were born, how was it growing up?',
+      'Other places you lived in and experienced.',
+      'Talk about your family, parents, growing up environment.',
+      'School you went to, your friends, what were the things you did together?',
+      'What were your interests?',
+      'Which college did you study in? Did you go to University(s)? What years were these?',
+      'Anything else from your memory of these times that you would like to share?'
     ]
   },
   professional: {
