@@ -1,13 +1,18 @@
 /* Dashboard Page */
 .dashboard-page {
   padding-bottom: 80px; /* Space for bottom nav */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Welcome Card Carousel */
 .welcome-carousel {
-  margin: 16px 0 24px;
+  margin: 12px 0 16px;
   overflow: hidden;
   border-radius: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .carousel-track {
@@ -22,7 +27,7 @@
 
 .welcome-card {
   border-radius: 16px;
-  padding: 20px;
+  padding: 16px 20px;
   color: white;
   position: relative;
   text-align: center;
@@ -47,36 +52,41 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   background-color: rgba(255, 255, 255, 0.2);
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .screen-icon {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
+  margin: 0 auto 10px;
   color: white;
+}
+
+.screen-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .screen-title {
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .screen-desc {
   font-family: var(--font-secondary);
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.85;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  line-height: 1.4;
+  margin-bottom: 14px;
   padding: 0 8px;
 }
 
@@ -121,7 +131,7 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 12px 0 4px;
+  padding: 8px 0 0;
 }
 
 .carousel-dot {
@@ -146,13 +156,14 @@
   background-color: white;
   border: 1px solid var(--light-gray);
   border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 24px;
+  padding: 16px;
+  margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
 }
 
 .members-joined-header {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .members-joined-title {
@@ -166,8 +177,8 @@
 .browse-all-btn {
   display: block;
   width: 100%;
-  margin-top: 16px;
-  padding: 12px;
+  margin-top: 12px;
+  padding: 10px;
   background-color: var(--primary-green-light);
   border-radius: 10px;
   color: var(--primary-green);
@@ -180,7 +191,8 @@
 
 /* Sections */
 .section {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .section-header {

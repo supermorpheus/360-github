@@ -8,13 +8,17 @@ function Dashboard() {
   const [activeSlide, setActiveSlide] = useState(0)
   const totalSlides = 3
 
-  // Auto-rotate every 3 seconds
+  // Auto-rotate every 5 seconds, reset timer on manual click
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide(prev => (prev + 1) % totalSlides)
-    }, 3000)
+    }, 5000)
     return () => clearInterval(timer)
-  }, [])
+  }, [activeSlide])
+
+  const handleCardClick = () => {
+    setActiveSlide(prev => (prev + 1) % totalSlides)
+  }
 
   const getStatusBadgeClass = (status) => {
     switch (status) {
@@ -33,7 +37,7 @@ function Dashboard() {
       <StatusBar />
       <div className="page-content dashboard-page">
         {/* Card 1: Revolving Welcome Card Carousel */}
-        <div className="welcome-carousel">
+        <div className="welcome-carousel" onClick={handleCardClick}>
           <div className="carousel-track" style={{ transform: `translateX(-${activeSlide * 100}%)` }}>
 
             {/* Screen 1: Complete Onboarding */}
