@@ -10,7 +10,7 @@ function OnboardingWelcome() {
         {/* SuperMorpheus Full Logo */}
         <div className="welcome-logo">
           <img
-            src="/360-github/SM_Color_Whole.png"
+            src="/360-github/SM_Color_Whole.jpeg"
             alt="Super Morpheus"
             className="welcome-logo-img"
           />
