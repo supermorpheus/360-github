@@ -167,8 +167,8 @@ function LifeStoryCurrentConfirm1() {
     <div className="onboarding-form">
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">Current Life</h1>
-        <p className="form-subtitle">{isTextInput ? 'Add your details below' : 'Review and edit the information below'}</p>
+        <h1 className="form-title">{story.title}</h1>
+        <p className="form-subtitle-method">{storyData.inputMethod === 'video' ? 'Record Video' : storyData.inputMethod === 'audio' ? 'Record Audio' : 'Write Text'}</p>
       </div>
 
       {/* Thumbnail Selection - Only for video */}
@@ -272,12 +272,12 @@ function LifeStoryCurrentConfirm1() {
       {/* Current Life Summary */}
       <div className="confirm-section">
         <label className="input-label">
-          Current Life Summary <span className="required-asterisk">*</span>
+          My Current Life… <span className="required-asterisk">*</span>
         </label>
         <p className="field-hint">Max {maxWords} words</p>
         <textarea
           className={`input-field textarea-field ${showErrors && errors.summary ? 'input-error' : ''}`}
-          placeholder="A brief summary of your current life..."
+          placeholder="Record concise yet significant aspects of your current life here, in a story form."
           value={summary}
           onChange={handleSummaryChange}
           rows={4}
