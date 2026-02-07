@@ -11,7 +11,7 @@ function Dashboard() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide(prev => (prev + 1) % totalSlides)
-    }, 5000)
+    }, 10000)
     return () => clearInterval(timer)
   }, [activeSlide])
 
@@ -80,7 +80,7 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Screen 2: Add Life Stories - 50% */}
+          {/* Screen 2: Add My Life Stories - 50% */}
           <div className={`welcome-card welcome-card-screen2 ${activeSlide === 1 ? 'active' : ''}`}>
             <span className="screen-label">Screen 2</span>
             <div className="welcome-card-header">
@@ -104,8 +104,8 @@ function Dashboard() {
                 </svg>
               </div>
               <div className="screen-text">
-                <h3 className="screen-title">Add Your Life Stories</h3>
-                <p className="screen-desc">Share your early life, mid life, and current life — the gang wants to know you!</p>
+                <h3 className="screen-title">Add My Life Stories</h3>
+                <p className="screen-desc">Share my early life, mid life, and current life — the gang wants to know me!</p>
               </div>
             </div>
             <div className="completion-mini">
