@@ -1780,9 +1780,9 @@
 
 .prompts-action-note p {
   font-family: var(--font-secondary);
-  font-size: 14px;
-  color: var(--dark-gray);
-  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.65;
   margin: 0;
 }
 
@@ -2536,9 +2536,10 @@
 .upload-warning-box {
   display: flex;
   gap: 16px;
-  padding: 20px;
+  padding: 20px 24px;
   background-color: #F8F9FA;
   border: 1px solid #E3F2FD;
+  border-left: 4px solid #F0BA3F;
   border-radius: 12px;
   margin-bottom: 24px;
   text-align: left;
@@ -2565,9 +2566,9 @@
 
 .warning-list li {
   font-family: var(--font-secondary);
-  font-size: 14px;
-  color: var(--dark-gray);
-  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.65;
   margin-bottom: 12px;
   padding-left: 16px;
   position: relative;
@@ -2665,8 +2666,8 @@
 
 .processing-auto-note {
   font-family: var(--font-secondary);
-  font-size: 13px;
-  color: var(--medium-gray);
+  font-size: 15px;
+  color: #444;
   font-style: italic;
 }
 
