@@ -526,6 +526,22 @@
   color: var(--medium-gray);
 }
 
+/* Textarea with hint */
+.textarea-with-hint {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea-hint-italic {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--medium-gray);
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
 /* Readonly Fields */
 .readonly-fields {
   opacity: 0.7;

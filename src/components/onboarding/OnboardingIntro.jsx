@@ -54,17 +54,18 @@ function OnboardingIntro() {
         <div className="input-group">
           <div className={`input-field-with-icon textarea-field ${errors.introduction ? 'input-error' : ''}`}>
             <span className="input-icon intro-icon">📝</span>
-            <textarea
-              id="introduction"
-              name="introduction"
-              className="input-naked"
-              placeholder={`Please don't copy-paste a standard introduction from elsewhere.
-
-Share something that captures the shades and colours of your life—the personal and the professional, the private and the public, the crazy and the quiet, the peculiar parts that make you you.`}
-              value={profileData.introduction}
-              onChange={handleChange}
-              rows={8}
-            />
+            <div className="textarea-with-hint">
+              <p className="textarea-hint-italic">Please don't copy-paste a standard introduction from elsewhere.</p>
+              <textarea
+                id="introduction"
+                name="introduction"
+                className="input-naked"
+                placeholder="Share something that captures the shades and colours of your life—the personal and the professional, the private and the public, the crazy and the quiet, the peculiar parts that make you, you."
+                value={profileData.introduction}
+                onChange={handleChange}
+                rows={6}
+              />
+            </div>
           </div>
           <div className="word-counter-row">
             <span className={`word-counter ${wordCount >= MAX_WORDS ? 'limit-reached' : ''}`}>
