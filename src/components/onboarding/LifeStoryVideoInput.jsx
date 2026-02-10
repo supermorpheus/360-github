@@ -268,7 +268,7 @@ function LifeStoryVideoInput({ storyKey }) {
         </div>
 
         <div className="recording-tip">
-          <p>Find a quiet, well-lit place with no echo. Test your camera and mic. Narrate your story slowly as if you were having a conversation!</p>
+          <p>Relax and take your time! Find a quiet, well-lit place with no echo. Test your camera and mic. Narrate your story slowly as if you were having a conversation!</p>
         </div>
       </div>
 

@@ -114,10 +114,6 @@ function LifeStoryPrompts({ storyKey }) {
         </div>
       </div>
 
-      <div className="prompts-action-note">
-        <p>Relax, take your time and make notes if you wish to! When you click on I am ready, you can choose if you'll share your story through a Video, Audio or Text.</p>
-      </div>
-
       {/* I am Ready button */}
       {showError && (
         <p className="error-message">Please select an input method to continue</p>

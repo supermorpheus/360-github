@@ -271,7 +271,7 @@ function LifeStoryAudioInput({ storyKey }) {
         </div>
 
         <div className="recording-tip">
-          <p>Find a quiet place with no echo. Test your mic. Narrate your story slowly as if you were having a conversation!</p>
+          <p>Relax and take your time! Find a quiet place with no echo. Test your mic. Narrate your story slowly as if you were having a conversation!</p>
         </div>
       </div>
 

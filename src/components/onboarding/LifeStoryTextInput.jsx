@@ -83,6 +83,10 @@ function LifeStoryTextInput({ storyKey }) {
         )}
       </div>
 
+      <div className="recording-tip">
+        <p>Relax and take your time! Write freely as if you were telling your story to a friend.</p>
+      </div>
+
       <div className="text-input-section">
         <div className="input-group">
           <textarea
