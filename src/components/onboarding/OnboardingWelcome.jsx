@@ -19,9 +19,6 @@ function OnboardingWelcome() {
         {/* Welcome Content */}
         <div className="welcome-content">
           <h1 className="welcome-title">Welcome to Gang 360</h1>
-          <p className="welcome-subtitle">
-            Enter the rabbit hole.
-          </p>
         </div>
 
         {/* Tagline */}
@@ -31,7 +28,7 @@ function OnboardingWelcome() {
 
         {/* CTA Button */}
         <button className="btn-primary welcome-cta" onClick={nextStep}>
-          Let's Get Started
+          Enter the rabbit hole.
         </button>
 
         <p className="welcome-time-note">
