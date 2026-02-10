@@ -1780,6 +1780,14 @@
   margin: 0;
 }
 
+.error-message {
+  color: #dc3545;
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
 /* Prompt Content */
 .prompt-content {
   margin-top: 8px;
