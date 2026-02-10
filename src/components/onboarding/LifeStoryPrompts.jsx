@@ -3,7 +3,7 @@ import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext
 
 function LifeStoryPrompts({ storyKey }) {
   const { selectInputMethod } = useOnboarding()
-  const [promptsExpanded, setPromptsExpanded] = useState(true)
+  const [selectedMethod, setSelectedMethod] = useState(null)
 
   const story = lifeStoryPrompts[storyKey]
 
@@ -40,49 +40,18 @@ function LifeStoryPrompts({ storyKey }) {
     )
   }
 
+  const handleReady = () => {
+    if (selectedMethod) {
+      selectInputMethod(selectedMethod)
+    }
+  }
+
   return (
     <div className="onboarding-form">
-      <div className="form-header story-header-sticky">
-        <div className="story-header-row">
-          <div className="story-header-icon">{story.icon}</div>
-          <h1 className="form-title">{story.title}</h1>
-        </div>
-        <p className="form-subtitle">{story.subtitle}</p>
-      </div>
-
-      <div className="video-prompt-list">
-        <button
-          type="button"
-          className="prompt-collapse-btn"
-          onClick={() => setPromptsExpanded(!promptsExpanded)}
-        >
-          <span className="prompt-intro">What you can talk about:</span>
-          <svg
-            className={`collapse-chevron ${promptsExpanded ? 'expanded' : ''}`}
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
-        </button>
-        {promptsExpanded && (
-          <div className="prompt-content">
-            {renderPromptList()}
-          </div>
-        )}
-      </div>
-
-      <div className="prompts-action-note">
-        <p>Relax, take your time and make notes if you wish to! When you click on I am ready, you can choose if you'll share your story through a Video, Audio or Text.</p>
-      </div>
-
+      {/* Input method selection - at the top */}
       <p className="input-method-label">I'd like to:</p>
       <div className="input-method-cards input-method-row">
-        <button className="input-method-card input-method-compact" onClick={() => selectInputMethod('video')}>
+        <button className={`input-method-card input-method-compact ${selectedMethod === 'video' ? 'selected' : ''}`} onClick={() => setSelectedMethod('video')}>
           <div className="method-card-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M23 7l-7 5 7 5V7z"/>
@@ -91,7 +60,7 @@ function LifeStoryPrompts({ storyKey }) {
           </div>
           <h3 className="method-card-title">Record Video</h3>
         </button>
-        <button className="input-method-card input-method-compact" onClick={() => selectInputMethod('audio')}>
+        <button className={`input-method-card input-method-compact ${selectedMethod === 'audio' ? 'selected' : ''}`} onClick={() => setSelectedMethod('audio')}>
           <div className="method-card-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -102,7 +71,7 @@ function LifeStoryPrompts({ storyKey }) {
           </div>
           <h3 className="method-card-title">Record Audio</h3>
         </button>
-        <button className="input-method-card input-method-compact" onClick={() => selectInputMethod('text')}>
+        <button className={`input-method-card input-method-compact ${selectedMethod === 'text' ? 'selected' : ''}`} onClick={() => setSelectedMethod('text')}>
           <div className="method-card-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -115,6 +84,36 @@ function LifeStoryPrompts({ storyKey }) {
           <h3 className="method-card-title">Write Text</h3>
         </button>
       </div>
+
+      {/* Story header - sticky */}
+      <div className="form-header story-header-sticky">
+        <div className="story-header-row">
+          <div className="story-header-icon">{story.icon}</div>
+          <h1 className="form-title">{story.title}</h1>
+        </div>
+        <p className="form-subtitle">{story.subtitle}</p>
+      </div>
+
+      {/* Prompt instructions - always visible, no collapse */}
+      <div className="video-prompt-list">
+        <span className="prompt-intro">What you can talk about:</span>
+        <div className="prompt-content">
+          {renderPromptList()}
+        </div>
+      </div>
+
+      <div className="prompts-action-note">
+        <p>Relax, take your time and make notes if you wish to! When you click on I am ready, you can choose if you'll share your story through a Video, Audio or Text.</p>
+      </div>
+
+      {/* I am Ready button */}
+      <button
+        className="btn-primary"
+        onClick={handleReady}
+        disabled={!selectedMethod}
+      >
+        I am Ready
+      </button>
 
       <button
         type="button"

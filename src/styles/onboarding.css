@@ -1746,6 +1746,16 @@
   color: var(--primary-green);
 }
 
+.input-method-card.selected {
+  border-color: var(--primary-green);
+  background-color: var(--primary-green-light);
+}
+
+.input-method-card.selected .method-card-icon {
+  background-color: white;
+  color: var(--primary-green);
+}
+
 .method-card-title {
   font-family: var(--font-primary);
   font-size: 13px;
