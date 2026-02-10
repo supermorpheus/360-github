@@ -24,7 +24,7 @@ function LifeStorySelection() {
     <div className="onboarding-form">
       <div className="form-header">
         <h1 className="form-title form-title-small">My Life Stories</h1>
-        <p className="form-subtitle">
+        <p className="share360-message">
           The more real and interesting your stories are, the better the gang gets to know you. So go on…
         </p>
       </div>
