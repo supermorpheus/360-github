@@ -49,7 +49,7 @@ function OnboardingContent() {
       <div className="onboarding-form">
         <div className="form-header">
           <h1 className="form-title form-title-small">Content I've created</h1>
-          <p className="form-helper-text">Add links to the content you would like to share with others in the community, here. <em>(It's optional. You can add later too.)</em></p>
+          <p className="form-helper-text">Add links to the content you would like to share <em>(this is optional!)</em></p>
         </div>
 
         <div className="content-links-list">
