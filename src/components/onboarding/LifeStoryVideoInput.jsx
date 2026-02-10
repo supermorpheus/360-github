@@ -176,7 +176,6 @@ function LifeStoryVideoInput({ storyKey }) {
       <div className="form-header">
         <div className="story-header-icon">{story.icon}</div>
         <h1 className="form-title">{story.title}</h1>
-        <p className="form-subtitle-method">Record Video</p>
       </div>
 
       <div className="video-recording-section">
