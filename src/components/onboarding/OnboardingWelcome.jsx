@@ -28,7 +28,7 @@ function OnboardingWelcome() {
 
         {/* CTA Button */}
         <button className="btn-primary welcome-cta" onClick={nextStep}>
-          Enter the rabbit hole.
+          Enter the rabbit hole
         </button>
 
         <p className="welcome-time-note">
