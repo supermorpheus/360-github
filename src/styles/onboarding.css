@@ -79,13 +79,34 @@
   margin-bottom: 0;
 }
 
-.progress-percentage-large {
+.progress-step-text {
   font-family: var(--font-primary);
   font-size: 14px;
   font-weight: 600;
   color: var(--primary-green);
   text-align: right;
   margin-bottom: 8px;
+}
+
+.progress-bar-segmented {
+  display: flex;
+  gap: 4px;
+}
+
+.progress-segment {
+  flex: 1;
+  height: 6px;
+  background-color: var(--light-gray);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.progress-segment.completed {
+  background-color: var(--primary-green);
+}
+
+.progress-segment.active {
+  background-color: var(--light-gray);
 }
 
 .progress-steps {

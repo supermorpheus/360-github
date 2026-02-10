@@ -2,23 +2,20 @@ import { useOnboarding } from '../../context/OnboardingContext'
 import StatusBar from '../StatusBar'
 import '../../styles/onboarding.css'
 
-function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customProgress = null }) {
+function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customStepInfo = null }) {
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
-  // Calculate progress percentage based on COMPLETED data-entry pages
+  // Calculate step info based on COMPLETED data-entry pages
   // 8 data pages: BasicInfo(2), Professional(3), Quote(4), Intro(5),
   // Location(6), Joy(7), Social(8), Content(9)
   // Share360(1) is info-only and doesn't count.
-  // Each completed page adds 100/8 = 12.5%.
-  // On BasicInfo (step 2) = 0%, on Content (step 9) = 88%
-  // Life Stories (step 10) has its own independent counter.
+  // Life Stories (step 10) has its own independent counter via customStepInfo.
   const dataPages = 8
   const firstDataStep = 2 // BasicInfo
   const completedPages = Math.max(0, currentStep - firstDataStep)
-  const stepProgress = Math.round((completedPages / dataPages) * 100)
-  const defaultProgress = Math.min(stepProgress, 100)
+  const defaultStepInfo = { current: Math.min(completedPages, dataPages), total: dataPages }
 
-  const progressPercentage = customProgress !== null ? customProgress : defaultProgress
+  const stepInfo = customStepInfo !== null ? customStepInfo : defaultStepInfo
 
   // Use custom back handler if provided, otherwise use default prevStep
   const handleBack = customBackHandler || prevStep
@@ -37,15 +34,17 @@ function OnboardingLayout({ children, showProgress = true, showBack = true, cust
             </button>
           )}
 
-          {/* Progress Section - Simple percentage + bar */}
+          {/* Progress Section - Step counter + segmented bar */}
           {showProgress && currentStep > 0 && currentStep < totalSteps - 1 && (
             <div className="onboarding-progress-simple">
-              <div className="progress-percentage-large">{progressPercentage}% Complete</div>
-              <div className="progress-bar-container">
-                <div
-                  className="progress-bar-fill"
-                  style={{ width: `${progressPercentage}%` }}
-                />
+              <div className="progress-step-text">Step {stepInfo.current + 1} of {stepInfo.total}</div>
+              <div className="progress-bar-segmented">
+                {Array.from({ length: stepInfo.total }, (_, i) => (
+                  <div
+                    key={i}
+                    className={`progress-segment ${i < stepInfo.current ? 'completed' : i === stepInfo.current ? 'active' : ''}`}
+                  />
+                ))}
               </div>
             </div>
           )}

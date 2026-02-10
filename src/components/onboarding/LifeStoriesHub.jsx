@@ -57,43 +57,44 @@ function LifeStoriesHub() {
     }
   }
 
-  // Life Stories has its own independent progress counter (0% to 100%)
+  // Life Stories has its own independent step counter
   // Progress only updates AFTER a data-entry step is COMPLETED.
   // Prompts page is just selection — not a data step.
+  // Returns { current: completedSteps, total: totalDataSteps }
   //   Video (4 data steps): input(record) → thumbnail → confirm1 → confirm2
   //   Audio (3 data steps): input(record) → confirm1 → confirm2
   //   Text  (2 data steps): confirm1(write) → confirm2(tags)
-  const getLifeStoryProgress = () => {
+  const getLifeStoryStepInfo = () => {
     if (currentInputMethod === 'video') {
-      // 4 data steps — each completed = 25%
+      const total = 4
       switch (lifeStorySubStep) {
-        case 'prompts':        return 0   // no data entered yet
-        case 'input':          return 0   // recording not done yet
-        case 'uploadComplete': return 25  // recording done (1/4)
-        case 'processing':     return 25  // auto step
-        case 'thumbnail':      return 25  // selecting thumbnail
-        case 'confirm1':       return 50  // thumbnail done (2/4)
-        case 'confirm2':       return 75  // confirm1 done (3/4)
-        default:               return 0
+        case 'prompts':        return { current: 0, total }
+        case 'input':          return { current: 0, total }
+        case 'uploadComplete': return { current: 1, total } // recording done
+        case 'processing':     return { current: 1, total }
+        case 'thumbnail':      return { current: 1, total }
+        case 'confirm1':       return { current: 2, total } // thumbnail done
+        case 'confirm2':       return { current: 3, total } // confirm1 done
+        default:               return { current: 0, total }
       }
     } else if (currentInputMethod === 'audio') {
-      // 3 data steps — each completed = 33%
+      const total = 3
       switch (lifeStorySubStep) {
-        case 'prompts':        return 0   // no data entered yet
-        case 'input':          return 0   // recording not done yet
-        case 'uploadComplete': return 33  // recording done (1/3)
-        case 'processing':     return 33  // auto step
-        case 'confirm1':       return 33  // filling summary
-        case 'confirm2':       return 67  // confirm1 done (2/3)
-        default:               return 0
+        case 'prompts':        return { current: 0, total }
+        case 'input':          return { current: 0, total }
+        case 'uploadComplete': return { current: 1, total } // recording done
+        case 'processing':     return { current: 1, total }
+        case 'confirm1':       return { current: 1, total }
+        case 'confirm2':       return { current: 2, total } // confirm1 done
+        default:               return { current: 0, total }
       }
     } else {
-      // Text: 2 data steps — each completed = 50%
+      const total = 2
       switch (lifeStorySubStep) {
-        case 'prompts':        return 0   // no data entered yet
-        case 'confirm1':       return 0   // writing not done yet
-        case 'confirm2':       return 50  // confirm1 done (1/2)
-        default:               return 0
+        case 'prompts':        return { current: 0, total }
+        case 'confirm1':       return { current: 0, total }
+        case 'confirm2':       return { current: 1, total } // confirm1 done
+        default:               return { current: 0, total }
       }
     }
   }
@@ -184,7 +185,7 @@ function LifeStoriesHub() {
   return (
     <OnboardingLayout
       customBackHandler={getBackHandler()}
-      customProgress={getLifeStoryProgress()}
+      customStepInfo={getLifeStoryStepInfo()}
       showBack={showBack}
     >
       {renderSubStep()}
