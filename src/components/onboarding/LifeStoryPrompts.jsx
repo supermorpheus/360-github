@@ -4,6 +4,7 @@ import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext
 function LifeStoryPrompts({ storyKey }) {
   const { selectInputMethod } = useOnboarding()
   const [selectedMethod, setSelectedMethod] = useState(null)
+  const [showError, setShowError] = useState(false)
 
   const story = lifeStoryPrompts[storyKey]
 
@@ -42,8 +43,16 @@ function LifeStoryPrompts({ storyKey }) {
 
   const handleReady = () => {
     if (selectedMethod) {
+      setShowError(false)
       selectInputMethod(selectedMethod)
+    } else {
+      setShowError(true)
     }
+  }
+
+  const handleSelectMethod = (method) => {
+    setSelectedMethod(method)
+    setShowError(false)
   }
 
   return (
@@ -54,7 +63,7 @@ function LifeStoryPrompts({ storyKey }) {
       {/* Input method selection - at the top */}
       <p className="input-method-label">I'd like to:</p>
       <div className="input-method-cards input-method-row">
-        <button className={`input-method-card input-method-compact ${selectedMethod === 'video' ? 'selected' : ''}`} onClick={() => setSelectedMethod('video')}>
+        <button className={`input-method-card input-method-compact ${selectedMethod === 'video' ? 'selected' : ''}`} onClick={() => handleSelectMethod('video')}>
           <div className="method-card-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M23 7l-7 5 7 5V7z"/>
@@ -63,7 +72,7 @@ function LifeStoryPrompts({ storyKey }) {
           </div>
           <h3 className="method-card-title">Record Video</h3>
         </button>
-        <button className={`input-method-card input-method-compact ${selectedMethod === 'audio' ? 'selected' : ''}`} onClick={() => setSelectedMethod('audio')}>
+        <button className={`input-method-card input-method-compact ${selectedMethod === 'audio' ? 'selected' : ''}`} onClick={() => handleSelectMethod('audio')}>
           <div className="method-card-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -74,7 +83,7 @@ function LifeStoryPrompts({ storyKey }) {
           </div>
           <h3 className="method-card-title">Record Audio</h3>
         </button>
-        <button className={`input-method-card input-method-compact ${selectedMethod === 'text' ? 'selected' : ''}`} onClick={() => setSelectedMethod('text')}>
+        <button className={`input-method-card input-method-compact ${selectedMethod === 'text' ? 'selected' : ''}`} onClick={() => handleSelectMethod('text')}>
           <div className="method-card-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -110,10 +119,12 @@ function LifeStoryPrompts({ storyKey }) {
       </div>
 
       {/* I am Ready button */}
+      {showError && (
+        <p className="error-message">Please select an input method to continue</p>
+      )}
       <button
         className="btn-primary"
         onClick={handleReady}
-        disabled={!selectedMethod}
       >
         I am Ready
       </button>

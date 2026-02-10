@@ -1,9 +1,18 @@
+import { useRef, useEffect } from 'react'
 import { useOnboarding } from '../../context/OnboardingContext'
 import StatusBar from '../StatusBar'
 import '../../styles/onboarding.css'
 
 function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customStepInfo = null, progressLabel = 'Creating Profile' }) {
-  const { currentStep, totalSteps, prevStep } = useOnboarding()
+  const { currentStep, totalSteps, prevStep, lifeStorySubStep } = useOnboarding()
+  const pageContentRef = useRef(null)
+
+  // Scroll to top when step or sub-step changes
+  useEffect(() => {
+    if (pageContentRef.current) {
+      pageContentRef.current.scrollTop = 0
+    }
+  }, [currentStep, lifeStorySubStep])
 
   // Calculate step info based on COMPLETED data-entry pages
   // 8 data pages: BasicInfo(2), Professional(3), Quote(4), Intro(5),
@@ -23,7 +32,7 @@ function OnboardingLayout({ children, showProgress = true, showBack = true, cust
   return (
     <>
       <StatusBar />
-      <div className="page-content">
+      <div className="page-content" ref={pageContentRef}>
         <div className="onboarding-screen">
           {/* Back Button */}
           {showBack && currentStep > 0 && currentStep < totalSteps - 1 && (
