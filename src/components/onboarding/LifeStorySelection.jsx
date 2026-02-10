@@ -22,7 +22,7 @@ function LifeStorySelection() {
 
   return (
     <div className="onboarding-form">
-      <div className="form-header">
+      <div className="form-header story-header-sticky">
         <h1 className="form-title form-title-small" style={{ marginBottom: '12px' }}>My Life Stories</h1>
         <p className="share360-message">
           The more real and interesting your stories are, the better the gang gets to know you. So go on…
