@@ -42,9 +42,11 @@ function LifeStoryPrompts({ storyKey }) {
 
   return (
     <div className="onboarding-form">
-      <div className="form-header">
-        <div className="story-header-icon">{story.icon}</div>
-        <h1 className="form-title">{story.title}</h1>
+      <div className="form-header story-header-sticky">
+        <div className="story-header-row">
+          <div className="story-header-icon">{story.icon}</div>
+          <h1 className="form-title">{story.title}</h1>
+        </div>
         <p className="form-subtitle">{story.subtitle}</p>
       </div>
 
