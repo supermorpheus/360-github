@@ -42,7 +42,7 @@ function OnboardingLayout({ children, showProgress = true, showBack = true, cust
                 {Array.from({ length: stepInfo.total }, (_, i) => (
                   <div
                     key={i}
-                    className={`progress-segment ${i < stepInfo.current ? 'completed' : i === stepInfo.current ? 'active' : ''}`}
+                    className={`progress-segment ${i <= stepInfo.current ? 'completed' : ''}`}
                   />
                 ))}
               </div>
