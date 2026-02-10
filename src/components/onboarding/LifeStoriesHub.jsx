@@ -178,6 +178,15 @@ function LifeStoriesHub() {
     )
   }
 
+  // For prompts screen, hide progress bar (input method selection page)
+  if (lifeStorySubStep === 'prompts') {
+    return (
+      <OnboardingLayout showProgress={false} customBackHandler={getBackHandler()}>
+        {renderSubStep()}
+      </OnboardingLayout>
+    )
+  }
+
   // For upload/processing screens, hide back button
   const showBack = !['uploadComplete', 'processing', 'thumbnail'].includes(lifeStorySubStep)
 
