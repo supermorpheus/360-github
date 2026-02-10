@@ -49,7 +49,7 @@ function LifeStoryPrompts({ storyKey }) {
   return (
     <div className="onboarding-form">
       {/* Life Stories header */}
-      <div className="progress-label" style={{ marginBottom: '16px' }}>Life Stories</div>
+      <div className="progress-label" style={{ marginBottom: '16px' }}>My Life Stories</div>
 
       {/* Input method selection - at the top */}
       <p className="input-method-label">I'd like to:</p>
