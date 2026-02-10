@@ -230,8 +230,14 @@ function LifeStoryEarlyConfirm1() {
           <video ref={videoRef} style={{ display: 'none' }} />
 
           <div className="thumbnail-grid thumbnail-grid-small">
-            {generatedThumbnails.length > 0 ? (
-              generatedThumbnails.slice(0, 2).map((thumb, index) => (
+            {(() => {
+              const thumbs = generatedThumbnails.length > 0
+                ? generatedThumbnails.slice(0, 2)
+                : [
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180'%3E%3Crect fill='%23e8d5b7' width='320' height='180'/%3E%3Ctext x='160' y='95' text-anchor='middle' fill='%23a08060' font-size='14' font-family='sans-serif'%3ESample 1%3C/text%3E%3C/svg%3E",
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180'%3E%3Crect fill='%23b7d5e8' width='320' height='180'/%3E%3Ctext x='160' y='95' text-anchor='middle' fill='%236090a0' font-size='14' font-family='sans-serif'%3ESample 2%3C/text%3E%3C/svg%3E"
+                  ]
+              return thumbs.map((thumb, index) => (
                 <button
                   key={index}
                   type="button"
@@ -248,24 +254,7 @@ function LifeStoryEarlyConfirm1() {
                   )}
                 </button>
               ))
-            ) : (
-              [0, 1].map((index) => (
-                <div key={index} className="thumbnail-option placeholder">
-                  <div className="thumbnail-loading">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="spin">
-                      <line x1="12" y1="2" x2="12" y2="6"/>
-                      <line x1="12" y1="18" x2="12" y2="22"/>
-                      <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
-                      <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
-                      <line x1="2" y1="12" x2="6" y2="12"/>
-                      <line x1="18" y1="12" x2="22" y2="12"/>
-                      <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/>
-                      <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/>
-                    </svg>
-                  </div>
-                </div>
-              ))
-            )}
+            })()}
           </div>
 
           {customThumbnailPreview && selectedThumbnail === 'custom' && (

@@ -65,35 +65,33 @@ function LifeStoriesHub() {
   //   Audio (3 data steps): input(record) → confirm1 → confirm2
   //   Text  (2 data steps): confirm1(write) → confirm2(tags)
   const getLifeStoryStepInfo = () => {
+    const total = 3
     if (currentInputMethod === 'video') {
-      const total = 4
       switch (lifeStorySubStep) {
         case 'prompts':        return { current: 0, total }
         case 'input':          return { current: 0, total }
-        case 'uploadComplete': return { current: 1, total } // recording done
-        case 'processing':     return { current: 1, total }
-        case 'thumbnail':      return { current: 1, total }
-        case 'confirm1':       return { current: 2, total } // thumbnail done
-        case 'confirm2':       return { current: 3, total } // confirm1 done
+        case 'uploadComplete': return { current: 0, total }
+        case 'processing':     return { current: 0, total }
+        case 'confirm1':       return { current: 1, total } // recording done
+        case 'confirm2':       return { current: 2, total } // confirm1 done
         default:               return { current: 0, total }
       }
     } else if (currentInputMethod === 'audio') {
-      const total = 3
       switch (lifeStorySubStep) {
         case 'prompts':        return { current: 0, total }
         case 'input':          return { current: 0, total }
-        case 'uploadComplete': return { current: 1, total } // recording done
-        case 'processing':     return { current: 1, total }
-        case 'confirm1':       return { current: 1, total }
+        case 'uploadComplete': return { current: 0, total }
+        case 'processing':     return { current: 0, total }
+        case 'confirm1':       return { current: 1, total } // recording done
         case 'confirm2':       return { current: 2, total } // confirm1 done
         default:               return { current: 0, total }
       }
     } else {
-      const total = 2
       switch (lifeStorySubStep) {
         case 'prompts':        return { current: 0, total }
-        case 'confirm1':       return { current: 0, total }
-        case 'confirm2':       return { current: 1, total } // confirm1 done
+        case 'input':          return { current: 0, total }
+        case 'confirm1':       return { current: 1, total } // text done
+        case 'confirm2':       return { current: 2, total } // confirm1 done
         default:               return { current: 0, total }
       }
     }

@@ -208,7 +208,7 @@ export function OnboardingProvider({ children }) {
   }
 
   const goToThumbnail = () => {
-    setLifeStorySubStep('thumbnail')
+    setLifeStorySubStep('confirm1')
   }
 
   const goToConfirmation = () => {
@@ -247,13 +247,8 @@ export function OnboardingProvider({ children }) {
   }
 
   const backToThumbnail = () => {
-    const story = profileData.lifeStories[selectedLifeStory]
-    // For audio or text, go back to prompts since input method is now on prompts page
-    if (story.inputMethod === 'audio' || story.inputMethod === 'text') {
-      setLifeStorySubStep('prompts')
-    } else {
-      setLifeStorySubStep('thumbnail')
-    }
+    // All input methods go back to prompts (thumbnail is now in confirm1)
+    setLifeStorySubStep('prompts')
   }
 
   const completeLifeStory = () => {
