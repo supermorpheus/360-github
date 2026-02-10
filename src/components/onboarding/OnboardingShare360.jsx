@@ -18,13 +18,10 @@ function OnboardingShare360() {
             As you step in, move with awareness. Be silent. Be self-aware, authentic, open, fearless— quirky, intense, and unapologetically you.
           </p>
 
-          <p className="share360-highlight">
-            Go forth, Carpe Diem!
-          </p>
         </div>
 
         <button className="btn-primary" onClick={nextStep}>
-          I am Ready
+          Go forth, Carpe Diem!
         </button>
       </div>
     </OnboardingLayout>
