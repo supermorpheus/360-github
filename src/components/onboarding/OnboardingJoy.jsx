@@ -44,7 +44,7 @@ function OnboardingJoy() {
               id="joyOutsideWork"
               name="joyOutsideWork"
               className="input-naked"
-              placeholder="Here is an example of what can be written here: I love to fly kites and race bikes"
+              placeholder="e.g., I love to fly kites and race bikes"
               value={profileData.joyOutsideWork}
               onChange={handleChange}
               rows={5}
