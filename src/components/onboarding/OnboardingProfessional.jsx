@@ -19,10 +19,10 @@ function OnboardingProfessional() {
     const newErrors = {}
 
     if (!profileData.currentOrganization?.trim()) {
-      newErrors.currentOrganization = 'Organization is required'
+      newErrors.currentOrganization = 'Organization name is required'
     }
     if (!profileData.currentRole?.trim()) {
-      newErrors.currentRole = 'Role is required'
+      newErrors.currentRole = 'Role name is required'
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -37,11 +37,11 @@ function OnboardingProfessional() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title form-title-small">What do you do?</h1>
+          <h1 className="form-title form-title-small">Currently I work at…</h1>
         </div>
 
         <div className="input-group">
-          <label className="input-label" htmlFor="currentOrganization">Current Organization *</label>
+          <label className="input-label" htmlFor="currentOrganization">Organization *</label>
           <div className={`input-with-icon-inline ${errors.currentOrganization ? 'input-error' : ''}`}>
             <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
@@ -61,7 +61,7 @@ function OnboardingProfessional() {
         </div>
 
         <div className="input-group">
-          <label className="input-label" htmlFor="currentRole">Current Role *</label>
+          <label className="input-label" htmlFor="currentRole">Role *</label>
           <div className={`input-with-icon-inline ${errors.currentRole ? 'input-error' : ''}`}>
             <svg className="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
