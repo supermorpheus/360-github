@@ -41,7 +41,7 @@ function OnboardingBasicInfo() {
     const newErrors = {}
 
     if (!profileData.profilePicture) {
-      newErrors.profilePicture = 'Profile picture is required'
+      newErrors.profilePicture = 'Profile photo is required'
     }
     if (!profileData.firstName?.trim()) {
       newErrors.firstName = 'First name is required'
@@ -79,7 +79,7 @@ function OnboardingBasicInfo() {
               />
             ) : (
               <div className="profile-picture-placeholder">
-                <span className="profile-upload-text">Click to upload Photo *</span>
+                <span className="profile-upload-text">Upload Profile Photo</span>
               </div>
             )}
           </div>
