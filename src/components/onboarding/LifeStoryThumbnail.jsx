@@ -99,6 +99,13 @@ function LifeStoryThumbnail({ storyKey }) {
     <div className="onboarding-form thumbnail-screen">
       <video ref={videoRef} style={{ display: 'none' }} />
 
+      <div className="form-header story-header-sticky">
+        <div className="story-header-row">
+          <div className="story-header-icon">{story.icon}</div>
+          <h1 className="form-title">{story.title}</h1>
+        </div>
+      </div>
+
       <div className="thumbnail-section-card">
         <div className="thumbnail-section-header">
           <h2 className="thumbnail-section-title">Thumbnail Selection</h2>
