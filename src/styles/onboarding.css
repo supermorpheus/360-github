@@ -1482,9 +1482,10 @@
 
 .video-prompt-list .prompt-intro {
   font-family: var(--font-secondary);
-  font-size: 14px;
-  color: var(--dark-gray);
-  margin: 0 0 10px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 12px 0;
 }
 
 .video-prompt-list .prompt-intro:not(:first-child) {
@@ -1499,12 +1500,12 @@
 
 .video-prompt-list li {
   font-family: var(--font-secondary);
-  font-size: 13px;
-  color: var(--medium-gray);
+  font-size: 15px;
+  color: #444;
   padding-left: 20px;
   position: relative;
-  margin-bottom: 8px;
-  line-height: 1.5;
+  margin-bottom: 10px;
+  line-height: 1.65;
 }
 
 .video-prompt-list li:last-child {
@@ -1552,8 +1553,8 @@
 
 .prompt-section-title {
   font-family: var(--font-secondary);
-  font-size: 14px;
-  color: var(--dark-gray);
+  font-size: 15px;
+  color: #333;
   margin: 16px 0 10px 0;
 }
 
@@ -1795,17 +1796,19 @@
 
 .prompt-intro-text {
   font-family: var(--font-secondary);
-  font-size: 14px;
-  color: var(--dark-gray);
+  font-size: 15px;
+  color: #444;
   margin: 0 0 10px 0;
+  line-height: 1.65;
 }
 
 .prompt-highlight-text {
   font-family: var(--font-secondary);
-  font-size: 14px;
-  color: var(--dark-gray);
+  font-size: 15px;
+  color: #333;
   margin: 12px 0 0 0;
   font-weight: 500;
+  line-height: 1.65;
 }
 
 /* Audio Recording Section */
