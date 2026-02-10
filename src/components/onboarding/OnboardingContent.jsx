@@ -129,9 +129,9 @@ function OnboardingContent() {
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
             </div>
-            <h2 className="popup-title">Thank You!</h2>
+            <h2 className="popup-title">Yay!</h2>
             <p className="popup-message">
-              Yay! You have completed the profile overview. It is waiting for review. Soon, the admin team will make it live or get back to you.
+              You have completed the profile overview. It is waiting for review. Soon, the admin team will make it live or get back to you.
             </p>
             <button className="btn-primary" onClick={handlePopupClose}>
               Continue
