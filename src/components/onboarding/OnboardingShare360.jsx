@@ -5,7 +5,7 @@ function OnboardingShare360() {
   const { nextStep } = useOnboarding()
 
   return (
-    <OnboardingLayout>
+    <OnboardingLayout showProgress={false}>
       <div className="share360-screen">
         <div className="share360-content">
           <h1 className="share360-title">Create Your Profile</h1>
