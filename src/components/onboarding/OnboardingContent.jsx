@@ -48,7 +48,6 @@ function OnboardingContent() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h2 className="form-subtitle">Creating Profile</h2>
           <h1 className="form-title form-title-small">Content I've created</h1>
           <p className="form-helper-text">Add links to the content you would like to share with others in the community, here. <em>(It's optional. You can add later too.)</em></p>
         </div>

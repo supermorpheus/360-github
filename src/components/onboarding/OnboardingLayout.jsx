@@ -2,7 +2,7 @@ import { useOnboarding } from '../../context/OnboardingContext'
 import StatusBar from '../StatusBar'
 import '../../styles/onboarding.css'
 
-function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customStepInfo = null }) {
+function OnboardingLayout({ children, showProgress = true, showBack = true, customBackHandler = null, customStepInfo = null, progressLabel = 'Creating Profile' }) {
   const { currentStep, totalSteps, prevStep } = useOnboarding()
 
   // Calculate step info based on COMPLETED data-entry pages
@@ -37,7 +37,10 @@ function OnboardingLayout({ children, showProgress = true, showBack = true, cust
           {/* Progress Section - Step counter + segmented bar */}
           {showProgress && currentStep > 0 && currentStep < totalSteps - 1 && (
             <div className="onboarding-progress-simple">
-              <div className="progress-step-text">Step {stepInfo.current + 1} of {stepInfo.total}</div>
+              <div className="progress-header-row">
+                <div className="progress-label">{progressLabel}</div>
+                <div className="progress-step-text">Step {stepInfo.current + 1} of {stepInfo.total}</div>
+              </div>
               <div className="progress-bar-segmented">
                 {Array.from({ length: stepInfo.total }, (_, i) => (
                   <div

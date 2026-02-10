@@ -186,6 +186,7 @@ function LifeStoriesHub() {
     <OnboardingLayout
       customBackHandler={getBackHandler()}
       customStepInfo={getLifeStoryStepInfo()}
+      progressLabel="Life Stories"
       showBack={showBack}
     >
       {renderSubStep()}

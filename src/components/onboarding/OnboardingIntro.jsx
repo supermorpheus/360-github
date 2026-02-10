@@ -48,7 +48,6 @@ function OnboardingIntro() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h2 className="form-subtitle">Creating Profile</h2>
           <h1 className="form-title form-title-small">A brief introduction about myself</h1>
         </div>
 
