@@ -28,7 +28,6 @@ function LifeStoryUploadComplete({ storyKey }) {
       </div>
 
       <h1 className="upload-complete-title">
-        {storyTitles[storyKey]}<br />
         Upload Complete
       </h1>
 

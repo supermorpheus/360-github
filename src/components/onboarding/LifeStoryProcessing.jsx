@@ -53,7 +53,7 @@ function LifeStoryProcessing({ storyKey }) {
         </svg>
       </div>
 
-      <h1 className="processing-title">Processing Your {storyTitles[storyKey]}</h1>
+      <h1 className="processing-title">Processing</h1>
 
       <p className="processing-message">
         We're extracting information from your {mediaType} to populate your profile.
