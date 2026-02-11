@@ -32,11 +32,11 @@ function OnboardingWelcome() {
 
         {/* Tagline */}
         <div className="welcome-tagline">
-          <p>
-            <span className="welcome-leaf">&#x1F33F;</span>A place for<br />
-            good people to<br />
-            come together.<span className="welcome-leaf">&#x1F33F;</span>
-          </p>
+          <img
+            src="/360-github/place for good people text.png"
+            alt="A place for good people to come together."
+            className="welcome-tagline-img"
+          />
         </div>
 
         {/* CTA Button */}
