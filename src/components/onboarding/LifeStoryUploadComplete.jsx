@@ -14,6 +14,13 @@ function LifeStoryUploadComplete({ storyKey }) {
 
   return (
     <div className="onboarding-form upload-complete-screen">
+      <div className="form-header story-header-sticky">
+        <div className="story-header-row">
+          <div className="story-header-icon">{story.icon}</div>
+          <h1 className="form-title">{story.title}</h1>
+        </div>
+      </div>
+
       <div className="upload-complete-icon">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polyline points="20 6 9 17 4 12"/>
