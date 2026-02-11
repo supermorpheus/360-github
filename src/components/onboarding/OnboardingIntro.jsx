@@ -53,6 +53,7 @@ function OnboardingIntro() {
         </div>
 
         <div className="input-group">
+          <span className="see-samples-link" onClick={() => setShowSamples(true)}>See sample intros</span>
           <div className={`input-field-with-icon textarea-field ${errors.introduction ? 'input-error' : ''}`}>
             <span className="input-icon intro-icon">📝</span>
             <div className="textarea-with-hint">
@@ -69,7 +70,6 @@ function OnboardingIntro() {
             </div>
           </div>
           <div className="word-counter-row">
-            <span className="see-samples-link" onClick={() => setShowSamples(true)}>See sample intros</span>
             <span className={`word-counter ${wordCount >= MAX_WORDS ? 'limit-reached' : ''}`}>
               {wordCount} / {MAX_WORDS} words
             </span>
