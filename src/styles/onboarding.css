@@ -192,37 +192,53 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   min-height: 100%;
-  padding-top: 40px;
-  padding-bottom: 30px;
+  padding: 20px 24px 30px;
+  position: relative;
 }
 
+/* SuperMorpheus Logo - Top Left */
+.welcome-sm-logo {
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
+
+.welcome-sm-logo-img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Circular Flower Logo - Center */
 .welcome-logo {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 
 .welcome-logo-img {
-  width: 340px;
-  height: 240px;
-  object-fit: cover;
-  object-position: center 45%;
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
 }
 
+/* Gang 360 Title */
 .welcome-content {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .welcome-title {
-  font-family: var(--font-primary);
-  font-size: 32px;
+  font-family: var(--font-logo);
+  font-size: 52px;
   font-weight: 700;
-  color: var(--primary-green);
-  margin-bottom: 10px;
+  color: var(--dark-gray);
+  margin-bottom: 0;
+  letter-spacing: 1px;
+  text-transform: lowercase;
 }
 
 .welcome-subtitle {
@@ -235,11 +251,17 @@
   letter-spacing: 0.3px;
 }
 
-/* Welcome Tagline */
+/* Welcome Tagline - Text Image */
 .welcome-tagline {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   padding: 0 20px;
+}
+
+.welcome-tagline-img {
+  width: 320px;
+  height: auto;
+  object-fit: contain;
 }
 
 .welcome-tagline p {

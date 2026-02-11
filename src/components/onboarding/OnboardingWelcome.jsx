@@ -7,23 +7,36 @@ function OnboardingWelcome() {
   return (
     <OnboardingLayout showProgress={false} showBack={false}>
       <div className="welcome-screen">
-        {/* SuperMorpheus Full Logo */}
+        {/* SuperMorpheus Logo - Top Left */}
+        <div className="welcome-sm-logo">
+          <img
+            src="/360-github/SM Logo .jpeg"
+            alt="Super Morpheus"
+            className="welcome-sm-logo-img"
+          />
+        </div>
+
+        {/* Circular Flower Logo - Center */}
         <div className="welcome-logo">
           <img
             src="/360-github/SM_Color_Whole.jpeg"
-            alt="Super Morpheus"
+            alt="Gang 360"
             className="welcome-logo-img"
           />
         </div>
 
-        {/* Welcome Content */}
+        {/* Gang 360 Title */}
         <div className="welcome-content">
-          <h1 className="welcome-title">Welcome to Gang 360</h1>
+          <h1 className="welcome-title">gang 360</h1>
         </div>
 
-        {/* Tagline */}
+        {/* "A place for good people" text image */}
         <div className="welcome-tagline">
-          <p>A place for good people to come together.</p>
+          <img
+            src="/360-github/place for good people text.jpeg"
+            alt="A place for good people to come together."
+            className="welcome-tagline-img"
+          />
         </div>
 
         {/* CTA Button */}
