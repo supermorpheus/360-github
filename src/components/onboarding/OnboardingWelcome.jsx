@@ -39,14 +39,16 @@ function OnboardingWelcome() {
           />
         </div>
 
-        {/* CTA Button */}
-        <button className="btn-primary welcome-cta" onClick={nextStep}>
-          Enter the rabbit hole
-        </button>
+        {/* CTA Button - pushed to bottom */}
+        <div className="welcome-bottom">
+          <button className="btn-primary welcome-cta" onClick={nextStep}>
+            Enter the rabbit hole
+          </button>
 
-        <p className="welcome-time-note">
-          This will take about 10 minutes
-        </p>
+          <p className="welcome-time-note">
+            This will take about 10 minutes
+          </p>
+        </div>
       </div>
     </OnboardingLayout>
   )
