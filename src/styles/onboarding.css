@@ -3264,7 +3264,7 @@
 /* Sample Intros Popup */
 .see-samples-link {
   display: block;
-  text-align: right;
+  text-align: left;
   font-size: 13px;
   color: var(--primary-green);
   cursor: pointer;
