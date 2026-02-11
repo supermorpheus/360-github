@@ -3260,3 +3260,40 @@
 .section-error {
   margin-bottom: 12px;
 }
+
+/* Sample Intros Popup */
+.see-samples-link {
+  font-size: 13px;
+  color: var(--primary-green);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.see-samples-link:hover {
+  text-decoration: underline;
+}
+
+.sample-intro-card {
+  background: #f8f8f8;
+  border-left: 4px solid #bbb;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.sample-intro-card p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sample-intro-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
