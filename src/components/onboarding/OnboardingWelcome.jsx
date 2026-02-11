@@ -30,13 +30,13 @@ function OnboardingWelcome() {
           <h1 className="welcome-title">gang 360</h1>
         </div>
 
-        {/* "A place for good people" text image */}
+        {/* Tagline */}
         <div className="welcome-tagline">
-          <img
-            src="/360-github/place for good people text.jpeg"
-            alt="A place for good people to come together."
-            className="welcome-tagline-img"
-          />
+          <p>
+            <span className="welcome-leaf">&#x1F33F;</span>A place for<br />
+            good people to<br />
+            come together.<span className="welcome-leaf">&#x1F33F;</span>
+          </p>
         </div>
 
         {/* CTA Button */}
