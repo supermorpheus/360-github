@@ -1,8 +1,10 @@
 import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext'
 
 function LifeStoryUploadComplete({ storyKey }) {
-  const { goToProcessing } = useOnboarding()
+  const { goToProcessing, profileData } = useOnboarding()
   const story = lifeStoryPrompts[storyKey]
+  const inputMethod = profileData.lifeStories[storyKey]?.inputMethod
+  const mediaType = inputMethod === 'audio' ? 'audio' : 'video'
 
   const storyTitles = {
     earlyLife: 'Early Life',
@@ -24,7 +26,7 @@ function LifeStoryUploadComplete({ storyKey }) {
       </h1>
 
       <p className="upload-complete-message">
-        Thanks for uploading your video / audio, We're processing it to extract the information for your profile.
+        Thanks for uploading your {mediaType}, We're processing it to extract the information for your profile.
       </p>
 
       <p className="upload-complete-time">
@@ -32,19 +34,12 @@ function LifeStoryUploadComplete({ storyKey }) {
       </p>
 
       <div className="upload-warning-box">
-        <div className="warning-icon-circle">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-        </div>
         <ul className="warning-list">
           <li>
-            <strong>Do not</strong> navigate away or close this tab while <strong>video / audio</strong> is <strong>uploading</strong>.
+            Do not navigate away or close this tab while {mediaType} is uploading.
           </li>
           <li>
-            <strong>Do not</strong> click the <strong>Back</strong> button, <strong>refresh</strong>, close this tab, or navigate elsewhere while <strong>video / audio</strong> is being <strong>processed</strong>.
+            Do not click the Back button, refresh, close this tab, or navigate elsewhere while {mediaType} is being processed.
           </li>
         </ul>
       </div>

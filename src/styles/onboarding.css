@@ -2563,9 +2563,9 @@
   display: flex;
   gap: 16px;
   padding: 20px 24px;
-  background-color: #F8F9FA;
-  border: 1px solid #E3F2FD;
-  border-left: 4px solid #F0BA3F;
+  background-color: var(--primary-green-light);
+  border: 1px solid var(--primary-green);
+  border-left: 4px solid var(--primary-green);
   border-radius: 12px;
   margin-bottom: 24px;
   text-align: left;
@@ -2608,7 +2608,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #F0BA3F;
+  color: var(--primary-green);
 }
 
 /* ==================== */
