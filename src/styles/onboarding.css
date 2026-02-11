@@ -200,12 +200,12 @@
 /* SuperMorpheus Logo - Top Left */
 .welcome-sm-logo {
   align-self: flex-start;
-  padding-top: 16px;
-  margin-bottom: 4px;
+  padding-top: 12px;
+  margin-bottom: 0;
 }
 
 .welcome-sm-logo-img {
-  width: 60px;
+  width: 56px;
   height: auto;
   object-fit: contain;
 }
@@ -213,26 +213,27 @@
 /* Circular Flower Logo - Center */
 .welcome-logo {
   margin-bottom: 0;
+  margin-top: -8px;
   display: flex;
   justify-content: center;
 }
 
 .welcome-logo-img {
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
   object-fit: contain;
 }
 
 /* Gang 360 Title */
 .welcome-content {
   text-align: center;
-  margin-bottom: 4px;
-  margin-top: -4px;
+  margin-bottom: 0;
+  margin-top: -16px;
 }
 
 .welcome-title {
   font-family: var(--font-logo);
-  font-size: 56px;
+  font-size: 64px;
   font-weight: 700;
   color: var(--dark-gray);
   margin-bottom: 0;
@@ -254,12 +255,13 @@
 .welcome-tagline {
   text-align: center;
   margin-bottom: 0;
+  margin-top: 4px;
   padding: 0;
 }
 
 .welcome-tagline-img {
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
   height: auto;
   object-fit: contain;
   filter: brightness(1.08);
