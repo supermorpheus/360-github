@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
 import { members } from '../../data/mockData'
 import '../../styles/members.css'
+import '../../styles/dashboard.css'
 
 function Members() {
   const [searchQuery, setSearchQuery] = useState('')

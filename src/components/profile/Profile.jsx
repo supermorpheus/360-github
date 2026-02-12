@@ -1,14 +1,34 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
 import { currentUser } from '../../data/mockData'
 import '../../styles/profile.css'
+import '../../styles/dashboard.css'
 
 function Profile() {
+  const [showMenu, setShowMenu] = useState(false)
+
   const getInitials = (firstName, lastName) => {
     return `${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}`
   }
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+  const getVideoStatusLabel = (status) => {
+    switch (status) {
+      case 'published': return 'Published'
+      case 'under_review': return 'Under review'
+      default: return 'Not uploaded'
+    }
+  }
+
+  const getVideoStatusClass = (status) => {
+    switch (status) {
+      case 'published': return 'video-published'
+      case 'under_review': return 'video-review'
+      default: return 'video-not-uploaded'
+    }
+  }
 
   const checklistItems = [
     { label: 'Basic Info', done: !!(currentUser.firstName && currentUser.lastName) },
@@ -16,9 +36,9 @@ function Profile() {
     { label: 'Introduction', done: !!currentUser.introduction },
     { label: 'Location', done: !!currentUser.livesIn },
     { label: 'Quote', done: !!currentUser.inspiringQuote },
-    { label: 'Early Life Video', done: false },
-    { label: 'Professional Life Video', done: false },
-    { label: 'Current Life Video', done: false },
+    { label: 'Early Life Video', done: currentUser.videos?.earlyLife?.status === 'published' },
+    { label: 'Professional Video', done: currentUser.videos?.professionalLife?.status === 'published' },
+    { label: 'Current Life Video', done: currentUser.videos?.currentLife?.status === 'published' },
   ]
 
   const completionPercent = Math.round(
@@ -120,6 +140,18 @@ function Profile() {
           </div>
         </div>
 
+        {/* Tags */}
+        {currentUser.tags && currentUser.tags.length > 0 && (
+          <div className="profile-section">
+            <h3 className="profile-section-title">Tags</h3>
+            <div className="profile-tags">
+              {currentUser.tags.map((tag) => (
+                <span key={tag} className="profile-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Inspiring Quote Card */}
         {currentUser.inspiringQuote && (
           <div className="colored-card quote-card-purple">
@@ -172,8 +204,8 @@ function Profile() {
               </div>
               <span className="coordinate-label">Email</span>
             </a>
-            {currentUser.mobile && (
-              <a href={`https://wa.me/${currentUser.mobile.replace(/\s+/g, '').replace('+', '')}`} className="coordinate-link">
+            {currentUser.phone && (
+              <a href={`https://wa.me/${currentUser.phone.replace(/\s+/g, '').replace('+', '')}`} className="coordinate-link">
                 <div className="coordinate-icon whatsapp">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -182,8 +214,8 @@ function Profile() {
                 <span className="coordinate-label">WhatsApp</span>
               </a>
             )}
-            {currentUser.mobile && (
-              <a href={`tel:${currentUser.mobile}`} className="coordinate-link">
+            {currentUser.phone && (
+              <a href={`tel:${currentUser.phone}`} className="coordinate-link">
                 <div className="coordinate-icon phone">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -200,36 +232,38 @@ function Profile() {
           <h3 className="profile-section-title">Story Videos</h3>
           <p className="section-subtitle">Share your journey through video to become a Super member</p>
           <div className="video-upload-grid">
-            <div className="video-upload-card">
-              <div className="video-upload-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polygon points="23 7 16 12 23 17 23 7" />
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                </svg>
-              </div>
-              <span className="video-label">Early Life</span>
-              <span className="video-status-text">Not uploaded</span>
-            </div>
-            <div className="video-upload-card">
-              <div className="video-upload-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polygon points="23 7 16 12 23 17 23 7" />
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                </svg>
-              </div>
-              <span className="video-label">Professional Life</span>
-              <span className="video-status-text">Not uploaded</span>
-            </div>
-            <div className="video-upload-card">
-              <div className="video-upload-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polygon points="23 7 16 12 23 17 23 7" />
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                </svg>
-              </div>
-              <span className="video-label">Current Life</span>
-              <span className="video-status-text">Not uploaded</span>
-            </div>
+            {[
+              { key: 'earlyLife', label: 'Early Life' },
+              { key: 'professionalLife', label: 'Professional Life' },
+              { key: 'currentLife', label: 'Current Life' }
+            ].map((story) => {
+              const videoData = currentUser.videos?.[story.key] || { status: 'not_uploaded' }
+              return (
+                <div key={story.key} className={`video-upload-card ${getVideoStatusClass(videoData.status)}`}>
+                  {videoData.thumbnail ? (
+                    <div className="video-thumbnail">
+                      <img src={videoData.thumbnail} alt={story.label} />
+                      <div className="video-play-overlay">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                          <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="video-upload-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polygon points="23 7 16 12 23 17 23 7" />
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                      </svg>
+                    </div>
+                  )}
+                  <span className="video-label">{story.label}</span>
+                  <span className={`video-status-text ${getVideoStatusClass(videoData.status)}`}>
+                    {getVideoStatusLabel(videoData.status)}
+                  </span>
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -251,14 +285,50 @@ function Profile() {
             </svg>
             <span>Community</span>
           </Link>
-          <Link to="/profile" className="nav-item active">
+          <button className="nav-item" onClick={() => setShowMenu(!showMenu)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
-            <span>Profile</span>
-          </Link>
+            <span>More</span>
+          </button>
         </nav>
+
+        {/* Hamburger Menu Overlay */}
+        {showMenu && (
+          <div className="menu-overlay" onClick={() => setShowMenu(false)}>
+            <div className="menu-panel" onClick={(e) => e.stopPropagation()}>
+              <div className="menu-header">
+                <h3 className="menu-title">More</h3>
+                <button className="menu-close" onClick={() => setShowMenu(false)}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+              <nav className="menu-nav">
+                <Link to="/profile" className="menu-item" onClick={() => setShowMenu(false)}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  <span>My Profile</span>
+                </Link>
+                <Link to="/events" className="menu-item" onClick={() => setShowMenu(false)}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  <span>Events</span>
+                </Link>
+              </nav>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )

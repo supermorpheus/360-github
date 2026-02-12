@@ -9,10 +9,20 @@ export const currentUser = {
   currentOrganization: 'Super Morpheus',
   currentRole: 'Product Lead',
   livesIn: 'Bengaluru, India',
-  introduction: 'Passionate about building products that make a difference. Love connecting with fellow entrepreneurs and sharing ideas.',
-  profileCompletion: 65,
-  status: 'basic',
-  joinedDate: '2025-01-15'
+  introduction: 'Passionate about building products that make a difference. Love connecting with fellow entrepreneurs and sharing ideas. Focused on community-driven growth and meaningful connections.',
+  profileCompletion: 88,
+  status: 'super',
+  joinedDate: '2025-01-15',
+  phone: '+91 98765 00001',
+  linkedin: 'https://linkedin.com/in/anugrah',
+  tags: ['Product', 'Community', 'Startup', 'Growth'],
+  inspiringQuote: 'The best way to predict the future is to create it.',
+  joyOutsideWork: 'Exploring hidden cafes, weekend treks in the Western Ghats, and reading sci-fi novels.',
+  videos: {
+    earlyLife: { status: 'published', url: 'https://example.com/videos/anu-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=200&h=120&fit=crop' },
+    professionalLife: { status: 'published', url: 'https://example.com/videos/anu-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&h=120&fit=crop' },
+    currentLife: { status: 'under_review', url: 'https://example.com/videos/anu-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=200&h=120&fit=crop' }
+  }
 }
 
 export const members = [
@@ -29,8 +39,15 @@ export const members = [
     introduction: 'Building the future of EdTech in India. Former Google engineer turned entrepreneur. Passionate about making quality education accessible to every child in the country.',
     status: 'super',
     tags: ['EdTech', 'AI/ML', 'Startup', 'Education'],
-    quote: 'Education is the most powerful weapon to change the world.',
-    joinedDate: '2024-11-20'
+    inspiringQuote: 'Education is the most powerful weapon to change the world.',
+    joyOutsideWork: 'Classical dance, mentoring young women in tech, and cooking South Indian recipes.',
+    linkedin: 'https://linkedin.com/in/priyasharma',
+    joinedDate: '2024-11-20',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/priya-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'published', url: 'https://example.com/videos/priya-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=200&h=120&fit=crop' },
+      currentLife: { status: 'under_review', url: 'https://example.com/videos/priya-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&h=120&fit=crop' }
+    }
   },
   {
     id: 'member-002',
@@ -45,8 +62,15 @@ export const members = [
     introduction: 'Climate tech enthusiast working on making renewable energy accessible to everyone. IIT Delhi alum with a mission to reduce carbon footprint across South Asia.',
     status: 'active',
     tags: ['CleanTech', 'Sustainability', 'B2B', 'Solar'],
-    quote: 'The best time to plant a tree was 20 years ago. The second best time is now.',
-    joinedDate: '2024-12-05'
+    inspiringQuote: 'The best time to plant a tree was 20 years ago. The second best time is now.',
+    joyOutsideWork: 'Marathon running, nature photography, and volunteering at animal shelters.',
+    linkedin: 'https://linkedin.com/in/rahulverma',
+    joinedDate: '2024-12-05',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/rahul-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'under_review', url: 'https://example.com/videos/rahul-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=200&h=120&fit=crop' },
+      currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    }
   },
   {
     id: 'member-003',
@@ -61,8 +85,15 @@ export const members = [
     introduction: 'Healthcare technology leader with 15 years of experience. Built telemedicine platforms serving 2M+ patients. Passionate about digital health innovation in tier-2 cities.',
     status: 'super',
     tags: ['HealthTech', 'Digital Health', 'SaaS', 'Telemedicine'],
-    quote: 'Technology should serve humanity, not the other way around.',
-    joinedDate: '2024-10-15'
+    inspiringQuote: 'Technology should serve humanity, not the other way around.',
+    joyOutsideWork: 'Bharatanatyam, reading medical history, and gardening on weekends.',
+    linkedin: 'https://linkedin.com/in/ananyakrishnan',
+    joinedDate: '2024-10-15',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/ananya-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'published', url: 'https://example.com/videos/ananya-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=200&h=120&fit=crop' },
+      currentLife: { status: 'published', url: 'https://example.com/videos/ananya-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=200&h=120&fit=crop' }
+    }
   },
   {
     id: 'member-004',
@@ -77,8 +108,15 @@ export const members = [
     introduction: 'Fintech founder focused on financial inclusion. Building banking for the next billion. Previously led payments at Paytm. Angel investor in 12+ startups.',
     status: 'active',
     tags: ['FinTech', 'Payments', 'Inclusion', 'Angel Investor'],
-    quote: 'Banking should be invisible, not a burden.',
-    joinedDate: '2025-01-02'
+    inspiringQuote: 'Banking should be invisible, not a burden.',
+    joyOutsideWork: 'Cricket, angel investing meetups, and exploring street food across India.',
+    linkedin: 'https://linkedin.com/in/vikramsingh',
+    joinedDate: '2025-01-02',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/vikram-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'not_uploaded', url: null, thumbnail: null },
+      currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    }
   },
   {
     id: 'member-005',
@@ -93,8 +131,15 @@ export const members = [
     introduction: 'Design thinking advocate helping startups build user-centric products. NID Ahmedabad graduate. Speaker at DesignUp and UX India conferences.',
     status: 'basic',
     tags: ['Design', 'UX', 'Consulting', 'Design Thinking'],
-    quote: 'Good design is invisible. Great design is unforgettable.',
-    joinedDate: '2025-01-10'
+    inspiringQuote: 'Good design is invisible. Great design is unforgettable.',
+    joyOutsideWork: 'Pottery classes, museum hopping, and designing board games.',
+    linkedin: 'https://linkedin.com/in/meerapatel',
+    joinedDate: '2025-01-10',
+    videos: {
+      earlyLife: { status: 'not_uploaded', url: null, thumbnail: null },
+      professionalLife: { status: 'not_uploaded', url: null, thumbnail: null },
+      currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    }
   },
   {
     id: 'member-006',
@@ -109,8 +154,15 @@ export const members = [
     introduction: 'Supply chain optimization expert making logistics smarter with AI. ISB Hyderabad alum. Our platform moves 50K+ shipments daily across 200 cities.',
     status: 'super',
     tags: ['Logistics', 'AI', 'Supply Chain', 'B2B SaaS'],
-    quote: 'The last mile is the hardest mile, and that is where the opportunity lies.',
-    joinedDate: '2024-09-28'
+    inspiringQuote: 'The last mile is the hardest mile, and that is where the opportunity lies.',
+    joyOutsideWork: 'Sailing, building RC drones, and coaching basketball for kids.',
+    linkedin: 'https://linkedin.com/in/arjunnair',
+    joinedDate: '2024-09-28',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/arjun-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'published', url: 'https://example.com/videos/arjun-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&h=120&fit=crop' },
+      currentLife: { status: 'under_review', url: 'https://example.com/videos/arjun-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&h=120&fit=crop' }
+    }
   },
   {
     id: 'member-007',
@@ -125,8 +177,15 @@ export const members = [
     introduction: 'Farm-to-fork supply chain innovator. Connecting 10K+ farmers directly to urban consumers. Forbes 30 Under 30 Asia.',
     status: 'active',
     tags: ['AgriTech', 'Supply Chain', 'D2C', 'Impact'],
-    quote: 'Every meal tells a story. We are making sure the farmer is part of it.',
-    joinedDate: '2025-01-20'
+    inspiringQuote: 'Every meal tells a story. We are making sure the farmer is part of it.',
+    joyOutsideWork: 'Organic farming on weekends, Kathakali dance, and writing food blogs.',
+    linkedin: 'https://linkedin.com/in/kavyaiyer',
+    joinedDate: '2025-01-20',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/kavya-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'published', url: 'https://example.com/videos/kavya-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=200&h=120&fit=crop' },
+      currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    }
   },
   {
     id: 'member-008',
@@ -141,8 +200,15 @@ export const members = [
     introduction: 'Building satellite imagery analytics for agriculture and urban planning. Ex-ISRO scientist. Believe in using space tech to solve earthly problems.',
     status: 'super',
     tags: ['SpaceTech', 'Satellite', 'Analytics', 'Deep Tech'],
-    quote: 'Looking down from space gives you the best perspective on what matters on Earth.',
-    joinedDate: '2024-08-15'
+    inspiringQuote: 'Looking down from space gives you the best perspective on what matters on Earth.',
+    joyOutsideWork: 'Astrophotography, trekking in the Himalayas, and building telescopes.',
+    linkedin: 'https://linkedin.com/in/sidkapoor',
+    joinedDate: '2024-08-15',
+    videos: {
+      earlyLife: { status: 'published', url: 'https://example.com/videos/sid-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=120&fit=crop' },
+      professionalLife: { status: 'published', url: 'https://example.com/videos/sid-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=200&h=120&fit=crop' },
+      currentLife: { status: 'published', url: 'https://example.com/videos/sid-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=200&h=120&fit=crop' }
+    }
   }
 ]
 
