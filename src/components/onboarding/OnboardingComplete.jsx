@@ -42,7 +42,7 @@ function OnboardingComplete() {
 
         {/* Redirect Notice */}
         <p className="redirect-notice">
-          Redirecting you to the members page in {countdown} second{countdown !== 1 ? 's' : ''}...
+          Redirecting you to the home page in {countdown} second{countdown !== 1 ? 's' : ''}...
         </p>
 
         {/* Loading Animation */}
