@@ -68,7 +68,7 @@ function LifeStoryEarlyConfirm2() {
   // Individual field error checks
   const getErrors = () => ({
     universities: universities.filter(u => u.name.trim() && u.course.trim() && u.location.trim()).length === 0
-      ? 'Please add at least one university with name, course, and location' : '',
+      ? 'Please add at least one university/college with name, course, and location' : '',
     tags: tags.length === 0 ? 'Please add at least one tag to describe your early life interests' : ''
   })
 
@@ -105,7 +105,7 @@ function LifeStoryEarlyConfirm2() {
 
       {/* Universities */}
       <div className="confirm-section">
-        <h3 className="section-title-bold">Universities</h3>
+        <h3 className="section-title-bold">Universities / Colleges</h3>
         {showErrors && errors.universities && (
           <p className="field-error section-error">{errors.universities}</p>
         )}
@@ -119,7 +119,7 @@ function LifeStoryEarlyConfirm2() {
                 <input
                   type="text"
                   className={`input-field ${showErrors && errors.universities && !uni.name.trim() ? 'input-error' : ''}`}
-                  placeholder="University name"
+                  placeholder="University / College name"
                   value={uni.name}
                   onChange={(e) => updateUniversity(idx, 'name', e.target.value)}
                 />
@@ -164,7 +164,7 @@ function LifeStoryEarlyConfirm2() {
             <line x1="12" y1="5" x2="12" y2="19"/>
             <line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
-          Add University
+          Add University / College
         </button>
       </div>
 

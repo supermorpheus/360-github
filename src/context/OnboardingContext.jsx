@@ -92,7 +92,7 @@ export const lifeStoryPrompts = {
       'Talk about your family, parents, growing up environment.',
       'School you went to, your friends, what were the things you did together?',
       'What were your interests?',
-      'Which college did you study in? Did you go to University(s)? What years were these?',
+      'Which university/college did you study in? What years were these?',
       'Anything else from your memory of these times that you would like to share?'
     ]
   },
