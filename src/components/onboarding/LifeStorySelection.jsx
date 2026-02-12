@@ -39,7 +39,7 @@ function LifeStorySelection() {
           const showAsComplete = story.key === 'current' ? anyStoryComplete : isComplete
 
           const statusTag = showAsComplete
-            ? (story.key === 'current' ? 'Under review' : 'Approved')
+            ? (story.key === 'current' ? 'Under review' : 'Published')
             : null
 
           return (
