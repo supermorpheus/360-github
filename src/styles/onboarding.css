@@ -1623,6 +1623,7 @@
 }
 
 .life-story-card.completed {
+  background-color: #fdf6d8;
   border-color: #e2b910;
 }
 
