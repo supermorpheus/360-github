@@ -187,7 +187,7 @@ function LifeStoryEarlyConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="Press Enter after adding a Tag"
+          placeholder="Press enter after each tag"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
