@@ -1622,9 +1622,26 @@
   background-color: var(--primary-green-light);
 }
 
-.life-story-card.completed {
-  background-color: #fdf6d8;
-  border-color: #e2b910;
+.life-story-card.card-approved {
+  background-color: #e2b910;
+  border-color: #c9a40e;
+}
+
+.life-story-card.card-approved .story-card-title,
+.life-story-card.card-approved .story-card-subtitle,
+.life-story-card.card-approved .story-card-arrow {
+  color: #fff;
+}
+
+.life-story-card.card-review {
+  background-color: #d5cc8e;
+  border-color: #c2b97a;
+}
+
+.life-story-card.card-review .story-card-title,
+.life-story-card.card-review .story-card-subtitle,
+.life-story-card.card-review .story-card-arrow {
+  color: #fff;
 }
 
 .story-card-icon {
@@ -1639,8 +1656,9 @@
   font-size: 24px;
 }
 
-.life-story-card.completed .story-card-icon {
-  background-color: #fdf6d8;
+.life-story-card.card-approved .story-card-icon,
+.life-story-card.card-review .story-card-icon {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .story-card-content {
@@ -1675,13 +1693,13 @@
 }
 
 .story-card-badge.badge-approved {
-  background-color: var(--primary-green-light);
-  color: var(--primary-green);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #856d00;
 }
 
 .story-card-badge.badge-review {
-  background-color: #d5cc8e;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #6b6330;
 }
 
 .story-card-arrow {

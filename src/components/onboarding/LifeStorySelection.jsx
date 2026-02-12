@@ -45,7 +45,7 @@ function LifeStorySelection() {
           return (
             <button
               key={story.key}
-              className={`life-story-card ${showAsComplete ? 'completed' : ''}`}
+              className={`life-story-card ${showAsComplete ? (story.key === 'current' ? 'card-review' : 'card-approved') : ''}`}
               onClick={() => selectLifeStory(story.key)}
             >
               <div className="story-card-icon">{story.icon}</div>
