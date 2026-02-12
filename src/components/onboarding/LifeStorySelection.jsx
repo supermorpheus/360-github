@@ -64,7 +64,7 @@ function LifeStorySelection() {
       </div>
 
       <button className="btn-primary" onClick={nextStep}>
-        {allComplete ? 'Continue' : someComplete ? 'Continue (you can add more later)' : "Go to Homepage"}
+        Go to Homepage
       </button>
 
       <p className="skip-note skip-note-visible">
