@@ -2264,6 +2264,11 @@
   color: var(--primary-green);
 }
 
+.popup-icon-emoji {
+  font-size: 40px;
+  background-color: transparent;
+}
+
 .popup-title {
   font-family: var(--font-primary);
   font-size: 24px;

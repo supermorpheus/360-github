@@ -259,12 +259,10 @@ function LifeStoryCurrentConfirm2() {
       {showSubmitPopup && (
         <div className="popup-overlay" onClick={handlePopupClose}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="20 6 9 17 4 12"/>
-              </svg>
+            <div className="popup-icon popup-icon-emoji">
+              🎉
             </div>
-            <h2 className="popup-title">Thank You!</h2>
+            <h2 className="popup-title">Yay!</h2>
             <p className="popup-message">
               Your Current Life story has been submitted for review. Our admin team will review your submission and get back to you soon.
             </p>
