@@ -75,7 +75,7 @@ function LifeStoryProfessionalConfirm2() {
   }
 
   const handleTagKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' || e.key === ',') {
       e.preventDefault()
       addTag()
     }
@@ -205,7 +205,7 @@ function LifeStoryProfessionalConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="Press enter after each tag"
+          placeholder="Press enter or comma after each tag"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
