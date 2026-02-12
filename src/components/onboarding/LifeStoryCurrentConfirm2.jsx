@@ -61,8 +61,10 @@ function LifeStoryCurrentConfirm2() {
 
   // Tag handlers
   const addTag = () => {
-    if (newTag.trim() && tags.length < maxTags) {
-      setTags([...tags, newTag.trim()])
+    const newTags = newTag.split(',').map(t => t.trim()).filter(t => t)
+    if (newTags.length > 0) {
+      const remaining = maxTags - tags.length
+      setTags([...tags, ...newTags.slice(0, remaining)])
       setNewTag('')
     }
   }
@@ -72,7 +74,7 @@ function LifeStoryCurrentConfirm2() {
   }
 
   const handleTagKeyPress = (e) => {
-    if (e.key === 'Enter' || e.key === ',') {
+    if (e.key === 'Enter') {
       e.preventDefault()
       addTag()
     }
@@ -212,7 +214,7 @@ function LifeStoryCurrentConfirm2() {
       {/* Current Life Tags */}
       <div className="confirm-section">
         <label className="input-label">
-          My Current Life Tags <span className="required-asterisk">*</span>
+          Tags <span className="required-asterisk">*</span>
         </label>
         <p className="tag-description">Add some descriptive tags that will give people a feel of your current life. (Example: Bengaluru, AI Enthusiast, Fitness, Travel, Podcasts, Cooking, Remote work, Mentoring etc)</p>
         {tags.length > 0 && (
@@ -228,7 +230,7 @@ function LifeStoryCurrentConfirm2() {
         <input
           type="text"
           className={`input-field ${showErrors && errors.tags ? 'input-error' : ''}`}
-          placeholder="Press enter or comma after each tag"
+          placeholder="Press enter after each tag"
           value={newTag}
           onChange={(e) => setNewTag(e.target.value)}
           onKeyPress={handleTagKeyPress}
