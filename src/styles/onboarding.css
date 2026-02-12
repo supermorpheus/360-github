@@ -1623,7 +1623,7 @@
 }
 
 .life-story-card.completed {
-  border-color: var(--primary-green);
+  border-color: #e2b910;
 }
 
 .story-card-icon {
@@ -1639,7 +1639,7 @@
 }
 
 .life-story-card.completed .story-card-icon {
-  background-color: var(--primary-green-light);
+  background-color: #fdf6d8;
 }
 
 .story-card-content {
@@ -1667,12 +1667,20 @@
   gap: 4px;
   margin-top: 6px;
   padding: 3px 8px;
-  background-color: var(--primary-green-light);
-  color: var(--primary-green);
   border-radius: 4px;
   font-family: var(--font-secondary);
   font-size: 11px;
   font-weight: 500;
+}
+
+.story-card-badge.badge-approved {
+  background-color: var(--primary-green-light);
+  color: var(--primary-green);
+}
+
+.story-card-badge.badge-review {
+  background-color: #fdf6d8;
+  color: #b8960d;
 }
 
 .story-card-arrow {

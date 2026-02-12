@@ -34,6 +34,10 @@ function LifeStorySelection() {
           const isComplete = isLifeStoryComplete(story.key)
           const inputMethod = getInputMethodLabel(story.key)
 
+          const statusTag = isComplete
+            ? (story.key === 'current' ? 'Under review' : 'Approved')
+            : null
+
           return (
             <button
               key={story.key}
@@ -44,12 +48,12 @@ function LifeStorySelection() {
               <div className="story-card-content">
                 <h3 className="story-card-title">{story.title}</h3>
                 <p className="story-card-subtitle">{story.subtitle}</p>
-                {isComplete && inputMethod && (
-                  <span className="story-card-badge">
+                {isComplete && statusTag && (
+                  <span className={`story-card-badge ${story.key === 'current' ? 'badge-review' : 'badge-approved'}`}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M20 6L9 17l-5-5"/>
                     </svg>
-                    {inputMethod} added
+                    {statusTag}
                   </span>
                 )}
               </div>
