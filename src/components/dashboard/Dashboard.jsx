@@ -6,6 +6,7 @@ import '../../styles/dashboard.css'
 
 function Dashboard() {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [showMenu, setShowMenu] = useState(false)
   const totalSlides = 3
 
   useEffect(() => {
@@ -35,6 +36,19 @@ function Dashboard() {
     <>
       <StatusBar />
       <div className="page-content dashboard-page">
+
+        {/* Search Bar - Top */}
+        <div className="section search-section">
+          <Link to="/members" className="search-bar-link">
+            <div className="search-bar">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <span>Search by name, passion, location</span>
+            </div>
+          </Link>
+        </div>
 
         {/* Card 1: Revolving Welcome Cards */}
         <div className="welcome-carousel" onClick={handleCardClick}>
@@ -154,15 +168,13 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Card 2: Members Joined */}
+        {/* Card 2: New Members */}
         <div className="members-joined-card">
           <div className="members-joined-header">
-            <h2 className="members-joined-title">
-              {stats.newMembersRecent} members have joined in the past 2 weeks
-            </h2>
+            <h2 className="members-joined-title">New Members</h2>
           </div>
           <div className="new-members-scroll">
-            {newMembers.map((member) => (
+            {newMembers.slice(0, 4).map((member) => (
               <div key={member.id} className="new-member-card">
                 <div className="new-member-avatar">
                   {member.profilePicture ? (
@@ -176,23 +188,12 @@ function Dashboard() {
               </div>
             ))}
           </div>
-          <Link to="/members" className="browse-all-btn">
-            Browse All Members
-          </Link>
         </div>
 
-        {/* Card 3: Search Bar */}
-        <div className="section">
-          <Link to="/members" className="search-bar-link">
-            <div className="search-bar">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-              <span>Search by name, passion, location</span>
-            </div>
-          </Link>
-        </div>
+        {/* Browse All Members - Separate */}
+        <Link to="/members" className="browse-all-btn browse-all-standalone">
+          Browse All Members
+        </Link>
 
         {/* Bottom Navigation */}
         <nav className="bottom-nav">
@@ -212,14 +213,50 @@ function Dashboard() {
             </svg>
             <span>Community</span>
           </Link>
-          <Link to="/profile" className="nav-item">
+          <button className="nav-item" onClick={() => setShowMenu(!showMenu)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
             </svg>
-            <span>Profile</span>
-          </Link>
+            <span>More</span>
+          </button>
         </nav>
+
+        {/* Hamburger Menu Overlay */}
+        {showMenu && (
+          <div className="menu-overlay" onClick={() => setShowMenu(false)}>
+            <div className="menu-panel" onClick={(e) => e.stopPropagation()}>
+              <div className="menu-header">
+                <h3 className="menu-title">More</h3>
+                <button className="menu-close" onClick={() => setShowMenu(false)}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                </button>
+              </div>
+              <nav className="menu-nav">
+                <Link to="/profile" className="menu-item" onClick={() => setShowMenu(false)}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                  <span>My Profile</span>
+                </Link>
+                <Link to="/events" className="menu-item" onClick={() => setShowMenu(false)}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  <span>Events</span>
+                </Link>
+              </nav>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )

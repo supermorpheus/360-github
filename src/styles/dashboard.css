@@ -6,12 +6,19 @@
   overflow: hidden;
 }
 
+/* Search at top */
+.search-section {
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
 /* Welcome Carousel Container */
 .welcome-carousel {
   position: relative;
-  margin: 12px 0 16px;
+  margin: 0 0 16px;
   cursor: pointer;
   flex-shrink: 0;
+  min-height: 310px;
 }
 
 /* Welcome Card */
@@ -399,6 +406,9 @@
   text-decoration: none;
   color: var(--medium-gray);
   padding: 8px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-item.active {
@@ -408,4 +418,87 @@
 .nav-item span {
   font-family: var(--font-secondary);
   font-size: 11px;
+}
+
+/* Browse All Members - Standalone */
+.browse-all-standalone {
+  margin-bottom: 16px;
+}
+
+/* Hamburger Menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.menu-panel {
+  width: 390px;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  padding: 24px;
+  max-height: 60vh;
+}
+
+@media (max-width: 430px) {
+  .menu-panel {
+    width: 100%;
+  }
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.menu-title {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+
+.menu-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--medium-gray);
+  padding: 4px;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--dark-gray);
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: var(--primary-green-light);
+}
+
+.menu-item svg {
+  color: var(--primary-green);
 }
