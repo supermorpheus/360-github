@@ -2309,6 +2309,10 @@
   background-color: transparent;
 }
 
+.popup-icon-emoji-bg {
+  font-size: 40px;
+}
+
 .popup-title {
   font-family: var(--font-primary);
   font-size: var(--text-2xl);

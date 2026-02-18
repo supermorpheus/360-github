@@ -120,7 +120,7 @@ function LifeStoryProfessionalConfirm3() {
       {showSubmitPopup && (
         <div className="popup-overlay" onClick={handlePopupClose}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-icon popup-icon-emoji">
+            <div className="popup-icon popup-icon-emoji-bg">
               🍿
             </div>
             <h2 className="popup-title">Yay!</h2>
