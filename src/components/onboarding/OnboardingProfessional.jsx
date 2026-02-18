@@ -37,7 +37,7 @@ function OnboardingProfessional() {
     <OnboardingLayout>
       <div className="onboarding-form">
         <div className="form-header">
-          <h1 className="form-title form-title-small">Currently I work at…</h1>
+          <h1 className="form-title form-title-small">I currently work at…</h1>
         </div>
 
         <div className="input-group">
