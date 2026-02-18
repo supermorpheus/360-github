@@ -31,7 +31,7 @@
 }
 
 .status-bar-time {
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--dark-gray);
 }

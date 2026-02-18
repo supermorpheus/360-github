@@ -59,7 +59,25 @@
   --font-logo: 'DIN Condensed', sans-serif;
   --font-primary: 'DIN Alternate', 'DIN Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-secondary: 'Eina', 'DM Sans', sans-serif;
-  --font-accent: 'Eina', 'IBM Plex Sans', sans-serif;
+  --font-accent: var(--font-secondary);
+
+  /* Typography Scale */
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 28px;
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.6;
+
+  /* Text Colors */
+  --text-secondary: #555555;
 
   /* Spacing */
   --space-xs: 4px;

@@ -53,7 +53,7 @@
   color: white;
   font-family: var(--font-primary);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   overflow: hidden;
 }
 
@@ -65,21 +65,21 @@
 
 .welcome-card-name {
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: var(--text-xl);
   font-weight: 700;
   margin-bottom: 2px;
 }
 
 .welcome-card-role {
   font-family: var(--font-secondary);
-  font-size: 12px;
+  font-size: var(--text-sm);
   opacity: 0.8;
 }
 
 .screen-label {
   display: inline-block;
-  font-family: var(--font-accent);
-  font-size: 9px;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -113,16 +113,16 @@
 
 .screen-title {
   font-family: var(--font-primary);
-  font-size: 15px;
+  font-size: var(--text-lg);
   font-weight: 700;
   margin-bottom: 3px;
 }
 
 .screen-desc {
   font-family: var(--font-secondary);
-  font-size: 11px;
+  font-size: var(--text-xs);
   opacity: 0.8;
-  line-height: 1.4;
+  line-height: var(--leading-normal);
 }
 
 /* Completion mini bar */
@@ -136,13 +136,13 @@
   align-items: center;
   margin-bottom: 6px;
   font-family: var(--font-secondary);
-  font-size: 11px;
+  font-size: var(--text-xs);
   opacity: 0.85;
 }
 
 .completion-value {
   font-family: var(--font-primary);
-  font-size: 15px;
+  font-size: var(--text-lg);
   font-weight: 700;
   opacity: 1;
 }
@@ -167,9 +167,9 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-secondary);
-  font-size: 13px;
+  font-size: var(--text-base);
   opacity: 0.9;
-  line-height: 1.4;
+  line-height: var(--leading-normal);
   color: white;
 }
 
@@ -221,10 +221,10 @@
 
 .members-joined-title {
   font-family: var(--font-primary);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--text-lg);
+  font-weight: 700;
   color: var(--dark-gray);
-  line-height: 1.4;
+  line-height: var(--leading-normal);
 }
 
 .browse-all-btn {
@@ -238,7 +238,7 @@
   text-decoration: none;
   text-align: center;
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   font-weight: 600;
 }
 
@@ -257,21 +257,21 @@
 
 .section-title {
   font-family: var(--font-primary);
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--text-xl);
+  font-weight: 700;
   color: var(--dark-gray);
 }
 
 .section-link {
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--primary-green);
   text-decoration: none;
 }
 
 .member-count {
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--medium-gray);
 }
 
@@ -309,7 +309,7 @@
   color: white;
   font-family: var(--font-primary);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   overflow: visible;
 }
 
@@ -344,7 +344,7 @@
 
 .new-member-name {
   font-family: var(--font-secondary);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--dark-gray);
   text-align: center;
   white-space: nowrap;
@@ -370,7 +370,7 @@
   padding: 0 20px;
   color: var(--medium-gray);
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
 }
 
 /* Bottom Navigation */
@@ -409,7 +409,7 @@
 
 .nav-item span {
   font-family: var(--font-secondary);
-  font-size: 11px;
+  font-size: var(--text-xs);
 }
 
 /* Browse All Members - Standalone */
@@ -448,7 +448,7 @@
 
 .menu-title {
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: var(--text-xl);
   font-weight: 700;
   color: var(--dark-gray);
 }
@@ -476,8 +476,8 @@
   text-decoration: none;
   color: var(--dark-gray);
   font-family: var(--font-secondary);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: var(--text-lg);
+  font-weight: 600;
   transition: background-color 0.2s;
 }
 

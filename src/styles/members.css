@@ -29,8 +29,8 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-primary);
-  font-size: 20px;
-  font-weight: 600;
+  font-size: var(--text-xl);
+  font-weight: 700;
   color: var(--dark-gray);
 }
 
@@ -53,7 +53,7 @@
   border: none;
   background: white;
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--medium-gray);
   cursor: pointer;
   transition: all 0.2s;
@@ -62,7 +62,7 @@
 .tab-btn.active {
   background-color: var(--primary-green-light);
   color: var(--primary-green);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Search */
@@ -91,7 +91,7 @@
   background: none;
   outline: none;
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--dark-gray);
 }
 
@@ -109,7 +109,7 @@
 
 .members-count {
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--medium-gray);
 }
 
@@ -122,7 +122,7 @@
   border-radius: 8px;
   padding: 6px 12px;
   font-family: var(--font-secondary);
-  font-size: 13px;
+  font-size: var(--text-base);
   color: var(--dark-gray);
   cursor: pointer;
 }
@@ -160,7 +160,7 @@
   color: white;
   font-family: var(--font-primary);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .member-avatar img {
@@ -182,17 +182,17 @@
 
 .member-name {
   font-family: var(--font-primary);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: var(--text-lg);
+  font-weight: 700;
   color: var(--dark-gray);
 }
 
 .status-badge {
-  font-family: var(--font-accent);
-  font-size: 11px;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
   padding: 2px 8px;
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .badge-super {
@@ -212,7 +212,7 @@
 
 .member-role {
   font-family: var(--font-secondary);
-  font-size: 13px;
+  font-size: var(--text-base);
   color: var(--dark-gray);
   margin-bottom: 2px;
 }
@@ -222,15 +222,15 @@
   align-items: center;
   gap: 4px;
   font-family: var(--font-secondary);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--medium-gray);
 }
 
 .member-intro {
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--medium-gray);
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   margin-bottom: 10px;
 }
 
@@ -242,7 +242,7 @@
 
 .tag {
   font-family: var(--font-secondary);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--primary-green);
   background-color: var(--primary-green-light);
   border: 1px solid var(--primary-green-light);
@@ -255,6 +255,6 @@
   text-align: center;
   padding: 40px 20px;
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: var(--text-md);
   color: var(--medium-gray);
 }
