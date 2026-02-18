@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 180" width="140" height="180">
+  <!-- Overflowing popcorn box with kernels on the floor -->
+
+  <!-- Shadow under box -->
+  <ellipse cx="70" cy="168" rx="40" ry="5" fill="#00000010"/>
+
+  <!-- Popcorn box - classic red/white striped -->
+  <path d="M38,75 L32,165 L108,165 L102,75 Z" fill="#E53935"/>
+  <!-- White stripes on box -->
+  <path d="M42,75 L36.5,165 L42,165 L47.5,75 Z" fill="#FFCDD2" opacity="0.7"/>
+  <path d="M55,75 L50,165 L55.5,165 L61,75 Z" fill="#FFCDD2" opacity="0.7"/>
+  <path d="M68,75 L63.5,165 L69,165 L74,75 Z" fill="#FFCDD2" opacity="0.7"/>
+  <path d="M81,75 L77,165 L82.5,165 L87,75 Z" fill="#FFCDD2" opacity="0.7"/>
+  <path d="M94,75 L90.5,165 L96,165 L100,75 Z" fill="#FFCDD2" opacity="0.7"/>
+
+  <!-- Box rim -->
+  <rect x="36" y="73" width="68" height="6" rx="2" fill="#C62828"/>
+
+  <!-- Popcorn kernels overflowing from box -->
+  <!-- Back row of popcorn -->
+  <ellipse cx="50" cy="62" rx="11" ry="10" fill="#FFF8E1"/>
+  <ellipse cx="50" cy="62" rx="11" ry="10" fill="none" stroke="#F9E4A0" stroke-width="0.8"/>
+  <ellipse cx="70" cy="56" rx="12" ry="11" fill="#FFFDE7"/>
+  <ellipse cx="70" cy="56" rx="12" ry="11" fill="none" stroke="#F9E4A0" stroke-width="0.8"/>
+  <ellipse cx="90" cy="60" rx="11" ry="10" fill="#FFF8E1"/>
+  <ellipse cx="90" cy="60" rx="11" ry="10" fill="none" stroke="#F9E4A0" stroke-width="0.8"/>
+
+  <!-- Middle row -->
+  <ellipse cx="42" cy="54" rx="9" ry="9" fill="#FFFEF5"/>
+  <ellipse cx="42" cy="54" rx="9" ry="9" fill="none" stroke="#F5DFA0" stroke-width="0.7"/>
+  <ellipse cx="60" cy="48" rx="10" ry="10" fill="#FFF8E1"/>
+  <ellipse cx="60" cy="48" rx="10" ry="10" fill="none" stroke="#F5DFA0" stroke-width="0.7"/>
+  <ellipse cx="80" cy="46" rx="11" ry="10" fill="#FFFDE7"/>
+  <ellipse cx="80" cy="46" rx="11" ry="10" fill="none" stroke="#F5DFA0" stroke-width="0.7"/>
+  <ellipse cx="97" cy="52" rx="9" ry="9" fill="#FFF8E1"/>
+  <ellipse cx="97" cy="52" rx="9" ry="9" fill="none" stroke="#F5DFA0" stroke-width="0.7"/>
+
+  <!-- Top row -->
+  <ellipse cx="52" cy="40" rx="9" ry="8" fill="#FFFEF5"/>
+  <ellipse cx="52" cy="40" rx="9" ry="8" fill="none" stroke="#F0D890" stroke-width="0.7"/>
+  <ellipse cx="70" cy="36" rx="10" ry="9" fill="white"/>
+  <ellipse cx="70" cy="36" rx="10" ry="9" fill="none" stroke="#F0D890" stroke-width="0.7"/>
+  <ellipse cx="88" cy="38" rx="9" ry="8" fill="#FFFEF5"/>
+  <ellipse cx="88" cy="38" rx="9" ry="8" fill="none" stroke="#F0D890" stroke-width="0.7"/>
+
+  <!-- Peak kernels -->
+  <ellipse cx="62" cy="28" rx="8" ry="7" fill="white"/>
+  <ellipse cx="62" cy="28" rx="8" ry="7" fill="none" stroke="#EED080" stroke-width="0.6"/>
+  <ellipse cx="78" cy="30" rx="7" ry="7" fill="#FFFEF5"/>
+  <ellipse cx="78" cy="30" rx="7" ry="7" fill="none" stroke="#EED080" stroke-width="0.6"/>
+
+  <!-- Very top kernel -->
+  <ellipse cx="70" cy="22" rx="6" ry="5.5" fill="white"/>
+  <ellipse cx="70" cy="22" rx="6" ry="5.5" fill="none" stroke="#EED080" stroke-width="0.5"/>
+
+  <!-- Popcorn texture bumps on kernels -->
+  <circle cx="48" cy="59" r="2.5" fill="#FFF3CD" opacity="0.6"/>
+  <circle cx="72" cy="53" r="3" fill="#FFF3CD" opacity="0.5"/>
+  <circle cx="92" cy="57" r="2.5" fill="#FFF3CD" opacity="0.6"/>
+  <circle cx="59" cy="44" r="2.5" fill="#FFF3CD" opacity="0.5"/>
+  <circle cx="81" cy="43" r="2.5" fill="#FFF3CD" opacity="0.5"/>
+  <circle cx="68" cy="33" r="2" fill="#FFF3CD" opacity="0.5"/>
+  <circle cx="76" cy="27" r="1.8" fill="#FFF3CD" opacity="0.5"/>
+
+  <!-- Dropped popcorn kernels on the floor -->
+  <!-- Left side drops -->
+  <ellipse cx="18" cy="162" rx="6" ry="5" fill="#FFF8E1" transform="rotate(-15 18 162)"/>
+  <ellipse cx="18" cy="162" rx="6" ry="5" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(-15 18 162)"/>
+  <circle cx="19" cy="160" r="1.5" fill="#FFF3CD" opacity="0.5"/>
+
+  <ellipse cx="25" cy="168" rx="5" ry="4.5" fill="#FFFDE7" transform="rotate(20 25 168)"/>
+  <ellipse cx="25" cy="168" rx="5" ry="4.5" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(20 25 168)"/>
+
+  <ellipse cx="10" cy="170" rx="5.5" ry="4.5" fill="#FFFEF5" transform="rotate(-30 10 170)"/>
+  <ellipse cx="10" cy="170" rx="5.5" ry="4.5" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(-30 10 170)"/>
+
+  <!-- Right side drops -->
+  <ellipse cx="120" cy="164" rx="5.5" ry="5" fill="#FFF8E1" transform="rotate(25 120 164)"/>
+  <ellipse cx="120" cy="164" rx="5.5" ry="5" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(25 120 164)"/>
+  <circle cx="121" cy="162" r="1.5" fill="#FFF3CD" opacity="0.5"/>
+
+  <ellipse cx="128" cy="170" rx="5" ry="4" fill="#FFFDE7" transform="rotate(-20 128 170)"/>
+  <ellipse cx="128" cy="170" rx="5" ry="4" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(-20 128 170)"/>
+
+  <!-- Front scattered kernels -->
+  <ellipse cx="45" cy="172" rx="5" ry="4" fill="#FFFEF5" transform="rotate(10 45 172)"/>
+  <ellipse cx="45" cy="172" rx="5" ry="4" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(10 45 172)"/>
+
+  <ellipse cx="95" cy="173" rx="4.5" ry="4" fill="#FFF8E1" transform="rotate(-12 95 173)"/>
+  <ellipse cx="95" cy="173" rx="4.5" ry="4" fill="none" stroke="#F0D890" stroke-width="0.5" transform="rotate(-12 95 173)"/>
+</svg>
