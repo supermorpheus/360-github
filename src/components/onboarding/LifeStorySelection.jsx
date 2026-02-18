@@ -72,7 +72,7 @@ function LifeStorySelection() {
       </div>
 
       <button className="btn-primary" onClick={nextStep}>
-        Go to Homepage
+        Go to Dashboard
       </button>
 
       <p className="skip-note skip-note-visible">
