@@ -101,7 +101,7 @@ function OnboardingAbout() {
               id="livesIn"
               name="livesIn"
               className="input-field input-field-icon"
-              placeholder="e.g., Bengaluru, India"
+              placeholder="e.g., Bengaluru, Delhi"
               value={profileData.livesIn || ''}
               onChange={handleChange}
             />
