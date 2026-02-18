@@ -136,7 +136,7 @@ export const lifeStoryPrompts = {
 
 export function OnboardingProvider({ children }) {
   const [profileData, setProfileData] = useState(initialProfileData)
-  const [currentStep, setCurrentStep] = useState(0)
+  const [currentStep, setCurrentStep] = useState(10) // TEMP: start at Life Stories for preview
 
   // Life stories flow state
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'
