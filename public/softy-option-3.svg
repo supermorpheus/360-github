@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <!-- Green/matcha softy matching app's primary green -->
+  <!-- Cone -->
+  <polygon points="42,95 78,95 65,152 55,152" fill="#D4A054" stroke="#C4903A" stroke-width="1.5"/>
+  <line x1="50" y1="102" x2="64" y2="142" stroke="#C4903A" stroke-width="0.8" opacity="0.4"/>
+  <line x1="70" y1="102" x2="58" y2="142" stroke="#C4903A" stroke-width="0.8" opacity="0.4"/>
+  <line x1="44" y1="108" x2="74" y2="108" stroke="#C4903A" stroke-width="0.5" opacity="0.3"/>
+  <line x1="47" y1="118" x2="71" y2="118" stroke="#C4903A" stroke-width="0.5" opacity="0.3"/>
+  <line x1="50" y1="128" x2="68" y2="128" stroke="#C4903A" stroke-width="0.5" opacity="0.3"/>
+  <!-- Soft serve layers - green tones matching brand -->
+  <ellipse cx="60" cy="92" rx="26" ry="12" fill="#7A9E5E"/>
+  <ellipse cx="60" cy="78" rx="22" ry="11" fill="#8AAE6E"/>
+  <ellipse cx="60" cy="66" rx="18" ry="9" fill="#9ABE7E"/>
+  <ellipse cx="60" cy="56" rx="14" ry="7" fill="#AACE8E"/>
+  <ellipse cx="60" cy="48" rx="10" ry="5.5" fill="#BADE9E"/>
+  <ellipse cx="60" cy="42" rx="6" ry="4" fill="#CAEEAE"/>
+  <circle cx="60" cy="37" r="3" fill="#DAFABE"/>
+  <!-- Shine -->
+  <ellipse cx="52" cy="80" rx="3" ry="6" fill="white" opacity="0.2" transform="rotate(-10 52 80)"/>
+</svg>

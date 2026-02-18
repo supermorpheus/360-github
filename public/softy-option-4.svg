@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <!-- Chocolate + vanilla twist softy -->
+  <!-- Cone -->
+  <polygon points="42,95 78,95 65,155 55,155" fill="#D4A054" stroke="#C4903A" stroke-width="1.5"/>
+  <line x1="48" y1="105" x2="68" y2="145" stroke="#C4903A" stroke-width="0.8" opacity="0.5"/>
+  <line x1="72" y1="105" x2="58" y2="145" stroke="#C4903A" stroke-width="0.8" opacity="0.5"/>
+  <!-- Twist swirl - alternating chocolate and vanilla -->
+  <ellipse cx="60" cy="90" rx="24" ry="12" fill="#FFF3CD"/>
+  <path d="M36,90 Q48,82 60,90 Q72,98 84,90" fill="#6D4C2A" opacity="0.85"/>
+  <ellipse cx="60" cy="76" rx="20" ry="10" fill="#8B6840"/>
+  <path d="M40,76 Q50,68 60,76 Q70,84 80,76" fill="#FFF3CD" opacity="0.9"/>
+  <ellipse cx="60" cy="64" rx="16" ry="8" fill="#FFF8E1"/>
+  <path d="M44,64 Q52,58 60,64 Q68,70 76,64" fill="#8B6840" opacity="0.85"/>
+  <ellipse cx="60" cy="54" rx="12" ry="6.5" fill="#6D4C2A"/>
+  <path d="M48,54 Q54,49 60,54 Q66,59 72,54" fill="#FFF3CD" opacity="0.9"/>
+  <ellipse cx="60" cy="46" rx="8" ry="5" fill="#FFF8E1"/>
+  <ellipse cx="60" cy="40" rx="5" ry="3.5" fill="#8B6840"/>
+  <circle cx="60" cy="36" r="3" fill="#FFF3CD"/>
+  <!-- Shine -->
+  <ellipse cx="50" cy="78" rx="2.5" ry="8" fill="white" opacity="0.15" transform="rotate(-8 50 78)"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <!-- Classic swirl softy - pink/strawberry -->
+  <!-- Cone -->
+  <polygon points="42,95 78,95 65,155 55,155" fill="#D4A054" stroke="#C4903A" stroke-width="1.5"/>
+  <line x1="48" y1="105" x2="68" y2="145" stroke="#C4903A" stroke-width="0.8" opacity="0.5"/>
+  <line x1="72" y1="105" x2="58" y2="145" stroke="#C4903A" stroke-width="0.8" opacity="0.5"/>
+  <!-- Ice cream swirl -->
+  <ellipse cx="60" cy="90" rx="24" ry="14" fill="#F8B4C8"/>
+  <ellipse cx="60" cy="76" rx="20" ry="12" fill="#F9C4D4"/>
+  <ellipse cx="60" cy="64" rx="16" ry="10" fill="#FAD4E0"/>
+  <ellipse cx="60" cy="54" rx="12" ry="8" fill="#FBE4EA"/>
+  <ellipse cx="60" cy="46" rx="8" ry="6" fill="#FCF0F4"/>
+  <circle cx="60" cy="39" r="5" fill="#FDF5F8"/>
+  <!-- Cherry on top -->
+  <circle cx="60" cy="33" r="5" fill="#E74C3C"/>
+  <circle cx="58" cy="31" r="1.5" fill="#FF7675" opacity="0.7"/>
+  <line x1="60" y1="28" x2="62" y2="23" stroke="#2D8B2D" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

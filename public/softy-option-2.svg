@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160">
+  <!-- Classic vanilla softy with swirl top -->
+  <!-- Cone with waffle pattern -->
+  <polygon points="40,92 80,92 66,155 54,155" fill="#D4A054"/>
+  <polygon points="40,92 80,92 66,155 54,155" fill="url(#waffle)" stroke="#C4903A" stroke-width="1.5"/>
+  <defs>
+    <pattern id="waffle" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#C4903A" stroke-width="0.7" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <!-- Soft serve swirl body -->
+  <path d="M38,92 Q38,70 60,70 Q82,70 82,92 Z" fill="#FFF3CD"/>
+  <path d="M42,78 Q42,60 60,60 Q78,60 78,78 Z" fill="#FFF8E1"/>
+  <!-- Swirl top -->
+  <path d="M48,62 Q48,46 60,46 Q72,46 72,62" fill="#FFFDE7" stroke="none"/>
+  <path d="M52,50 Q52,38 60,38 Q68,38 68,50" fill="#FFFEF5" stroke="none"/>
+  <ellipse cx="60" cy="36" rx="6" ry="5" fill="white"/>
+  <ellipse cx="60" cy="30" rx="3.5" ry="3" fill="white"/>
+  <!-- Subtle outline -->
+  <path d="M38,92 Q38,70 60,70 Q82,70 82,92" fill="none" stroke="#E8C96A" stroke-width="1"/>
+  <path d="M42,78 Q42,60 60,60 Q78,60 78,78" fill="none" stroke="#E8C96A" stroke-width="0.8"/>
+  <!-- Sprinkles -->
+  <rect x="50" y="75" width="3" height="1.5" rx="0.75" fill="#E74C3C" transform="rotate(30 51.5 75.75)"/>
+  <rect x="65" y="78" width="3" height="1.5" rx="0.75" fill="#3498DB" transform="rotate(-20 66.5 78.75)"/>
+  <rect x="55" y="82" width="3" height="1.5" rx="0.75" fill="#2ECC71" transform="rotate(45 56.5 82.75)"/>
+  <rect x="70" y="85" width="3" height="1.5" rx="0.75" fill="#F39C12" transform="rotate(-35 71.5 85.75)"/>
+  <rect x="45" y="85" width="3" height="1.5" rx="0.75" fill="#9B59B6" transform="rotate(15 46.5 85.75)"/>
+</svg>
