@@ -3335,10 +3335,10 @@
 .see-samples-link {
   display: block;
   text-align: left;
-  font-size: var(--text-base);
+  font-size: var(--text-md);
   color: var(--primary-green);
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
