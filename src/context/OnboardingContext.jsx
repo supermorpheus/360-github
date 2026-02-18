@@ -200,7 +200,7 @@ export function OnboardingProvider({ children }) {
   }
 
   const goToUploadComplete = () => {
-    setLifeStorySubStep('uploadComplete')
+    setLifeStorySubStep('processing')
   }
 
   const goToProcessing = () => {

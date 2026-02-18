@@ -53,10 +53,10 @@ function LifeStoryProcessing({ storyKey }) {
         </svg>
       </div>
 
-      <h1 className="processing-title">Processing</h1>
+      <h1 className="processing-title">Processing your {mediaType}</h1>
 
       <p className="processing-message">
-        We're extracting information from your {mediaType} to populate your profile.
+        We're extracting information from your {mediaType} to populate your profile. This usually takes 1–2 minutes.
       </p>
 
       <div className="processing-progress">
@@ -72,10 +72,7 @@ function LifeStoryProcessing({ storyKey }) {
       <div className="upload-warning-box">
         <ul className="warning-list">
           <li>
-            Do not navigate away or close this tab while {mediaType} is uploading.
-          </li>
-          <li>
-            Do not click the Back button, refresh, close this tab, or navigate elsewhere while {mediaType} is being processed.
+            Please do not navigate away, refresh, or close this tab while your {mediaType} is being processed.
           </li>
         </ul>
       </div>
