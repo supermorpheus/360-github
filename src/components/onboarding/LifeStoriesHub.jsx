@@ -20,6 +20,7 @@ import LifeStoryProfessionalConfirm3 from './LifeStoryProfessionalConfirm3'
 import LifeStoryCurrentConfirm1 from './LifeStoryCurrentConfirm1'
 import LifeStoryCurrentConfirm2 from './LifeStoryCurrentConfirm2'
 import LifeStoryCurrentConfirm3 from './LifeStoryCurrentConfirm3'
+import LifeStoryCurrentConfirm4 from './LifeStoryCurrentConfirm4'
 
 function LifeStoriesHub() {
   const {
@@ -81,6 +82,8 @@ function LifeStoriesHub() {
     let totalConfirms = 3
     if (selectedLifeStory === 'earlyLife') {
       totalConfirms = 5
+    } else if (selectedLifeStory === 'current') {
+      totalConfirms = 4
     }
 
     const total = totalConfirms
@@ -141,11 +144,13 @@ function LifeStoriesHub() {
     }
   }
 
-  // Render confirm4 component (only earlyLife has this)
+  // Render confirm4 component (earlyLife and current have this)
   const renderConfirm4Component = () => {
     switch (selectedLifeStory) {
       case 'earlyLife':
         return <LifeStoryEarlyConfirm4 />
+      case 'current':
+        return <LifeStoryCurrentConfirm4 />
       default:
         return null
     }
