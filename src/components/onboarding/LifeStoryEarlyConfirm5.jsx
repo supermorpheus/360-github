@@ -121,8 +121,8 @@ function LifeStoryEarlyConfirm5() {
       {showSubmitPopup && (
         <div className="popup-overlay" onClick={handlePopupClose}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-icon">
-              <img src={`${import.meta.env.BASE_URL}popcorn-box.svg`} alt="Popcorn" style={{ width: '80px', height: '80px' }} />
+            <div className="popup-icon popup-icon-emoji">
+              🍿
             </div>
             <h2 className="popup-title">Yay!</h2>
             <p className="popup-message">
