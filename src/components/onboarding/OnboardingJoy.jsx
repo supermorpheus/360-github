@@ -6,8 +6,20 @@ function OnboardingJoy() {
   const { profileData, updateProfileData, nextStep } = useOnboarding()
   const [errors, setErrors] = useState({})
 
+  const MAX_WORDS = 100
+
+  const countWords = (text) => {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
+    const wordCount = countWords(value)
+
+    if (wordCount > MAX_WORDS) {
+      return
+    }
+
     updateProfileData({ [name]: value })
 
     if (errors[name]) {
@@ -30,6 +42,8 @@ function OnboardingJoy() {
     nextStep()
   }
 
+  const wordCount = countWords(profileData.joyOutsideWork || '')
+
   return (
     <OnboardingLayout>
       <div className="onboarding-form">
@@ -51,6 +65,11 @@ function OnboardingJoy() {
             />
           </div>
           {errors.joyOutsideWork && <span className="error-text">{errors.joyOutsideWork}</span>}
+          <div className="word-counter-row">
+            <span className={`word-counter ${wordCount >= MAX_WORDS ? 'limit-reached' : ''}`}>
+              {wordCount} / {MAX_WORDS} words
+            </span>
+          </div>
         </div>
 
         <button className="btn-primary" onClick={validateAndNext}>
