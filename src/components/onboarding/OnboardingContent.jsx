@@ -124,7 +124,7 @@ function OnboardingContent() {
         <div className="popup-overlay" onClick={handlePopupClose}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
             <div className="popup-icon">
-              <span style={{ fontSize: '48px' }}>🍦🍿</span>
+              <span style={{ fontSize: '48px' }}>🍿</span>
             </div>
             <h2 className="popup-title">Yay!</h2>
             <p className="popup-message">
