@@ -140,7 +140,7 @@ export function OnboardingProvider({ children }) {
 
   // Life stories flow state
   const [selectedLifeStory, setSelectedLifeStory] = useState(null) // 'earlyLife', 'professional', 'current'
-  const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'uploadComplete', 'processing', 'thumbnail', 'confirm1', 'confirm2'
+  const [lifeStorySubStep, setLifeStorySubStep] = useState('selection') // 'selection', 'prompts', 'inputMethod', 'input', 'uploadComplete', 'processing', 'thumbnail', 'confirm1', 'confirm2', 'confirm3', 'confirm4', 'confirm5'
 
   const totalSteps = 12 // Welcome, Share360, BasicInfo, Professional, Quote, Intro, Location, Joy, Social, Content, LifeStories, Complete
 
@@ -219,8 +219,32 @@ export function OnboardingProvider({ children }) {
     setLifeStorySubStep('confirm2')
   }
 
+  const goToConfirm3 = () => {
+    setLifeStorySubStep('confirm3')
+  }
+
+  const goToConfirm4 = () => {
+    setLifeStorySubStep('confirm4')
+  }
+
+  const goToConfirm5 = () => {
+    setLifeStorySubStep('confirm5')
+  }
+
   const backToConfirm1 = () => {
     setLifeStorySubStep('confirm1')
+  }
+
+  const backToConfirm2 = () => {
+    setLifeStorySubStep('confirm2')
+  }
+
+  const backToConfirm3 = () => {
+    setLifeStorySubStep('confirm3')
+  }
+
+  const backToConfirm4 = () => {
+    setLifeStorySubStep('confirm4')
   }
 
   const backToLifeStorySelection = () => {
@@ -302,7 +326,13 @@ export function OnboardingProvider({ children }) {
     goToThumbnail,
     goToConfirmation,
     goToConfirm2,
+    goToConfirm3,
+    goToConfirm4,
+    goToConfirm5,
     backToConfirm1,
+    backToConfirm2,
+    backToConfirm3,
+    backToConfirm4,
     backToLifeStorySelection,
     backToPrompts,
     backToInputMethod,

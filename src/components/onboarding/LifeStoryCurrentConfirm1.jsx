@@ -12,8 +12,6 @@ function LifeStoryCurrentConfirm1() {
   const [generatedThumbnails, setGeneratedThumbnails] = useState([])
   const [isGenerating, setIsGenerating] = useState(false)
   const [summary, setSummary] = useState(storyData.summary || storyData.text || '')
-  const [currentCities, setCurrentCities] = useState(storyData.currentCities || [])
-  const [newCity, setNewCity] = useState('')
   const [showErrors, setShowErrors] = useState(false)
 
   const fileInputRef = useRef(null)
@@ -107,37 +105,15 @@ function LifeStoryCurrentConfirm1() {
     }
   }
 
-  // Current Cities handlers
-  const addCity = () => {
-    if (newCity.trim()) {
-      setCurrentCities([...currentCities, newCity.trim()])
-      setNewCity('')
-    }
-  }
-
-  const removeCity = (index) => {
-    setCurrentCities(currentCities.filter((_, i) => i !== index))
-  }
-
-  const handleCityKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      addCity()
-    }
-  }
-
   // Validation check
   const isValid = () => {
     if (!summary.trim()) return false
-    // At least one current city
-    if (currentCities.length === 0) return false
     return true
   }
 
   // Individual field error checks
   const getErrors = () => ({
-    summary: !summary.trim() ? 'Please share a brief summary of your current life' : '',
-    currentCities: currentCities.length === 0 ? 'Please add at least one city where you currently live' : ''
+    summary: !summary.trim() ? 'Please share a brief summary of your current life' : ''
   })
 
   const errors = getErrors()
@@ -154,14 +130,12 @@ function LifeStoryCurrentConfirm1() {
 
     updateLifeStory('current', {
       thumbnail: thumbnailData,
-      summary,
-      currentCities
+      summary
     })
     goToConfirm2()
   }
 
   const hasVideo = storyData.videoUrl && storyData.inputMethod === 'video'
-  const isTextInput = storyData.inputMethod === 'text'
 
   return (
     <div className="onboarding-form">
@@ -278,38 +252,6 @@ function LifeStoryCurrentConfirm1() {
         <p className={`word-counter ${wordCount > maxWords ? 'over-limit' : ''}`}>
           {wordCount} / {maxWords} words
         </p>
-      </div>
-
-      {/* Current Cities */}
-      <div className="confirm-section">
-        <label className="input-label">
-          Current Cities <span className="required-asterisk">*</span>
-        </label>
-        {currentCities.length > 0 && (
-          <div className="tags-container">
-            {currentCities.map((city, idx) => (
-              <span key={idx} className="tag tag-location">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-                {city}
-                <button type="button" className="tag-remove" onClick={() => removeCity(idx)}>×</button>
-              </span>
-            ))}
-          </div>
-        )}
-        <input
-          type="text"
-          className={`input-field ${showErrors && errors.currentCities ? 'input-error' : ''}`}
-          placeholder="Add a city and press Enter"
-          value={newCity}
-          onChange={(e) => setNewCity(e.target.value)}
-          onKeyPress={handleCityKeyPress}
-        />
-        {showErrors && errors.currentCities && (
-          <p className="field-error">{errors.currentCities}</p>
-        )}
       </div>
 
       <button className="btn-primary" onClick={handleContinue}>

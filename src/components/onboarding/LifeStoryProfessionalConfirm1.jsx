@@ -12,10 +12,6 @@ function LifeStoryProfessionalConfirm1() {
   const [generatedThumbnails, setGeneratedThumbnails] = useState([])
   const [isGenerating, setIsGenerating] = useState(false)
   const [summary, setSummary] = useState(storyData.summary || storyData.text || '')
-  const [firstJob, setFirstJob] = useState(
-    storyData.firstJob || { company: '', titles: [''] }
-  )
-  const [newTitle, setNewTitle] = useState('')
   const [showErrors, setShowErrors] = useState(false)
 
   const fileInputRef = useRef(null)
@@ -109,45 +105,15 @@ function LifeStoryProfessionalConfirm1() {
     }
   }
 
-  // First Job handlers
-  const updateFirstJobCompany = (value) => {
-    setFirstJob({ ...firstJob, company: value })
-  }
-
-  const addTitle = () => {
-    if (newTitle.trim()) {
-      setFirstJob({ ...firstJob, titles: [...firstJob.titles.filter(t => t), newTitle.trim()] })
-      setNewTitle('')
-    }
-  }
-
-  const removeTitle = (index) => {
-    const filtered = firstJob.titles.filter((_, i) => i !== index)
-    setFirstJob({ ...firstJob, titles: filtered.length > 0 ? filtered : [''] })
-  }
-
-  const handleTitleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      addTitle()
-    }
-  }
-
   // Validation check
   const isValid = () => {
     if (!summary.trim()) return false
-    // First job with company and at least one title
-    if (!firstJob.company.trim()) return false
-    const validTitles = firstJob.titles.filter(t => t.trim())
-    if (validTitles.length === 0) return false
     return true
   }
 
   // Individual field error checks
   const getErrors = () => ({
-    summary: !summary.trim() ? 'Please share a brief summary of your professional journey' : '',
-    company: !firstJob.company.trim() ? 'Please enter your first company name' : '',
-    titles: firstJob.titles.filter(t => t.trim()).length === 0 ? 'Please add at least one job title' : ''
+    summary: !summary.trim() ? 'Please share a brief summary of your professional journey' : ''
   })
 
   const errors = getErrors()
@@ -164,17 +130,12 @@ function LifeStoryProfessionalConfirm1() {
 
     updateLifeStory('professional', {
       thumbnail: thumbnailData,
-      summary,
-      firstJob: firstJob.company.trim() ? {
-        ...firstJob,
-        titles: firstJob.titles.filter(t => t.trim())
-      } : null
+      summary
     })
     goToConfirm2()
   }
 
   const hasVideo = storyData.videoUrl && storyData.inputMethod === 'video'
-  const isTextInput = storyData.inputMethod === 'text'
 
   return (
     <div className="onboarding-form">
@@ -291,56 +252,6 @@ function LifeStoryProfessionalConfirm1() {
         <p className={`word-counter ${wordCount > maxWords ? 'over-limit' : ''}`}>
           {wordCount} / {maxWords} words
         </p>
-      </div>
-
-      {/* First Job */}
-      <div className="confirm-section">
-        <h3 className="section-title-bold">First Job</h3>
-        <div className="entry-card">
-          <div className="entry-fields">
-            <div className="input-group">
-              <label className="input-label small">
-                Company Name <span className="required-asterisk">*</span>
-              </label>
-              <input
-                type="text"
-                className={`input-field ${showErrors && errors.company ? 'input-error' : ''}`}
-                placeholder="eg: Google, Facebook, etc"
-                value={firstJob.company}
-                onChange={(e) => updateFirstJobCompany(e.target.value)}
-              />
-              {showErrors && errors.company && (
-                <p className="field-error">{errors.company}</p>
-              )}
-            </div>
-            <div className="input-group">
-              <label className="input-label small">
-                Job Titles <span className="required-asterisk">*</span>
-              </label>
-              {firstJob.titles.filter(t => t).length > 0 && (
-                <div className="tags-container">
-                  {firstJob.titles.filter(t => t).map((title, idx) => (
-                    <span key={idx} className="tag">
-                      {title}
-                      <button type="button" className="tag-remove" onClick={() => removeTitle(idx)}>×</button>
-                    </span>
-                  ))}
-                </div>
-              )}
-              <input
-                type="text"
-                className={`input-field ${showErrors && errors.titles ? 'input-error' : ''}`}
-                placeholder="Add a title (eg: Analyst, Director, etc..) and press Enter"
-                value={newTitle}
-                onChange={(e) => setNewTitle(e.target.value)}
-                onKeyPress={handleTitleKeyPress}
-              />
-              {showErrors && errors.titles && (
-                <p className="field-error">{errors.titles}</p>
-              )}
-            </div>
-          </div>
-        </div>
       </div>
 
       <button className="btn-primary" onClick={handleContinue}>

@@ -12,11 +12,6 @@ function LifeStoryEarlyConfirm1() {
   const [generatedThumbnails, setGeneratedThumbnails] = useState([])
   const [isGenerating, setIsGenerating] = useState(false)
   const [summary, setSummary] = useState(storyData.summary || storyData.text || '')
-  const [bornIn, setBornIn] = useState(storyData.bornIn || '')
-  const [hometown, setHometown] = useState(storyData.hometown || '')
-  const [schools, setSchools] = useState(
-    storyData.schools.length > 0 ? storyData.schools : [{ name: '', location: '' }]
-  )
   const [showErrors, setShowErrors] = useState(false)
 
   const fileInputRef = useRef(null)
@@ -111,41 +106,15 @@ function LifeStoryEarlyConfirm1() {
     }
   }
 
-  // School handlers
-  const updateSchool = (index, field, value) => {
-    const updated = [...schools]
-    updated[index][field] = value
-    setSchools(updated)
-  }
-
-  const addSchool = () => {
-    setSchools([...schools, { name: '', location: '' }])
-  }
-
-  const removeSchool = (index) => {
-    if (schools.length > 1) {
-      setSchools(schools.filter((_, i) => i !== index))
-    }
-  }
-
   // Validation check
   const isValid = () => {
     if (!summary.trim()) return false
-    if (!bornIn.trim()) return false
-    if (!hometown.trim()) return false
-    // At least one school with name and location
-    const validSchools = schools.filter(s => s.name.trim() && s.location.trim())
-    if (validSchools.length === 0) return false
     return true
   }
 
   // Individual field error checks
   const getErrors = () => ({
-    summary: !summary.trim() ? 'Please share a brief summary of your early life' : '',
-    bornIn: !bornIn.trim() ? 'Please enter the city where you were born' : '',
-    hometown: !hometown.trim() ? 'Please enter your hometown' : '',
-    schools: schools.filter(s => s.name.trim() && s.location.trim()).length === 0
-      ? 'Please add at least one school with name and location' : ''
+    summary: !summary.trim() ? 'Please share a brief summary of your early life' : ''
   })
 
   const errors = getErrors()
@@ -163,16 +132,12 @@ function LifeStoryEarlyConfirm1() {
 
     updateLifeStory('earlyLife', {
       thumbnail: thumbnailData,
-      summary,
-      bornIn,
-      hometown,
-      schools: schools.filter(s => s.name.trim())
+      summary
     })
     goToConfirm2()
   }
 
   const hasVideo = storyData.videoUrl && storyData.inputMethod === 'video'
-  const isTextInput = storyData.inputMethod === 'text'
 
   return (
     <div className="onboarding-form">
@@ -289,93 +254,6 @@ function LifeStoryEarlyConfirm1() {
         <p className={`word-counter ${wordCount > maxWords ? 'over-limit' : ''}`}>
           {wordCount} / {maxWords} words
         </p>
-      </div>
-
-      {/* Born In */}
-      <div className="confirm-section">
-        <label className="input-label">
-          Born in <span className="required-asterisk">*</span>
-        </label>
-        <input
-          type="text"
-          className={`input-field ${showErrors && errors.bornIn ? 'input-error' : ''}`}
-          placeholder="City where you were born"
-          value={bornIn}
-          onChange={(e) => setBornIn(e.target.value)}
-        />
-        {showErrors && errors.bornIn && (
-          <p className="field-error">{errors.bornIn}</p>
-        )}
-      </div>
-
-      {/* Hometown */}
-      <div className="confirm-section">
-        <label className="input-label">
-          Hometown <span className="required-asterisk">*</span>
-        </label>
-        <input
-          type="text"
-          className={`input-field ${showErrors && errors.hometown ? 'input-error' : ''}`}
-          placeholder="Your hometown"
-          value={hometown}
-          onChange={(e) => setHometown(e.target.value)}
-        />
-        {showErrors && errors.hometown && (
-          <p className="field-error">{errors.hometown}</p>
-        )}
-      </div>
-
-      {/* Schools */}
-      <div className="confirm-section">
-        <h3 className="section-title-bold">Schools</h3>
-        {showErrors && errors.schools && (
-          <p className="field-error section-error">{errors.schools}</p>
-        )}
-        {schools.map((school, idx) => (
-          <div key={idx} className="entry-card">
-            <div className="entry-fields">
-              <div className="input-group">
-                <label className="input-label small">
-                  Name <span className="required-asterisk">*</span>
-                </label>
-                <input
-                  type="text"
-                  className={`input-field ${showErrors && errors.schools && !school.name.trim() ? 'input-error' : ''}`}
-                  placeholder="School name"
-                  value={school.name}
-                  onChange={(e) => updateSchool(idx, 'name', e.target.value)}
-                />
-              </div>
-              <div className="input-group">
-                <label className="input-label small">
-                  Location <span className="required-asterisk">*</span>
-                </label>
-                <input
-                  type="text"
-                  className={`input-field ${showErrors && errors.schools && !school.location.trim() ? 'input-error' : ''}`}
-                  placeholder="Location"
-                  value={school.location}
-                  onChange={(e) => updateSchool(idx, 'location', e.target.value)}
-                />
-              </div>
-            </div>
-            {schools.length > 1 && (
-              <button type="button" className="entry-remove-btn" onClick={() => removeSchool(idx)}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="3 6 5 6 21 6"/>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                </svg>
-              </button>
-            )}
-          </div>
-        ))}
-        <button type="button" className="add-entry-btn-dashed" onClick={addSchool}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="12" y1="5" x2="12" y2="19"/>
-            <line x1="5" y1="12" x2="19" y2="12"/>
-          </svg>
-          Add School
-        </button>
       </div>
 
       <button className="btn-primary" onClick={handleContinue}>

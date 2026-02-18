@@ -11,10 +11,15 @@ import LifeStoryProcessing from './LifeStoryProcessing'
 import LifeStoryThumbnail from './LifeStoryThumbnail'
 import LifeStoryEarlyConfirm1 from './LifeStoryEarlyConfirm1'
 import LifeStoryEarlyConfirm2 from './LifeStoryEarlyConfirm2'
+import LifeStoryEarlyConfirm3 from './LifeStoryEarlyConfirm3'
+import LifeStoryEarlyConfirm4 from './LifeStoryEarlyConfirm4'
+import LifeStoryEarlyConfirm5 from './LifeStoryEarlyConfirm5'
 import LifeStoryProfessionalConfirm1 from './LifeStoryProfessionalConfirm1'
 import LifeStoryProfessionalConfirm2 from './LifeStoryProfessionalConfirm2'
+import LifeStoryProfessionalConfirm3 from './LifeStoryProfessionalConfirm3'
 import LifeStoryCurrentConfirm1 from './LifeStoryCurrentConfirm1'
 import LifeStoryCurrentConfirm2 from './LifeStoryCurrentConfirm2'
+import LifeStoryCurrentConfirm3 from './LifeStoryCurrentConfirm3'
 
 function LifeStoriesHub() {
   const {
@@ -25,7 +30,10 @@ function LifeStoriesHub() {
     backToPrompts,
     backToInputMethod,
     backToThumbnail,
-    backToConfirm1
+    backToConfirm1,
+    backToConfirm2,
+    backToConfirm3,
+    backToConfirm4
   } = useOnboarding()
 
   // Get current input method for the selected story
@@ -52,48 +60,42 @@ function LifeStoriesHub() {
         return backToThumbnail
       case 'confirm2':
         return backToConfirm1
+      case 'confirm3':
+        return backToConfirm2
+      case 'confirm4':
+        return backToConfirm3
+      case 'confirm5':
+        return backToConfirm4
       default:
         return null
     }
   }
 
   // Life Stories has its own independent step counter
-  // Progress only updates AFTER a data-entry step is COMPLETED.
-  // Prompts page is just selection — not a data step.
-  // Returns { current: completedSteps, total: totalDataSteps }
-  //   Video (4 data steps): input(record) → thumbnail → confirm1 → confirm2
-  //   Audio (3 data steps): input(record) → confirm1 → confirm2
-  //   Text  (2 data steps): confirm1(write) → confirm2(tags)
+  // The total number of confirm steps varies by story type:
+  //   earlyLife: 5 confirm screens
+  //   professional: 3 confirm screens
+  //   current: 3 confirm screens
   const getLifeStoryStepInfo = () => {
-    const total = 3
-    if (currentInputMethod === 'video') {
-      switch (lifeStorySubStep) {
-        case 'prompts':        return { current: 0, total }
-        case 'input':          return { current: 0, total }
-        case 'uploadComplete': return { current: 0, total }
-        case 'processing':     return { current: 0, total }
-        case 'confirm1':       return { current: 1, total } // recording done
-        case 'confirm2':       return { current: 2, total } // confirm1 done
-        default:               return { current: 0, total }
-      }
-    } else if (currentInputMethod === 'audio') {
-      switch (lifeStorySubStep) {
-        case 'prompts':        return { current: 0, total }
-        case 'input':          return { current: 0, total }
-        case 'uploadComplete': return { current: 0, total }
-        case 'processing':     return { current: 0, total }
-        case 'confirm1':       return { current: 1, total } // recording done
-        case 'confirm2':       return { current: 2, total } // confirm1 done
-        default:               return { current: 0, total }
-      }
-    } else {
-      switch (lifeStorySubStep) {
-        case 'prompts':        return { current: 0, total }
-        case 'input':          return { current: 0, total }
-        case 'confirm1':       return { current: 1, total } // text done
-        case 'confirm2':       return { current: 2, total } // confirm1 done
-        default:               return { current: 0, total }
-      }
+    // Determine total confirm steps based on story type
+    let totalConfirms = 3
+    if (selectedLifeStory === 'earlyLife') {
+      totalConfirms = 5
+    }
+
+    const total = totalConfirms
+
+    switch (lifeStorySubStep) {
+      case 'prompts':        return { current: 0, total }
+      case 'input':          return { current: 0, total }
+      case 'uploadComplete': return { current: 0, total }
+      case 'processing':     return { current: 0, total }
+      case 'confirm1':       return { current: 1, total }
+      case 'confirm2':       return { current: 2, total }
+      case 'confirm3':       return { current: 3, total }
+      case 'confirm4':       return { current: 4, total }
+      case 'confirm5':       return { current: 5, total }
+      default:               return { current: 0, total }
     }
   }
 
@@ -120,6 +122,40 @@ function LifeStoriesHub() {
         return <LifeStoryProfessionalConfirm2 />
       case 'current':
         return <LifeStoryCurrentConfirm2 />
+      default:
+        return null
+    }
+  }
+
+  // Render confirm3 component based on selected life story
+  const renderConfirm3Component = () => {
+    switch (selectedLifeStory) {
+      case 'earlyLife':
+        return <LifeStoryEarlyConfirm3 />
+      case 'professional':
+        return <LifeStoryProfessionalConfirm3 />
+      case 'current':
+        return <LifeStoryCurrentConfirm3 />
+      default:
+        return null
+    }
+  }
+
+  // Render confirm4 component (only earlyLife has this)
+  const renderConfirm4Component = () => {
+    switch (selectedLifeStory) {
+      case 'earlyLife':
+        return <LifeStoryEarlyConfirm4 />
+      default:
+        return null
+    }
+  }
+
+  // Render confirm5 component (only earlyLife has this)
+  const renderConfirm5Component = () => {
+    switch (selectedLifeStory) {
+      case 'earlyLife':
+        return <LifeStoryEarlyConfirm5 />
       default:
         return null
     }
@@ -161,6 +197,15 @@ function LifeStoriesHub() {
 
       case 'confirm2':
         return renderConfirm2Component()
+
+      case 'confirm3':
+        return renderConfirm3Component()
+
+      case 'confirm4':
+        return renderConfirm4Component()
+
+      case 'confirm5':
+        return renderConfirm5Component()
 
       default:
         return <LifeStorySelection />
