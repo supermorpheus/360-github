@@ -396,14 +396,6 @@
   right: 12px;
 }
 
-.card-logo-img {
-  width: 80px;
-  height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.25;
-  object-fit: contain;
-}
-
 /* Coordinates Section */
 .coordinates-section {
   margin-bottom: 24px;

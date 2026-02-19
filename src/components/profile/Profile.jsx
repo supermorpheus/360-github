@@ -240,11 +240,15 @@ function Profile() {
             <span className="card-label">A Quote that inspires me!</span>
             <p className="card-text">{currentUser.inspiringQuote}</p>
             <div className="card-decoration">
-              <img
-                src={`${import.meta.env.BASE_URL}SM Logo .jpeg`}
-                alt=""
-                className="card-logo-img"
-              />
+              <svg width="70" height="100" viewBox="0 0 70 100" fill="white" opacity="0.25">
+                <circle cx="38" cy="6" r="6" />
+                <polygon points="22,14 52,16 48,26 18,24" />
+                <polygon points="26,29 56,31 60,41 30,39" />
+                <polygon points="18,44 50,46 46,56 14,54" />
+                <polygon points="24,59 58,61 62,71 28,69" />
+                <polygon points="16,74 52,76 48,86 12,84" />
+                <polygon points="28,89 56,91 54,99 26,97" />
+              </svg>
             </div>
           </div>
         )}
@@ -320,11 +324,15 @@ function Profile() {
             <span className="card-label">What fills me with joy</span>
             <p className="card-text">{currentUser.joyOutsideWork}</p>
             <div className="card-decoration">
-              <img
-                src={`${import.meta.env.BASE_URL}SM Logo .jpeg`}
-                alt=""
-                className="card-logo-img"
-              />
+              <svg width="70" height="100" viewBox="0 0 70 100" fill="white" opacity="0.25">
+                <circle cx="38" cy="6" r="6" />
+                <polygon points="22,14 52,16 48,26 18,24" />
+                <polygon points="26,29 56,31 60,41 30,39" />
+                <polygon points="18,44 50,46 46,56 14,54" />
+                <polygon points="24,59 58,61 62,71 28,69" />
+                <polygon points="16,74 52,76 48,86 12,84" />
+                <polygon points="28,89 56,91 54,99 26,97" />
+              </svg>
             </div>
           </div>
         )}
