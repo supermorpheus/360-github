@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
 import { currentUser, members, newMembers, stats, getPizzaLevel } from '../../data/mockData'
+import PizzaIcon from '../PizzaIcon'
 import '../../styles/dashboard.css'
 
 function Dashboard() {
@@ -36,12 +37,6 @@ function Dashboard() {
   }
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
-
-  const getPizzaIcons = (level) => {
-    if (level === 'full') return '🍕🍕🍕🍕'
-    if (level === 'half') return '🍕🍕'
-    return '🍕'
-  }
 
   const openSearch = () => {
     setShowSearch(true)
@@ -90,7 +85,7 @@ function Dashboard() {
 
           {/* Screen 1: Complete Onboarding - 1 slice */}
           <div className={`welcome-card welcome-card-screen1 ${activeSlide === 0 ? 'active' : ''}`}>
-            <span className="screen-label">🍕</span>
+            <span className="screen-label"><PizzaIcon level="slice" size={22} /></span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -130,7 +125,7 @@ function Dashboard() {
 
           {/* Screen 2: Add My Life Stories - half pizza */}
           <div className={`welcome-card welcome-card-screen2 ${activeSlide === 1 ? 'active' : ''}`}>
-            <span className="screen-label">🍕🍕</span>
+            <span className="screen-label"><PizzaIcon level="half" size={22} /></span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -168,7 +163,7 @@ function Dashboard() {
 
           {/* Screen 3: Profile Complete - full pizza */}
           <div className={`welcome-card welcome-card-screen3 ${activeSlide === 2 ? 'active' : ''}`}>
-            <span className="screen-label">🍕🍕🍕🍕</span>
+            <span className="screen-label"><PizzaIcon level="full" size={22} /></span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -267,7 +262,7 @@ function Dashboard() {
                   </div>
                   <div className="search-result-info">
                     <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
-                      {getPizzaIcons(getPizzaLevel(member))}
+                      <PizzaIcon level={getPizzaLevel(member)} size={18} />
                     </span>
                     <h3 className="search-result-name">{member.firstName} {member.lastName}</h3>
                     <div className="search-result-location">

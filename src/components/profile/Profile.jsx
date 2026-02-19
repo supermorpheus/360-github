@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
 import { currentUser, getPizzaLevel } from '../../data/mockData'
+import PizzaIcon from '../PizzaIcon'
 import '../../styles/profile.css'
 import '../../styles/dashboard.css'
 
@@ -16,11 +17,6 @@ function Profile() {
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
   const pizzaLevel = getPizzaLevel(currentUser)
-  const getPizzaIcons = (level) => {
-    if (level === 'full') return '🍕🍕🍕🍕'
-    if (level === 'half') return '🍕🍕'
-    return '🍕'
-  }
 
   const toggleSummary = (key) => {
     setExpandedSummaries(prev => ({ ...prev, [key]: !prev[key] }))
@@ -58,7 +54,7 @@ function Profile() {
         {/* Status + Profile Link */}
         <div className="profile-status-row">
           <span className={`pizza-badge pizza-${pizzaLevel}`}>
-            {getPizzaIcons(pizzaLevel)}
+            <PizzaIcon level={pizzaLevel} size={18} />
           </span>
           <button className="profile-link-btn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
