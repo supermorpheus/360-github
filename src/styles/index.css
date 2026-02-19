@@ -106,3 +106,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Pizza Badges - Profile completion indicators */
+.pizza-badge {
+  display: inline-block;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pizza-slice {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.pizza-half {
+  background-color: var(--event-card-bg);
+  color: var(--golden-orange);
+}
+
+.pizza-full {
+  background-color: var(--primary-green-light);
+  color: var(--primary-green);
+}

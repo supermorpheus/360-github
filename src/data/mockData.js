@@ -240,6 +240,22 @@ export const members = [
 
 export const newMembers = members.slice(0, 4)
 
+// Pizza level helper: determines profile completion
+// 1 slice = only name & contact, half = overview filled, full = at least 1 life story
+export const getPizzaLevel = (member) => {
+  const hasLifeStory = member.videos && (
+    member.videos.earlyLife?.status === 'published' ||
+    member.videos.earlyLife?.status === 'under_review' ||
+    member.videos.professionalLife?.status === 'published' ||
+    member.videos.professionalLife?.status === 'under_review' ||
+    member.videos.currentLife?.status === 'published' ||
+    member.videos.currentLife?.status === 'under_review'
+  )
+  if (hasLifeStory) return 'full'
+  if (member.introduction) return 'half'
+  return 'slice'
+}
+
 export const stats = {
   totalMembers: 789,
   newMembersRecent: 24

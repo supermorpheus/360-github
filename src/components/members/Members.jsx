@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
-import { members, currentUser, stats } from '../../data/mockData'
+import { members, currentUser, stats, getPizzaLevel } from '../../data/mockData'
 import '../../styles/members.css'
 import '../../styles/dashboard.css'
 
@@ -14,6 +14,12 @@ function Members() {
   }
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+  const getPizzaLabel = (level) => {
+    if (level === 'full') return 'Full Pizza'
+    if (level === 'half') return '½ Pizza'
+    return '1 Slice'
+  }
 
   const truncate = (text, maxLength) => {
     if (!text) return ''
@@ -91,8 +97,8 @@ function Members() {
 
                   {/* Right: Info */}
                   <div className="member-details">
-                    <span className={`member-status-badge badge-${member.status}`}>
-                      {capitalize(member.status)}
+                    <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
+                      🍕 {getPizzaLabel(getPizzaLevel(member))}
                     </span>
                     <h3 className="member-name">{member.firstName} {member.lastName}</h3>
                     <p className="member-intro">{truncate(member.introduction, 120)}</p>

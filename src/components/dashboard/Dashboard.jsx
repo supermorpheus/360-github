@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
-import { currentUser, members, newMembers, stats } from '../../data/mockData'
+import { currentUser, members, newMembers, stats, getPizzaLevel } from '../../data/mockData'
 import '../../styles/dashboard.css'
 
 function Dashboard() {
@@ -36,6 +36,18 @@ function Dashboard() {
   }
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+  const getPizzaEmoji = (level) => {
+    if (level === 'full') return '🍕'
+    if (level === 'half') return '🍕'
+    return '🍕'
+  }
+
+  const getPizzaLabel = (level) => {
+    if (level === 'full') return 'Full Pizza'
+    if (level === 'half') return '½ Pizza'
+    return '1 Slice'
+  }
 
   const openSearch = () => {
     setShowSearch(true)
@@ -82,9 +94,9 @@ function Dashboard() {
         {/* Card 1: Revolving Welcome Cards */}
         <div className="welcome-carousel" onClick={handleCardClick}>
 
-          {/* Screen 1: Complete Onboarding - 0% */}
+          {/* Screen 1: Complete Onboarding - 1 slice */}
           <div className={`welcome-card welcome-card-screen1 ${activeSlide === 0 ? 'active' : ''}`}>
-            <span className="screen-label">Screen 1</span>
+            <span className="screen-label">🍕 1 Slice</span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -122,9 +134,9 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Screen 2: Add My Life Stories - 50% */}
+          {/* Screen 2: Add My Life Stories - half pizza */}
           <div className={`welcome-card welcome-card-screen2 ${activeSlide === 1 ? 'active' : ''}`}>
-            <span className="screen-label">Screen 2</span>
+            <span className="screen-label">🍕 ½ Pizza</span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -160,9 +172,9 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Screen 3: Profile Complete - 100% (no progress bar, shorter) */}
+          {/* Screen 3: Profile Complete - full pizza */}
           <div className={`welcome-card welcome-card-screen3 ${activeSlide === 2 ? 'active' : ''}`}>
-            <span className="screen-label">Screen 3</span>
+            <span className="screen-label">🍕 Full Pizza</span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -260,8 +272,8 @@ function Dashboard() {
                     )}
                   </div>
                   <div className="search-result-info">
-                    <span className={`search-result-badge badge-${member.status}`}>
-                      {capitalize(member.status)}
+                    <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
+                      {getPizzaEmoji(getPizzaLevel(member))} {getPizzaLabel(getPizzaLevel(member))}
                     </span>
                     <h3 className="search-result-name">{member.firstName} {member.lastName}</h3>
                     <div className="search-result-location">
