@@ -169,13 +169,19 @@
   color: var(--medium-gray);
 }
 
-/* Member Name */
+/* Member Name Row */
+.member-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
 .member-name {
   font-family: var(--font-primary);
   font-size: var(--text-xl);
   font-weight: 700;
   color: var(--dark-gray);
-  margin-bottom: 4px;
 }
 
 /* Member Intro */
@@ -206,21 +212,20 @@
   color: var(--medium-gray);
 }
 
-/* Org + Role Tags */
-.member-org-tags {
+/* Member Tags */
+.member-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
-.org-tag {
+.member-tag {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  color: var(--golden-orange);
-  background-color: var(--event-card-bg);
-  border: 1px solid rgba(226, 185, 16, 0.3);
-  padding: 4px 14px;
-  border-radius: 16px;
+  color: var(--dark-gray);
+  background-color: #F0F0F0;
+  padding: 4px 12px;
+  border-radius: 20px;
   font-weight: 500;
 }
 
