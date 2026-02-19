@@ -49,7 +49,7 @@ function Dashboard() {
   }
 
   const filteredMembers = members.filter((member) => {
-    if (!searchQuery.trim()) return members
+    if (!searchQuery.trim()) return false
     const query = searchQuery.toLowerCase()
     return (
       member.firstName.toLowerCase().includes(query) ||
