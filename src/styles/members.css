@@ -1,76 +1,47 @@
-/* Community/Members Page */
+/* Members Page */
 .members-page {
   padding-bottom: 80px;
 }
 
-/* Header */
-.members-header {
-  display: flex;
-  align-items: center;
-  padding: 16px 0;
-  position: relative;
+/* Welcome Header */
+.members-welcome {
+  padding: 16px 0 4px;
 }
 
-.members-back-btn {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: var(--dark-gray);
-  text-decoration: none;
-  cursor: pointer;
+.members-welcome-label {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: var(--text-md);
+  color: var(--medium-gray);
+  margin-bottom: 2px;
 }
 
-.members-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+.members-welcome-name {
   font-family: var(--font-primary);
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: 700;
   color: var(--dark-gray);
 }
 
-/* Tab Bar */
-.members-tabs {
-  display: flex;
-  margin-bottom: 16px;
-  border: 1px solid var(--border-gray);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.tab-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: 44px;
-  border: none;
-  background: white;
+/* Subtitle */
+.members-subtitle {
   font-family: var(--font-secondary);
   font-size: var(--text-md);
-  color: var(--medium-gray);
-  cursor: pointer;
-  transition: all 0.2s;
+  color: var(--dark-gray);
+  line-height: var(--leading-normal);
+  margin-bottom: 16px;
 }
 
-.tab-btn.active {
-  background-color: var(--primary-green-light);
-  color: var(--primary-green);
-  font-weight: 600;
+/* Search Row */
+.members-search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-/* Search */
-.search-container {
-  margin-bottom: 12px;
-}
-
-.search-input-wrapper {
+.members-search-row .search-input-wrapper {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -80,12 +51,12 @@
   padding: 0 20px;
 }
 
-.search-icon {
+.members-search-row .search-icon {
   color: var(--medium-gray);
   flex-shrink: 0;
 }
 
-.search-input {
+.members-search-row .search-input {
   flex: 1;
   border: none;
   background: none;
@@ -95,104 +66,86 @@
   color: var(--dark-gray);
 }
 
-.search-input::placeholder {
+.members-search-row .search-input::placeholder {
   color: var(--medium-gray);
 }
 
-/* Toolbar */
-.members-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.members-count {
-  font-family: var(--font-secondary);
-  font-size: var(--text-md);
-  color: var(--medium-gray);
-}
-
-.sort-btn {
+.filter-btn {
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
   background: none;
   border: 1px solid var(--border-gray);
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
+  border-radius: 12px;
   color: var(--dark-gray);
   cursor: pointer;
+  flex-shrink: 0;
 }
 
-/* Member Cards */
+/* Members List */
 .members-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+/* Member Card */
 .member-card {
   padding: 16px;
   background: white;
-  border: 1px solid var(--light-gray);
-  border-radius: 12px;
+  border: 1px solid var(--border-gray);
+  border-radius: 16px;
 }
 
-.member-card-header {
+.member-card-layout {
   display: flex;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 14px;
+  align-items: flex-start;
 }
 
-.member-avatar {
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
+/* Member Photo */
+.member-photo {
+  width: 90px;
+  height: 90px;
+  min-width: 90px;
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--primary-green);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-family: var(--font-primary);
-  font-size: 18px;
-  font-weight: 700;
 }
 
-.member-avatar img {
+.member-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.member-info {
-  flex: 1;
-}
-
-.member-name-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 2px;
-}
-
-.member-name {
+.member-photo-initials {
+  color: white;
   font-family: var(--font-primary);
-  font-size: var(--text-lg);
+  font-size: 28px;
   font-weight: 700;
-  color: var(--dark-gray);
 }
 
-.status-badge {
+/* Member Details */
+.member-details {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Status Badge */
+.member-status-badge {
+  display: inline-block;
   font-family: var(--font-secondary);
   font-size: var(--text-xs);
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 4px;
   font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .badge-super {
@@ -210,44 +163,59 @@
   color: var(--medium-gray);
 }
 
-.member-role {
-  font-family: var(--font-secondary);
-  font-size: var(--text-base);
+/* Member Name */
+.member-name {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  font-weight: 700;
   color: var(--dark-gray);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
-.member-location {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-secondary);
-  font-size: var(--text-sm);
-  color: var(--medium-gray);
-}
-
+/* Member Intro */
 .member-intro {
   font-family: var(--font-secondary);
-  font-size: var(--text-md);
+  font-size: var(--text-base);
   color: var(--medium-gray);
   line-height: var(--leading-normal);
+  margin-bottom: 8px;
+}
+
+/* Contact Row (location) */
+.member-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 10px;
 }
 
-.member-tags {
+.member-contact-row svg {
+  color: var(--medium-gray);
+  flex-shrink: 0;
+}
+
+.member-contact-row span {
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  color: var(--medium-gray);
+}
+
+/* Org + Role Tags */
+.member-org-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.tag {
+.org-tag {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
-  color: var(--primary-green);
-  background-color: var(--primary-green-light);
-  border: 1px solid var(--primary-green-light);
-  padding: 4px 12px;
+  color: var(--golden-orange);
+  background-color: var(--event-card-bg);
+  border: 1px solid rgba(226, 185, 16, 0.3);
+  padding: 4px 14px;
   border-radius: 16px;
+  font-weight: 500;
 }
 
 /* No results */
