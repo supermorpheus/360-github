@@ -1624,37 +1624,37 @@
 }
 
 .life-story-card.card-approved {
-  background-color: rgba(226, 185, 16, 0.7);
-  border-color: #e2b910;
+  background-color: rgba(226, 185, 16, 0.12);
+  border-color: rgba(226, 185, 16, 0.35);
 }
 
 .life-story-card.card-approved .story-card-title {
-  color: #3d2e00;
+  color: var(--dark-gray);
 }
 
 .life-story-card.card-approved .story-card-subtitle {
-  color: #5c4600;
+  color: var(--medium-gray);
 }
 
 .life-story-card.card-approved .story-card-arrow {
-  color: #5c4600;
+  color: var(--medium-gray);
 }
 
 .life-story-card.card-review {
-  background-color: rgba(213, 204, 142, 0.7);
-  border-color: #d5cc8e;
+  background-color: rgba(213, 204, 142, 0.12);
+  border-color: rgba(213, 204, 142, 0.4);
 }
 
 .life-story-card.card-review .story-card-title {
-  color: #3a3510;
+  color: var(--dark-gray);
 }
 
 .life-story-card.card-review .story-card-subtitle {
-  color: #555020;
+  color: var(--medium-gray);
 }
 
 .life-story-card.card-review .story-card-arrow {
-  color: #555020;
+  color: var(--medium-gray);
 }
 
 .story-card-icon {
@@ -1671,7 +1671,7 @@
 
 .life-story-card.card-approved .story-card-icon,
 .life-story-card.card-review .story-card-icon {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .story-card-content {
