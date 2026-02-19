@@ -22,6 +22,32 @@ export const currentUser = {
     earlyLife: { status: 'published', url: 'https://example.com/videos/anu-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=200&h=120&fit=crop' },
     professionalLife: { status: 'published', url: 'https://example.com/videos/anu-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&h=120&fit=crop' },
     currentLife: { status: 'under_review', url: 'https://example.com/videos/anu-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=200&h=120&fit=crop' }
+  },
+  lifeStories: {
+    earlyLife: {
+      tags: ['Cricket', 'Video Games', 'Engineering', 'Mathematics', 'Science', 'Biotechnology', 'Life Purpose', 'PCM', 'Analytics', 'Numbers'],
+      bornIn: 'New Delhi',
+      hometown: 'New Delhi',
+      schools: ['New Era Public School, Mayapuri, Delhi'],
+      universities: ['NSIT, Delhi'],
+      summary: 'Anu grew up in a comfortable middle class family in Delhi. She was always curious about how things work and had a natural affinity for numbers and science. Her early years were filled with cricket matches in the colony, video games, and a deep interest in engineering and mathematics.',
+      videoDuration: '10:08'
+    },
+    professional: {
+      tags: ['Biotech', 'Textiles', 'Market Research', 'Data Analytics', 'Tableau', 'Excel', 'Brand Launch', 'Procurement', 'Supply Chain', 'B2B Sales'],
+      firstJob: 'Mu Sigma - Analyst',
+      subsequentJobs: ['Grail Research - Market Research Analyst', 'Family Business (Industrial Parts Import & B2B Sales) - Operations Manager, Procurement Manager, Branding Specialist', 'Bain And Company - Senior Specialist, Manager, Senior Manager'],
+      summary: 'With about 15 years in analytics-driven roles, Anu began after completing her engineering from NSIT. She started as an analyst at Mu Sigma, moved into market research, helped grow the family business, and eventually joined Bain and Company where she rose through the ranks.',
+      videoDuration: '17:01'
+    },
+    current: {
+      tags: ['Inner Journey', 'Foundation', 'Self-Observation', 'Community Work', 'Spiritual Growth', 'Conscious Living', 'Dwarka'],
+      currentCities: ['Dwarka, Delhi'],
+      organizations: [{ role: 'Full-Time Contributor; Fund, Community Management, Foundation Development', org: 'Supermorpheus' }],
+      travelCities: ['Pondicherry', 'Chandigarh', 'Jaipur'],
+      summary: 'Anu lives in Dwarka near the airport. Focused on inner growth and community work, she is now a full-time contributor at Supermorpheus working on fund management, community programs, and foundation development.',
+      videoDuration: '9:22'
+    }
   }
 }
 
