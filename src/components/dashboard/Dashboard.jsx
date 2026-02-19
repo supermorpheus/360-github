@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import StatusBar from '../StatusBar'
-import { currentUser, newMembers, stats } from '../../data/mockData'
+import { currentUser, members, newMembers, stats } from '../../data/mockData'
 import '../../styles/dashboard.css'
 
 function Dashboard() {
   const [activeSlide, setActiveSlide] = useState(0)
   const [showMenu, setShowMenu] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const searchInputRef = useRef(null)
   const totalSlides = 3
 
   useEffect(() => {
@@ -32,6 +35,32 @@ function Dashboard() {
     return `${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}`
   }
 
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+  const openSearch = () => {
+    setShowSearch(true)
+    setSearchQuery('')
+    setTimeout(() => searchInputRef.current?.focus(), 100)
+  }
+
+  const closeSearch = () => {
+    setShowSearch(false)
+    setSearchQuery('')
+  }
+
+  const filteredMembers = members.filter((member) => {
+    if (!searchQuery.trim()) return members
+    const query = searchQuery.toLowerCase()
+    return (
+      member.firstName.toLowerCase().includes(query) ||
+      member.lastName.toLowerCase().includes(query) ||
+      member.currentOrganization.toLowerCase().includes(query) ||
+      member.currentRole.toLowerCase().includes(query) ||
+      member.livesIn.toLowerCase().includes(query) ||
+      member.tags?.some(tag => tag.toLowerCase().includes(query))
+    )
+  })
+
   return (
     <>
       <StatusBar />
@@ -39,7 +68,7 @@ function Dashboard() {
 
         {/* Search Bar - Top */}
         <div className="section search-section">
-          <Link to="/members" className="search-bar-link">
+          <button className="search-bar-btn" onClick={openSearch}>
             <div className="search-bar">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="8"/>
@@ -47,7 +76,7 @@ function Dashboard() {
               </svg>
               <span>Search by name, passion, location</span>
             </div>
-          </Link>
+          </button>
         </div>
 
         {/* Card 1: Revolving Welcome Cards */}
@@ -189,6 +218,68 @@ function Dashboard() {
             ))}
           </div>
         </div>
+
+        {/* Search Overlay */}
+        {showSearch && (
+          <div className="search-overlay">
+            <div className="search-overlay-header">
+              <h2 className="search-overlay-title">Search Users</h2>
+              <button className="search-overlay-close" onClick={closeSearch}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="search-overlay-input-wrapper">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                ref={searchInputRef}
+                className="search-overlay-input"
+                type="text"
+                placeholder="Search by name, passion, location"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+
+            <div className="search-overlay-results">
+              {filteredMembers.map((member) => (
+                <div key={member.id} className="search-result-card">
+                  <div className="search-result-photo">
+                    {member.profilePicture ? (
+                      <img src={member.profilePicture} alt={member.firstName} />
+                    ) : (
+                      <span className="search-result-initials">
+                        {getInitials(member.firstName, member.lastName)}
+                      </span>
+                    )}
+                  </div>
+                  <div className="search-result-info">
+                    <span className={`search-result-badge badge-${member.status}`}>
+                      {capitalize(member.status)}
+                    </span>
+                    <h3 className="search-result-name">{member.firstName} {member.lastName}</h3>
+                    <div className="search-result-location">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="10" r="3" />
+                        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+                      </svg>
+                      <span>{member.livesIn}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {filteredMembers.length === 0 && (
+                <div className="search-no-results">No users found.</div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Bottom Navigation */}
         <nav className="bottom-nav">
