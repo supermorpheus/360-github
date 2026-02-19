@@ -112,23 +112,22 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
-  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   margin-bottom: 4px;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .pizza-slice {
   background-color: #FFF3E0;
-  color: #E65100;
 }
 
 .pizza-half {
   background-color: var(--event-card-bg);
-  color: var(--golden-orange);
 }
 
 .pizza-full {
   background-color: var(--primary-green-light);
-  color: var(--primary-green);
 }
