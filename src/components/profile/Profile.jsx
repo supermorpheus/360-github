@@ -94,6 +94,73 @@ function Profile() {
           <p className="intro-text">{currentUser.introduction}</p>
         </div>
 
+        {/* Current Life Section */}
+        {lifeStories.current && (
+          <div className="life-story-section">
+            <div className="story-section-header">
+              <h3 className="story-section-title">Current Life</h3>
+              <span className="story-section-icon">✨</span>
+            </div>
+            <div className="story-section-divider" />
+
+            {currentUser.videos?.currentLife?.thumbnail && (
+              <div className="story-video-thumbnail">
+                <img src={currentUser.videos.currentLife.thumbnail} alt="Current Life" />
+                <div className="video-play-btn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </div>
+                {lifeStories.current.videoDuration && (
+                  <span className="video-duration-badge">{lifeStories.current.videoDuration}</span>
+                )}
+              </div>
+            )}
+
+            {lifeStories.current.tags?.length > 0 && (
+              <div className="story-tags">
+                {lifeStories.current.tags.map(tag => (
+                  <span key={tag} className="story-tag">{tag}</span>
+                ))}
+              </div>
+            )}
+
+            {lifeStories.current.organizations?.length > 0 && (
+              <div className="story-meta-field">
+                <span className="meta-label">Roles / Organizations</span>
+                <div className="meta-pills">
+                  {lifeStories.current.organizations.map((org, i) => (
+                    <span key={i} className="meta-pill">{org.role} / {org.org}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {lifeStories.current.travelCities?.length > 0 && (
+              <div className="story-meta-field">
+                <span className="meta-label">Frequent Travel Cities</span>
+                <div className="meta-pills">
+                  {lifeStories.current.travelCities.map(city => (
+                    <span key={city} className="meta-pill">{city}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {lifeStories.current.summary && (
+              <div className="story-summary">
+                <span className="summary-label">Current Life Summary</span>
+                <p className={`summary-text ${expandedSummaries.current ? 'expanded' : ''}`}>
+                  {lifeStories.current.summary}
+                </p>
+                <button className="show-more-btn" onClick={() => toggleSummary('current')}>
+                  {expandedSummaries.current ? 'Show Less' : 'Show More'}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Early Life Section */}
         {lifeStories.earlyLife && (
           <div className="life-story-section">
@@ -167,6 +234,21 @@ function Profile() {
           </div>
         )}
 
+        {/* Inspiring Quote Card */}
+        {currentUser.inspiringQuote && (
+          <div className="colored-card quote-card-green">
+            <span className="card-label">A Quote that inspires me!</span>
+            <p className="card-text">{currentUser.inspiringQuote}</p>
+            <div className="card-decoration">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="white" opacity="0.15">
+                <path d="M40 8L12 68h56L40 8z" />
+                <path d="M28 20L8 60h40L28 20z" />
+                <path d="M52 20L32 60h40L52 20z" />
+              </svg>
+            </div>
+          </div>
+        )}
+
         {/* Professional Life Section */}
         {lifeStories.professional && (
           <div className="life-story-section">
@@ -229,88 +311,6 @@ function Profile() {
                 </button>
               </div>
             )}
-          </div>
-        )}
-
-        {/* Current Life Section */}
-        {lifeStories.current && (
-          <div className="life-story-section">
-            <div className="story-section-header">
-              <h3 className="story-section-title">Current Life</h3>
-              <span className="story-section-icon">✨</span>
-            </div>
-            <div className="story-section-divider" />
-
-            {currentUser.videos?.currentLife?.thumbnail && (
-              <div className="story-video-thumbnail">
-                <img src={currentUser.videos.currentLife.thumbnail} alt="Current Life" />
-                <div className="video-play-btn">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                </div>
-                {lifeStories.current.videoDuration && (
-                  <span className="video-duration-badge">{lifeStories.current.videoDuration}</span>
-                )}
-              </div>
-            )}
-
-            {lifeStories.current.tags?.length > 0 && (
-              <div className="story-tags">
-                {lifeStories.current.tags.map(tag => (
-                  <span key={tag} className="story-tag">{tag}</span>
-                ))}
-              </div>
-            )}
-
-            {lifeStories.current.organizations?.length > 0 && (
-              <div className="story-meta-field">
-                <span className="meta-label">Roles / Organizations</span>
-                <div className="meta-pills">
-                  {lifeStories.current.organizations.map((org, i) => (
-                    <span key={i} className="meta-pill">{org.role} / {org.org}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {lifeStories.current.travelCities?.length > 0 && (
-              <div className="story-meta-field">
-                <span className="meta-label">Frequent Travel Cities</span>
-                <div className="meta-pills">
-                  {lifeStories.current.travelCities.map(city => (
-                    <span key={city} className="meta-pill">{city}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {lifeStories.current.summary && (
-              <div className="story-summary">
-                <span className="summary-label">Current Life Summary</span>
-                <p className={`summary-text ${expandedSummaries.current ? 'expanded' : ''}`}>
-                  {lifeStories.current.summary}
-                </p>
-                <button className="show-more-btn" onClick={() => toggleSummary('current')}>
-                  {expandedSummaries.current ? 'Show Less' : 'Show More'}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Inspiring Quote Card */}
-        {currentUser.inspiringQuote && (
-          <div className="colored-card quote-card-green">
-            <span className="card-label">A Quote that inspires me!</span>
-            <p className="card-text">{currentUser.inspiringQuote}</p>
-            <div className="card-decoration">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="white" opacity="0.15">
-                <path d="M40 8L12 68h56L40 8z" />
-                <path d="M28 20L8 60h40L28 20z" />
-                <path d="M52 20L32 60h40L52 20z" />
-              </svg>
-            </div>
           </div>
         )}
 
