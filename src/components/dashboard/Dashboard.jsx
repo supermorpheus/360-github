@@ -79,7 +79,7 @@ function Dashboard() {
                 </svg>
               </div>
               <div className="screen-text">
-                <h3 className="screen-title">Complete Your Onboarding</h3>
+                <h3 className="screen-title">Complete Your Profile Overview</h3>
               </div>
             </div>
             <div className="completion-mini">
@@ -117,7 +117,7 @@ function Dashboard() {
                 </svg>
               </div>
               <div className="screen-text">
-                <h3 className="screen-title">Add My Life Stories</h3>
+                <h3 className="screen-title">Add Your Life Stories</h3>
               </div>
             </div>
             <div className="completion-mini">
@@ -152,7 +152,7 @@ function Dashboard() {
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>Your profile is complete! Explore the gang and connect.</span>
+              <span>Your profile is complete! Explore and connect.</span>
             </div>
           </div>
 
@@ -190,17 +190,12 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Browse All Members - Separate */}
-        <Link to="/members" className="browse-all-btn browse-all-standalone">
-          Browse All Members
-        </Link>
-
         {/* Bottom Navigation */}
         <nav className="bottom-nav">
           <Link to="/dashboard" className="nav-item active">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+              <polyline points="9 22 9 12 15 12 15 22" fill="white"/>
             </svg>
             <span>Home</span>
           </Link>
@@ -211,7 +206,7 @@ function Dashboard() {
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
-            <span>Community</span>
+            <span>Members</span>
           </Link>
           <button className="nav-item" onClick={() => setShowMenu(!showMenu)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

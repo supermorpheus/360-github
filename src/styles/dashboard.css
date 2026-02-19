@@ -3,7 +3,8 @@
   padding-bottom: 80px; /* Space for bottom nav */
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Search at top */
@@ -42,9 +43,9 @@
 }
 
 .welcome-card-avatar {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
