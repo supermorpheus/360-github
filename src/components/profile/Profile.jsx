@@ -16,10 +16,10 @@ function Profile() {
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
   const pizzaLevel = getPizzaLevel(currentUser)
-  const getPizzaLabel = (level) => {
-    if (level === 'full') return 'Full Pizza'
-    if (level === 'half') return '½ Pizza'
-    return '1 Slice'
+  const getPizzaIcons = (level) => {
+    if (level === 'full') return '🍕🍕🍕🍕'
+    if (level === 'half') return '🍕🍕'
+    return '🍕'
   }
 
   const toggleSummary = (key) => {
@@ -58,7 +58,7 @@ function Profile() {
         {/* Status + Profile Link */}
         <div className="profile-status-row">
           <span className={`pizza-badge pizza-${pizzaLevel}`}>
-            🍕 {getPizzaLabel(pizzaLevel)}
+            {getPizzaIcons(pizzaLevel)}
           </span>
           <button className="profile-link-btn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

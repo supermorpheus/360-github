@@ -37,16 +37,10 @@ function Dashboard() {
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
-  const getPizzaEmoji = (level) => {
-    if (level === 'full') return '🍕'
-    if (level === 'half') return '🍕'
+  const getPizzaIcons = (level) => {
+    if (level === 'full') return '🍕🍕🍕🍕'
+    if (level === 'half') return '🍕🍕'
     return '🍕'
-  }
-
-  const getPizzaLabel = (level) => {
-    if (level === 'full') return 'Full Pizza'
-    if (level === 'half') return '½ Pizza'
-    return '1 Slice'
   }
 
   const openSearch = () => {
@@ -96,7 +90,7 @@ function Dashboard() {
 
           {/* Screen 1: Complete Onboarding - 1 slice */}
           <div className={`welcome-card welcome-card-screen1 ${activeSlide === 0 ? 'active' : ''}`}>
-            <span className="screen-label">🍕 1 Slice</span>
+            <span className="screen-label">🍕</span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -136,7 +130,7 @@ function Dashboard() {
 
           {/* Screen 2: Add My Life Stories - half pizza */}
           <div className={`welcome-card welcome-card-screen2 ${activeSlide === 1 ? 'active' : ''}`}>
-            <span className="screen-label">🍕 ½ Pizza</span>
+            <span className="screen-label">🍕🍕</span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -174,7 +168,7 @@ function Dashboard() {
 
           {/* Screen 3: Profile Complete - full pizza */}
           <div className={`welcome-card welcome-card-screen3 ${activeSlide === 2 ? 'active' : ''}`}>
-            <span className="screen-label">🍕 Full Pizza</span>
+            <span className="screen-label">🍕🍕🍕🍕</span>
             <div className="welcome-card-header">
               <div className="welcome-card-avatar">
                 {currentUser.profilePicture ? (
@@ -273,7 +267,7 @@ function Dashboard() {
                   </div>
                   <div className="search-result-info">
                     <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
-                      {getPizzaEmoji(getPizzaLevel(member))} {getPizzaLabel(getPizzaLevel(member))}
+                      {getPizzaIcons(getPizzaLevel(member))}
                     </span>
                     <h3 className="search-result-name">{member.firstName} {member.lastName}</h3>
                     <div className="search-result-location">

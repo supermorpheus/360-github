@@ -15,10 +15,10 @@ function Members() {
 
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
-  const getPizzaLabel = (level) => {
-    if (level === 'full') return 'Full Pizza'
-    if (level === 'half') return '½ Pizza'
-    return '1 Slice'
+  const getPizzaIcons = (level) => {
+    if (level === 'full') return '🍕🍕🍕🍕'
+    if (level === 'half') return '🍕🍕'
+    return '🍕'
   }
 
   const truncate = (text, maxLength) => {
@@ -98,7 +98,7 @@ function Members() {
                   {/* Right: Info */}
                   <div className="member-details">
                     <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
-                      🍕 {getPizzaLabel(getPizzaLevel(member))}
+                      {getPizzaIcons(getPizzaLevel(member))}
                     </span>
                     <h3 className="member-name">{member.firstName} {member.lastName}</h3>
                     <p className="member-intro">{truncate(member.introduction, 120)}</p>
