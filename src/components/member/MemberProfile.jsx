@@ -79,13 +79,24 @@ function MemberProfile() {
         <div className="profile-name-photo-row">
           <div className="profile-name-info">
             <h2 className="my-profile-name">{member.firstName} {member.lastName}</h2>
-            <div className="profile-org-line">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-              </svg>
-              <span>{member.currentOrganization}</span>
-            </div>
+            {member.currentOrganization && (
+              <div className="profile-org-line">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </svg>
+                <span>{member.currentOrganization}</span>
+              </div>
+            )}
+            {member.currentRole && !member.currentOrganization && (
+              <div className="profile-org-line">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>{member.currentRole}</span>
+              </div>
+            )}
           </div>
           <div className="profile-photo-circle">
             {member.profilePicture ? (
@@ -103,9 +114,22 @@ function MemberProfile() {
         </div>
 
         {/* Introduction */}
-        <div className="profile-intro">
-          <p className="intro-text">{member.introduction}</p>
-        </div>
+        {member.introduction && (
+          <div className="profile-intro">
+            <p className="intro-text">{member.introduction}</p>
+          </div>
+        )}
+
+        {/* Basic Profile Empty State */}
+        {!member.introduction && !lifeStories.current && !lifeStories.earlyLife && !lifeStories.professional && !member.inspiringQuote && !member.joyOutsideWork && (
+          <div className="basic-profile-empty">
+            <div className="basic-empty-icon">
+              <PizzaIcon level="slice" size={40} />
+            </div>
+            <h3 className="basic-empty-title">{member.firstName} just joined!</h3>
+            <p className="basic-empty-text">This member hasn't completed their profile yet. They'll add their story, passions, and more soon.</p>
+          </div>
+        )}
 
         {/* Current Life Section */}
         {lifeStories.current && (
@@ -253,15 +277,7 @@ function MemberProfile() {
             <span className="card-label">A Quote that inspires me!</span>
             <p className="card-text">{member.inspiringQuote}</p>
             <div className="card-decoration">
-              <svg width="70" height="100" viewBox="0 0 70 100" fill="white" opacity="0.25">
-                <circle cx="38" cy="6" r="6" />
-                <polygon points="22,14 52,16 48,26 18,24" />
-                <polygon points="26,29 56,31 60,41 30,39" />
-                <polygon points="18,44 50,46 46,56 14,54" />
-                <polygon points="24,59 58,61 62,71 28,69" />
-                <polygon points="16,74 52,76 48,86 12,84" />
-                <polygon points="28,89 56,91 54,99 26,97" />
-              </svg>
+              <img src="/360-github/SM All White Logo.jpeg" alt="" className="card-logo-img" />
             </div>
           </div>
         )}
@@ -337,15 +353,7 @@ function MemberProfile() {
             <span className="card-label">What fills me with joy</span>
             <p className="card-text">{member.joyOutsideWork}</p>
             <div className="card-decoration">
-              <svg width="70" height="100" viewBox="0 0 70 100" fill="white" opacity="0.25">
-                <circle cx="38" cy="6" r="6" />
-                <polygon points="22,14 52,16 48,26 18,24" />
-                <polygon points="26,29 56,31 60,41 30,39" />
-                <polygon points="18,44 50,46 46,56 14,54" />
-                <polygon points="24,59 58,61 62,71 28,69" />
-                <polygon points="16,74 52,76 48,86 12,84" />
-                <polygon points="28,89 56,91 54,99 26,97" />
-              </svg>
+              <img src="/360-github/SM All White Logo.jpeg" alt="" className="card-logo-img" />
             </div>
           </div>
         )}
