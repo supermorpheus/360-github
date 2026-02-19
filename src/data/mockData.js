@@ -73,6 +73,32 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/priya-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=200&h=120&fit=crop' },
       professionalLife: { status: 'published', url: 'https://example.com/videos/priya-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=200&h=120&fit=crop' },
       currentLife: { status: 'under_review', url: 'https://example.com/videos/priya-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&h=120&fit=crop' }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Coding', 'Mathematics', 'Science Olympiad', 'Debate', 'Classical Dance', 'Carnatic Music'],
+        bornIn: 'Jaipur',
+        hometown: 'Mumbai',
+        schools: ['Sophia High School, Mumbai'],
+        universities: ['IIT Bombay - Computer Science', 'Stanford University - MS CS'],
+        summary: 'Priya grew up in a family of educators in Jaipur before moving to Mumbai. She was a national science olympiad winner and started coding at age 12. Her love for both technology and classical dance shaped her into a well-rounded thinker.',
+        videoDuration: '8:45'
+      },
+      professional: {
+        tags: ['Google', 'Search', 'AI/ML', 'EdTech', 'Startup', 'Product Management', 'Engineering Leadership'],
+        firstJob: 'Google - Software Engineer',
+        subsequentJobs: ['Google - Senior Engineer, Tech Lead', 'TechStart India - Founder & CEO'],
+        summary: 'After graduating from Stanford, Priya joined Google where she worked on search algorithms and AI/ML for 6 years. She rose to Tech Lead before leaving to start TechStart India, driven by the desire to make quality education accessible to every Indian child.',
+        videoDuration: '12:30'
+      },
+      current: {
+        tags: ['EdTech', 'AI Tutoring', 'Rural Education', 'Impact', 'Mentorship', 'Women in Tech'],
+        currentCities: ['Mumbai'],
+        organizations: [{ role: 'Founder & CEO', org: 'TechStart India' }, { role: 'Board Advisor', org: 'Girls Who Code India' }],
+        travelCities: ['Bengaluru', 'Delhi', 'San Francisco'],
+        summary: 'Priya now leads TechStart India, an AI-powered learning platform reaching 500K+ students across rural India. She actively mentors young women in tech and sits on the board of Girls Who Code India.',
+        videoDuration: '7:15'
+      }
     }
   },
   {
@@ -96,6 +122,24 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/rahul-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=200&h=120&fit=crop' },
       professionalLife: { status: 'under_review', url: 'https://example.com/videos/rahul-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=200&h=120&fit=crop' },
       currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Running', 'Nature', 'Photography', 'Physics', 'Environment', 'Trekking'],
+        bornIn: 'Lucknow',
+        hometown: 'Delhi',
+        schools: ['Modern School, Barakhamba Road, Delhi'],
+        universities: ['IIT Delhi - Electrical Engineering'],
+        summary: 'Rahul spent his childhood between Lucknow and Delhi. An avid nature lover from a young age, he would spend weekends photographing birds and running marathons. His passion for physics and the environment led him to IIT Delhi.',
+        videoDuration: '9:20'
+      },
+      professional: {
+        tags: ['Solar Energy', 'Climate Tech', 'Sustainability', 'Policy', 'TERI', 'Renewable Energy'],
+        firstJob: 'TERI - Research Associate',
+        subsequentJobs: ['SunEdison - Project Manager', 'ReNew Power - VP Operations', 'GreenEnergy Solutions - Co-Founder'],
+        summary: 'Rahul started his career at TERI researching renewable energy policy. He moved to SunEdison and then ReNew Power, gaining deep expertise in solar energy operations. In 2022, he co-founded GreenEnergy Solutions to make clean energy accessible to SMBs across South Asia.',
+        videoDuration: '14:10'
+      }
     }
   },
   {
@@ -119,6 +163,32 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/ananya-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=200&h=120&fit=crop' },
       professionalLife: { status: 'published', url: 'https://example.com/videos/ananya-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=200&h=120&fit=crop' },
       currentLife: { status: 'published', url: 'https://example.com/videos/ananya-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=200&h=120&fit=crop' }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Bharatanatyam', 'Biology', 'Medicine', 'Reading', 'Tamil Literature', 'Volunteering'],
+        bornIn: 'Chennai',
+        hometown: 'Chennai',
+        schools: ['D.A.V. Senior Secondary School, Chennai'],
+        universities: ['Anna University - Biomedical Engineering', 'CMU - MS Health Informatics'],
+        summary: 'Ananya grew up in a culturally rich Tamil family in Chennai. She was trained in Bharatanatyam from age 5 and developed a deep love for biology and medicine. Her grandmother\'s struggle with accessing healthcare in rural Tamil Nadu inspired her path.',
+        videoDuration: '11:05'
+      },
+      professional: {
+        tags: ['HealthTech', 'Telemedicine', 'Digital Health', 'SaaS', 'Product', 'Engineering', 'Public Health'],
+        firstJob: 'Philips Healthcare - Software Developer',
+        subsequentJobs: ['Practo - Engineering Manager', 'Apollo 24/7 - VP Engineering', 'HealthFirst - CTO'],
+        summary: 'Ananya began at Philips Healthcare building diagnostic software, then moved to Practo where she built telemedicine features. At Apollo 24/7 she led the engineering team, and now as CTO of HealthFirst, she has built platforms serving 2M+ patients.',
+        videoDuration: '15:40'
+      },
+      current: {
+        tags: ['Telemedicine', 'Tier-2 Cities', 'AI Diagnostics', 'Women Health', 'Public Health', 'Mentorship'],
+        currentCities: ['Chennai'],
+        organizations: [{ role: 'CTO', org: 'HealthFirst' }, { role: 'Advisor', org: 'TN Health Innovation Council' }],
+        travelCities: ['Bengaluru', 'Hyderabad', 'Boston'],
+        summary: 'Ananya leads HealthFirst\'s technology vision, focused on bringing AI-powered diagnostics to tier-2 and tier-3 cities. She also advises the Tamil Nadu government on health innovation and mentors women engineers.',
+        videoDuration: '8:50'
+      }
     }
   },
   {
@@ -142,6 +212,17 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/vikram-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=120&fit=crop' },
       professionalLife: { status: 'not_uploaded', url: null, thumbnail: null },
       currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Cricket', 'Street Food', 'Commerce', 'Trading', 'Stock Market', 'Mathematics'],
+        bornIn: 'Chandigarh',
+        hometown: 'Bengaluru',
+        schools: ['Bishop Cotton Boys School, Bengaluru'],
+        universities: ['BITS Pilani - Economics', 'IIM Ahmedabad - MBA Finance'],
+        summary: 'Vikram grew up obsessed with numbers and cricket. He started trading stocks as a teenager using his father\'s demat account. His early fascination with financial markets led him to pursue economics at BITS Pilani and later an MBA at IIM Ahmedabad.',
+        videoDuration: '10:30'
+      }
     }
   },
   {
@@ -188,6 +269,32 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/arjun-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=200&h=120&fit=crop' },
       professionalLife: { status: 'published', url: 'https://example.com/videos/arjun-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&h=120&fit=crop' },
       currentLife: { status: 'under_review', url: 'https://example.com/videos/arjun-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&h=120&fit=crop' }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Basketball', 'Sailing', 'Robotics', 'Drones', 'Physics', 'Electronics'],
+        bornIn: 'Trivandrum',
+        hometown: 'Hyderabad',
+        schools: ['Hyderabad Public School, Begumpet'],
+        universities: ['NIT Trichy - Mechanical Engineering', 'ISB Hyderabad - MBA'],
+        summary: 'Arjun grew up in Hyderabad with a passion for building things. From LEGO robots as a kid to RC drones in college, he was always fascinated by mechanics and logistics. Basketball and sailing taught him teamwork and strategy.',
+        videoDuration: '9:55'
+      },
+      professional: {
+        tags: ['Logistics', 'AI', 'Supply Chain', 'Operations', 'Amazon', 'B2B SaaS', 'Optimization'],
+        firstJob: 'Amazon India - Operations Manager',
+        subsequentJobs: ['Delhivery - VP Operations', 'LogiSmart - Founder & CEO'],
+        summary: 'Arjun cut his teeth at Amazon India managing warehouse operations across 3 states. He then joined Delhivery as VP Operations, optimizing last-mile delivery. In 2021, he founded LogiSmart to bring AI-powered supply chain optimization to mid-market companies.',
+        videoDuration: '13:20'
+      },
+      current: {
+        tags: ['AI Logistics', 'Last Mile', 'Smart Warehousing', 'Sustainability', 'Coaching'],
+        currentCities: ['Hyderabad'],
+        organizations: [{ role: 'Founder & CEO', org: 'LogiSmart' }, { role: 'Basketball Coach', org: 'Hyderabad Youth Sports' }],
+        travelCities: ['Mumbai', 'Delhi', 'Singapore'],
+        summary: 'Arjun leads LogiSmart which now moves 50K+ shipments daily across 200 cities. Outside work, he coaches basketball for underprivileged kids in Hyderabad and is passionate about sustainable logistics.',
+        videoDuration: '7:45'
+      }
     }
   },
   {
@@ -211,6 +318,24 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/kavya-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=200&h=120&fit=crop' },
       professionalLife: { status: 'published', url: 'https://example.com/videos/kavya-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=200&h=120&fit=crop' },
       currentLife: { status: 'not_uploaded', url: null, thumbnail: null }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Kathakali', 'Organic Farming', 'Cooking', 'Kerala Cuisine', 'Biology', 'Environmental Science'],
+        bornIn: 'Kochi',
+        hometown: 'Kochi',
+        schools: ['Chinmaya Vidyalaya, Kochi'],
+        universities: ['Kerala Agricultural University', 'IIM Kozhikode - MBA'],
+        summary: 'Kavya grew up surrounded by spice plantations in Kerala. She learned Kathakali and traditional cooking from her grandmother. Her deep connection to food systems and farming communities shaped her mission to connect farmers directly to consumers.',
+        videoDuration: '8:30'
+      },
+      professional: {
+        tags: ['AgriTech', 'Supply Chain', 'D2C', 'Operations', 'Farm-to-Fork', 'Impact Investing'],
+        firstJob: 'Flipkart - Category Manager (Grocery)',
+        subsequentJobs: ['BigBasket - Head of Supply Chain', 'FoodChain - Co-Founder & COO'],
+        summary: 'Kavya started at Flipkart managing the grocery category, then moved to BigBasket leading supply chain for fresh produce. Seeing the disconnect between farmers and consumers, she co-founded FoodChain to create a transparent farm-to-fork supply chain.',
+        videoDuration: '11:55'
+      }
     }
   },
   {
@@ -234,6 +359,32 @@ export const members = [
       earlyLife: { status: 'published', url: 'https://example.com/videos/sid-early.mp4', thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=120&fit=crop' },
       professionalLife: { status: 'published', url: 'https://example.com/videos/sid-professional.mp4', thumbnail: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=200&h=120&fit=crop' },
       currentLife: { status: 'published', url: 'https://example.com/videos/sid-current.mp4', thumbnail: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=200&h=120&fit=crop' }
+    },
+    lifeStories: {
+      earlyLife: {
+        tags: ['Astrophotography', 'Telescopes', 'Physics', 'Space', 'Rockets', 'Science Fairs', 'Trekking'],
+        bornIn: 'Delhi',
+        hometown: 'Bengaluru',
+        schools: ['Kendriya Vidyalaya, Delhi'],
+        universities: ['IISc Bengaluru - Physics', 'IISc Bengaluru - PhD Satellite Systems'],
+        summary: 'Siddharth grew up gazing at the stars from his Delhi rooftop. He built his first telescope at age 14 and won multiple national science fairs. His obsession with space led him to IISc Bengaluru where he pursued physics and later a PhD in satellite systems.',
+        videoDuration: '12:15'
+      },
+      professional: {
+        tags: ['ISRO', 'Satellite Imagery', 'Remote Sensing', 'Agriculture', 'Urban Planning', 'Deep Tech', 'Space Tech'],
+        firstJob: 'ISRO - Scientist',
+        subsequentJobs: ['ISRO - Senior Scientist, Satellite Imagery Division', 'SpaceView Labs - Founder & CTO'],
+        summary: 'Siddharth spent 8 years at ISRO working on satellite imagery and remote sensing. He was part of the team that built India\'s agricultural monitoring satellite. In 2020, he left to start SpaceView Labs, bringing space tech to solve earthly problems in agriculture and urban planning.',
+        videoDuration: '16:30'
+      },
+      current: {
+        tags: ['Satellite Analytics', 'Precision Agriculture', 'Smart Cities', 'Climate Monitoring', 'Deep Tech'],
+        currentCities: ['Bengaluru'],
+        organizations: [{ role: 'Founder & CTO', org: 'SpaceView Labs' }, { role: 'Visiting Researcher', org: 'IISc Bengaluru' }],
+        travelCities: ['Hyderabad', 'Houston', 'Tokyo'],
+        summary: 'Siddharth now leads SpaceView Labs, providing satellite imagery analytics to farmers, urban planners, and climate researchers. He also serves as a visiting researcher at IISc and spends weekends astrophotographing and trekking in the Himalayas.',
+        videoDuration: '9:40'
+      }
     }
   }
 ]

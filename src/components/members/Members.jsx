@@ -77,7 +77,7 @@ function Members() {
         <div className="members-list">
           {filteredMembers.length > 0 ? (
             filteredMembers.map((member) => (
-              <div key={member.id} className="member-card">
+              <Link key={member.id} to={`/member/${member.id}`} className="member-card member-card-link">
                 <div className="member-card-layout">
                   {/* Left: Photo */}
                   <div className="member-photo">
@@ -114,7 +114,7 @@ function Members() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <div className="no-results">No members found matching your search.</div>

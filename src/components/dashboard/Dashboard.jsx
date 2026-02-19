@@ -250,7 +250,7 @@ function Dashboard() {
 
             <div className="search-overlay-results">
               {filteredMembers.map((member) => (
-                <div key={member.id} className="search-result-card">
+                <Link key={member.id} to={`/member/${member.id}`} className="search-result-card search-result-link">
                   <div className="search-result-photo">
                     {member.profilePicture ? (
                       <img src={member.profilePicture} alt={member.firstName} />
@@ -273,7 +273,7 @@ function Dashboard() {
                       <span>{member.livesIn}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
               {filteredMembers.length === 0 && (
                 <div className="search-no-results">No users found.</div>

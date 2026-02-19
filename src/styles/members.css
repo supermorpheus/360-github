@@ -3,6 +3,12 @@
   padding-bottom: 80px;
 }
 
+.member-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* Welcome Header */
 .members-welcome {
   padding: 16px 0 4px;

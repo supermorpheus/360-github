@@ -452,6 +452,11 @@
   flex: 1;
 }
 
+.search-result-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Search Result Card */
 .search-result-card {
   display: flex;
