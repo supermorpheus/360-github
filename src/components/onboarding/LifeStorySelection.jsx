@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import { useOnboarding, lifeStoryPrompts } from '../../context/OnboardingContext'
 
 function LifeStorySelection() {
-  const { selectLifeStory, isLifeStoryComplete, nextStep, profileData } = useOnboarding()
+  const navigate = useNavigate()
+  const { selectLifeStory, isLifeStoryComplete, profileData } = useOnboarding()
 
   const stories = [
     { key: 'earlyLife', ...lifeStoryPrompts.earlyLife },
@@ -71,7 +73,7 @@ function LifeStorySelection() {
         })}
       </div>
 
-      <button className="btn-primary" onClick={nextStep}>
+      <button className="btn-primary" onClick={() => navigate('/dashboard')}>
         Go to Dashboard
       </button>
 
