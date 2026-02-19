@@ -240,11 +240,11 @@ function Profile() {
             <span className="card-label">A Quote that inspires me!</span>
             <p className="card-text">{currentUser.inspiringQuote}</p>
             <div className="card-decoration">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="white" opacity="0.15">
-                <path d="M40 8L12 68h56L40 8z" />
-                <path d="M28 20L8 60h40L28 20z" />
-                <path d="M52 20L32 60h40L52 20z" />
-              </svg>
+              <img
+                src={`${import.meta.env.BASE_URL}SM Logo .jpeg`}
+                alt=""
+                className="card-logo-img"
+              />
             </div>
           </div>
         )}
@@ -320,11 +320,11 @@ function Profile() {
             <span className="card-label">What fills me with joy</span>
             <p className="card-text">{currentUser.joyOutsideWork}</p>
             <div className="card-decoration">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="white" opacity="0.15">
-                <path d="M40 8L12 68h56L40 8z" />
-                <path d="M28 20L8 60h40L28 20z" />
-                <path d="M52 20L32 60h40L52 20z" />
-              </svg>
+              <img
+                src={`${import.meta.env.BASE_URL}SM Logo .jpeg`}
+                alt=""
+                className="card-logo-img"
+              />
             </div>
           </div>
         )}
