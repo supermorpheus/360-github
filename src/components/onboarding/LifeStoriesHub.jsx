@@ -93,11 +93,11 @@ function LifeStoriesHub() {
       case 'input':          return { current: 0, total }
       case 'uploadComplete': return { current: 0, total }
       case 'processing':     return { current: 0, total }
-      case 'confirm1':       return { current: 1, total }
-      case 'confirm2':       return { current: 2, total }
-      case 'confirm3':       return { current: 3, total }
-      case 'confirm4':       return { current: 4, total }
-      case 'confirm5':       return { current: 5, total }
+      case 'confirm1':       return { current: 0, total }
+      case 'confirm2':       return { current: 1, total }
+      case 'confirm3':       return { current: 2, total }
+      case 'confirm4':       return { current: 3, total }
+      case 'confirm5':       return { current: 4, total }
       default:               return { current: 0, total }
     }
   }
