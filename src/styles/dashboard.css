@@ -408,6 +408,10 @@
   color: var(--primary-green);
 }
 
+.nav-item.active svg {
+  stroke-width: 2.8;
+}
+
 .nav-item span {
   font-family: var(--font-secondary);
   font-size: var(--text-xs);
