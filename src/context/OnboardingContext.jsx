@@ -85,7 +85,7 @@ export const lifeStoryPrompts = {
   earlyLife: {
     title: 'My Early Life',
     subtitle: 'Jab Main Chhota Baccha Tha! (When I was little…)',
-    icon: '🌱',
+    icon: <img src={`${import.meta.env.BASE_URL}early life final.jpeg`} alt="Early Life" style={{ width: '36px', height: '36px', objectFit: 'contain', borderRadius: '8px' }} />,
     prompts: [
       'Where you were born, how was it growing up?',
       'Other places you lived in and experienced.',
@@ -99,7 +99,7 @@ export const lifeStoryPrompts = {
   professional: {
     title: 'My Mid Life',
     subtitle: 'My first job was awesome / terrible…I moved to a new city…. I got married / broke up…',
-    icon: '💼',
+    icon: <img src={`${import.meta.env.BASE_URL}mid life final.jpeg`} alt="Mid Life" style={{ width: '36px', height: '36px', objectFit: 'contain', borderRadius: '8px' }} />,
     introText: 'Share your mid-life journey — the choices you made, the challenges you faced, and how they shaped who you are today:',
     prompts: [
       'Years in your professional journey',
@@ -114,7 +114,7 @@ export const lifeStoryPrompts = {
   current: {
     title: 'My Current Life',
     subtitle: "Here & Now, give us the deets! And don't just talk about work…",
-    icon: '✨',
+    icon: <img src={`${import.meta.env.BASE_URL}current life final.jpeg`} alt="Current Life" style={{ width: '36px', height: '36px', objectFit: 'contain', borderRadius: '8px' }} />,
     sections: [
       {
         title: 'Personal',
