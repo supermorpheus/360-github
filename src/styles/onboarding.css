@@ -1637,7 +1637,7 @@
 }
 
 .life-story-card.card-approved .story-card-subtitle {
-  color: var(--medium-gray);
+  color: #555555;
 }
 
 .life-story-card.card-approved .story-card-arrow {
@@ -1654,7 +1654,7 @@
 }
 
 .life-story-card.card-review .story-card-subtitle {
-  color: var(--medium-gray);
+  color: #555555;
 }
 
 .life-story-card.card-review .story-card-arrow {
@@ -1694,7 +1694,7 @@
 .story-card-subtitle {
   font-family: var(--font-secondary);
   font-size: var(--text-base);
-  color: var(--medium-gray);
+  color: #555555;
   margin: 0;
 }
 
