@@ -123,8 +123,8 @@ function OnboardingContent() {
       {showSubmitPopup && (
         <div className="popup-overlay" onClick={handlePopupClose}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <div className="popup-icon" style={{ background: 'none', width: '120px', height: '120px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto' }}>
-              <img src={`${import.meta.env.BASE_URL}softy final.jpeg`} alt="Softy" style={{ width: '214px', height: '120px', objectFit: 'cover', marginLeft: '-47px' }} />
+            <div className="popup-icon" style={{ background: 'none', width: '120px', height: '120px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto 20px' }}>
+              <img src={`${import.meta.env.BASE_URL}softy final.jpeg`} alt="Softy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }} />
             </div>
             <h2 className="popup-title">Yay!</h2>
             <p className="popup-message">
