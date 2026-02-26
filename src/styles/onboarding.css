@@ -1662,9 +1662,9 @@
 }
 
 .story-card-icon {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
   background-color: transparent;
   border-radius: 10px;
   display: flex;
