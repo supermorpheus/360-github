@@ -41,7 +41,7 @@ function LifeStorySelection() {
           const showAsComplete = story.key === 'current' ? anyStoryComplete : isComplete
 
           const statusTag = showAsComplete
-            ? (story.key === 'current' ? 'Under review' : 'Published')
+            ? (story.key === 'current' ? 'Under Review' : 'Published')
             : null
 
           return (
@@ -56,9 +56,6 @@ function LifeStorySelection() {
                 <p className="story-card-subtitle">{story.subtitle}</p>
                 {showAsComplete && statusTag && (
                   <span className={`story-card-badge ${story.key === 'current' ? 'badge-review' : 'badge-approved'}`}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M20 6L9 17l-5-5"/>
-                    </svg>
                     {statusTag}
                   </span>
                 )}
