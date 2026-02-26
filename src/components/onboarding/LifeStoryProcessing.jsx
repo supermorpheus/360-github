@@ -44,6 +44,7 @@ function LifeStoryProcessing({ storyKey }) {
           <div className="story-header-icon">{story.icon}</div>
           <h1 className="form-title">{story.title}</h1>
         </div>
+        <p className="form-subtitle" style={{ textTransform: 'none' }}>{story.subtitle}</p>
       </div>
 
       <div className="processing-icon">
