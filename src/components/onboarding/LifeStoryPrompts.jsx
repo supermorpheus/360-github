@@ -57,10 +57,19 @@ function LifeStoryPrompts({ storyKey }) {
 
   return (
     <div className="onboarding-form">
+      {/* Story header - sticky at top */}
+      <div className="form-header story-header-sticky">
+        <div className="story-header-row">
+          <div className="story-header-icon">{story.icon}</div>
+          <h1 className="form-title">{story.title}</h1>
+        </div>
+        <p className="form-subtitle" style={{ textTransform: 'none' }}>{story.subtitle}</p>
+      </div>
+
       {/* Life Stories header */}
       <div className="progress-label" style={{ marginBottom: '16px' }}>My Life Stories</div>
 
-      {/* Input method selection - at the top */}
+      {/* Input method selection */}
       <p className="input-method-label">I'd like to:</p>
       <div className="input-method-cards input-method-row">
         <button className={`input-method-card input-method-compact ${selectedMethod === 'video' ? 'selected' : ''}`} onClick={() => handleSelectMethod('video')}>
@@ -95,15 +104,6 @@ function LifeStoryPrompts({ storyKey }) {
           </div>
           <h3 className="method-card-title">Write Text</h3>
         </button>
-      </div>
-
-      {/* Story header - sticky */}
-      <div className="form-header story-header-sticky">
-        <div className="story-header-row">
-          <div className="story-header-icon">{story.icon}</div>
-          <h1 className="form-title">{story.title}</h1>
-        </div>
-        <p className="form-subtitle" style={{ textTransform: 'none' }}>{story.subtitle}</p>
       </div>
 
       {/* Prompt instructions - always visible, no collapse */}
