@@ -184,6 +184,15 @@ function Dashboard() {
               </svg>
               <span>Your profile is complete! Explore and connect.</span>
             </div>
+            <div className="completion-mini">
+              <div className="completion-label">
+                <span>Profile Completion</span>
+                <span className="completion-value">100%</span>
+              </div>
+              <div className="completion-progress">
+                <div className="completion-bar" style={{ width: '100%' }} />
+              </div>
+            </div>
           </div>
 
           {/* Carousel Dots */}
