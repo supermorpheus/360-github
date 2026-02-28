@@ -85,19 +85,19 @@ function Dashboard() {
 
           {/* Screen 1: Complete Onboarding - 1 slice */}
           <div className={`welcome-card welcome-card-screen1 ${activeSlide === 0 ? 'active' : ''}`}>
-            <span className="screen-label"><PizzaIcon level="slice" size={22} /></span>
-            <div className="welcome-card-header">
-              <div className="welcome-card-avatar">
-                {currentUser.profilePicture ? (
-                  <img src={currentUser.profilePicture} alt={currentUser.firstName} />
-                ) : (
-                  <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
-                )}
-              </div>
+            <div className="welcome-card-top">
               <div className="welcome-card-info">
                 <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
                 <p className="welcome-card-role">{currentUser.currentRole} at {currentUser.currentOrganization}</p>
               </div>
+              <span className="screen-label"><PizzaIcon level="slice" size={22} /></span>
+            </div>
+            <div className="welcome-card-avatar">
+              {currentUser.profilePicture ? (
+                <img src={currentUser.profilePicture} alt={currentUser.firstName} />
+              ) : (
+                <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
+              )}
             </div>
             <div className="screen-message">
               <div className="screen-icon">
@@ -125,19 +125,19 @@ function Dashboard() {
 
           {/* Screen 2: Add My Life Stories - half pizza */}
           <div className={`welcome-card welcome-card-screen2 ${activeSlide === 1 ? 'active' : ''}`}>
-            <span className="screen-label"><PizzaIcon level="half" size={22} /></span>
-            <div className="welcome-card-header">
-              <div className="welcome-card-avatar">
-                {currentUser.profilePicture ? (
-                  <img src={currentUser.profilePicture} alt={currentUser.firstName} />
-                ) : (
-                  <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
-                )}
-              </div>
+            <div className="welcome-card-top">
               <div className="welcome-card-info">
                 <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
                 <p className="welcome-card-role">{currentUser.currentRole} at {currentUser.currentOrganization}</p>
               </div>
+              <span className="screen-label"><PizzaIcon level="half" size={22} /></span>
+            </div>
+            <div className="welcome-card-avatar">
+              {currentUser.profilePicture ? (
+                <img src={currentUser.profilePicture} alt={currentUser.firstName} />
+              ) : (
+                <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
+              )}
             </div>
             <div className="screen-message">
               <div className="screen-icon">
@@ -163,19 +163,19 @@ function Dashboard() {
 
           {/* Screen 3: Profile Complete - full pizza */}
           <div className={`welcome-card welcome-card-screen3 ${activeSlide === 2 ? 'active' : ''}`}>
-            <span className="screen-label"><PizzaIcon level="full" size={22} /></span>
-            <div className="welcome-card-header">
-              <div className="welcome-card-avatar">
-                {currentUser.profilePicture ? (
-                  <img src={currentUser.profilePicture} alt={currentUser.firstName} />
-                ) : (
-                  <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
-                )}
-              </div>
+            <div className="welcome-card-top">
               <div className="welcome-card-info">
                 <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
                 <p className="welcome-card-role">{currentUser.currentRole} at {currentUser.currentOrganization}</p>
               </div>
+              <span className="screen-label"><PizzaIcon level="full" size={22} /></span>
+            </div>
+            <div className="welcome-card-avatar">
+              {currentUser.profilePicture ? (
+                <img src={currentUser.profilePicture} alt={currentUser.firstName} />
+              ) : (
+                <span>{getInitials(currentUser.firstName, currentUser.lastName)}</span>
+              )}
             </div>
             <div className="screen-complete-msg">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
