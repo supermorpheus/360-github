@@ -19,7 +19,7 @@
   margin: 0 0 16px;
   cursor: pointer;
   flex-shrink: 0;
-  min-height: 45vh;
+  min-height: 35vh;
 }
 
 /* Welcome Card */
@@ -29,7 +29,7 @@
   padding: 24px 20px;
   color: white;
   display: none;
-  min-height: calc(45vh - 40px);
+  min-height: calc(35vh - 40px);
 }
 
 .welcome-card.active {
