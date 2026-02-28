@@ -423,10 +423,7 @@
 }
 
 .card-logo-img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  opacity: 0.35;
+  display: none;
 }
 
 /* Coordinates Section */
