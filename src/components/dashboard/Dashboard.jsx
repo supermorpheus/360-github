@@ -90,7 +90,7 @@ function Dashboard() {
                 <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
                 <p className="welcome-card-role">{currentUser.currentRole} at {currentUser.currentOrganization}</p>
               </div>
-              <span className="screen-label"><PizzaIcon level="slice" size={22} /></span>
+              <span className="screen-label"><PizzaIcon level="slice" size={30} /></span>
             </div>
             <div className="welcome-card-avatar">
               {currentUser.profilePicture ? (
@@ -130,7 +130,7 @@ function Dashboard() {
                 <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
                 <p className="welcome-card-role">{currentUser.currentRole} at {currentUser.currentOrganization}</p>
               </div>
-              <span className="screen-label"><PizzaIcon level="half" size={22} /></span>
+              <span className="screen-label"><PizzaIcon level="half" size={30} /></span>
             </div>
             <div className="welcome-card-avatar">
               {currentUser.profilePicture ? (
@@ -168,7 +168,7 @@ function Dashboard() {
                 <h1 className="welcome-card-name">Welcome, {currentUser.firstName}!</h1>
                 <p className="welcome-card-role">{currentUser.currentRole} at {currentUser.currentOrganization}</p>
               </div>
-              <span className="screen-label"><PizzaIcon level="full" size={22} /></span>
+              <span className="screen-label"><PizzaIcon level="full" size={30} /></span>
             </div>
             <div className="welcome-card-avatar">
               {currentUser.profilePicture ? (
