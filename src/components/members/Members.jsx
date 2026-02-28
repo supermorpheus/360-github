@@ -93,10 +93,10 @@ function Members() {
                   {/* Right: Info */}
                   <div className="member-details">
                     <div className="member-name-row">
-                      <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
-                        <PizzaIcon level={getPizzaLevel(member)} size={18} />
-                      </span>
                       <h3 className="member-name">{member.firstName} {member.lastName}</h3>
+                      <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
+                        <PizzaIcon level={getPizzaLevel(member)} size={21} />
+                      </span>
                     </div>
                     <p className="member-intro">{truncate(member.introduction, 120)}</p>
 
@@ -109,14 +109,11 @@ function Members() {
                       <span>{member.livesIn}</span>
                     </div>
 
-                    {/* Tags */}
-                    {member.tags?.length > 0 && (
-                      <div className="member-tags">
-                        {member.tags.map(tag => (
-                          <span key={tag} className="member-tag">{tag}</span>
-                        ))}
-                      </div>
-                    )}
+                    {/* Tags: Company & Role */}
+                    <div className="member-tags">
+                      <span className="member-tag">{member.currentOrganization}</span>
+                      <span className="member-tag">{member.currentRole}</span>
+                    </div>
                   </div>
                 </div>
               </Link>

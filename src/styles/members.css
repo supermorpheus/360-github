@@ -172,9 +172,14 @@
 /* Member Name Row */
 .member-name-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 8px;
   margin-bottom: 4px;
+}
+
+.member-name-row .pizza-badge {
+  flex-shrink: 0;
 }
 
 .member-name {
