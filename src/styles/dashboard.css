@@ -19,16 +19,17 @@
   margin: 0 0 16px;
   cursor: pointer;
   flex-shrink: 0;
-  min-height: 310px;
+  min-height: 45vh;
 }
 
 /* Welcome Card */
 .welcome-card {
   background: linear-gradient(135deg, var(--primary-green) 0%, #4a6b35 100%);
   border-radius: 16px;
-  padding: 16px 20px;
+  padding: 24px 20px;
   color: white;
   display: none;
+  min-height: calc(45vh - 40px);
 }
 
 .welcome-card.active {

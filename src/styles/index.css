@@ -107,7 +107,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Pizza Badges - Profile completion indicators */
+/* Pie Chart Badges - Profile completion indicators */
 .pizza-badge {
   display: inline-flex;
   align-items: center;
@@ -118,16 +118,5 @@ body {
   margin-bottom: 4px;
   line-height: 1;
   flex-shrink: 0;
-}
-
-.pizza-slice {
-  background-color: #FFF3E0;
-}
-
-.pizza-half {
-  background-color: var(--event-card-bg);
-}
-
-.pizza-full {
-  background-color: var(--primary-green-light);
+  background-color: transparent;
 }
