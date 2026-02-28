@@ -68,27 +68,15 @@ function MemberProfile() {
           </div>
         </div>
 
-        {/* Status + Profile Link */}
-        <div className="profile-status-row">
-          <span className={`pizza-badge pizza-${pizzaLevel}`}>
-            <PizzaIcon level={pizzaLevel} size={18} />
-          </span>
-          <button className="profile-link-btn" onClick={() => {
-            const url = `${window.location.origin}${window.location.pathname}#/member/${member.id}`
-            navigator.clipboard.writeText(url)
-          }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-            </svg>
-            Profile Link
-          </button>
-        </div>
-
         {/* Name + Photo Row */}
         <div className="profile-name-photo-row">
           <div className="profile-name-info">
-            <h2 className="my-profile-name">{member.firstName} {member.lastName}</h2>
+            <div className="profile-name-row">
+              <h2 className="my-profile-name">{member.firstName} {member.lastName}</h2>
+              <span className={`pizza-badge pizza-${pizzaLevel}`}>
+                <PizzaIcon level={pizzaLevel} size={21} />
+              </span>
+            </div>
             {member.currentOrganization && (
               <div className="profile-org-line">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -116,6 +104,8 @@ function MemberProfile() {
             )}
           </div>
         </div>
+
+        <div className="profile-divider" />
 
         {/* Lives In */}
         <div className="profile-lives-in">
@@ -175,11 +165,9 @@ function MemberProfile() {
             {lifeStories.current.organizations?.length > 0 && (
               <div className="story-meta-field">
                 <span className="meta-label">Roles / Organizations</span>
-                <div className="meta-pills">
-                  {lifeStories.current.organizations.map((org, i) => (
-                    <span key={i} className="meta-pill">{org.role} / {org.org}</span>
-                  ))}
-                </div>
+                {lifeStories.current.organizations.map((org, i) => (
+                  <span key={i} className="meta-value">{org.role} / {org.org}</span>
+                ))}
               </div>
             )}
 
@@ -326,20 +314,16 @@ function MemberProfile() {
             {lifeStories.professional.firstJob && (
               <div className="story-meta-field">
                 <span className="meta-label">First Job</span>
-                <div className="meta-pills">
-                  <span className="meta-pill">{lifeStories.professional.firstJob}</span>
-                </div>
+                <span className="meta-value">{lifeStories.professional.firstJob}</span>
               </div>
             )}
 
             {lifeStories.professional.subsequentJobs?.length > 0 && (
               <div className="story-meta-field">
                 <span className="meta-label">Subsequent Jobs</span>
-                <div className="meta-pills">
-                  {lifeStories.professional.subsequentJobs.map(job => (
-                    <span key={job} className="meta-pill">{job}</span>
-                  ))}
-                </div>
+                {lifeStories.professional.subsequentJobs.map(job => (
+                  <span key={job} className="meta-value">{job}</span>
+                ))}
               </div>
             )}
 

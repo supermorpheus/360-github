@@ -117,11 +117,17 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 2px;
 }
 
 .profile-name-info {
   flex: 1;
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .my-profile-name {
@@ -129,7 +135,7 @@
   font-size: var(--text-2xl);
   font-weight: 700;
   color: var(--dark-gray);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .profile-org-line {
@@ -139,12 +145,13 @@
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   color: var(--medium-gray);
+  margin-bottom: 2px;
 }
 
 .profile-photo-circle {
-  width: 80px;
-  height: 80px;
-  min-width: 80px;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--light-gray);
@@ -164,9 +171,15 @@
   object-fit: cover;
 }
 
+.profile-divider {
+  height: 1px;
+  background-color: var(--border-gray);
+  margin: 8px 0;
+}
+
 /* Lives In */
 .profile-lives-in {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .lives-in-label {
