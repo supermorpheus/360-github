@@ -471,11 +471,17 @@
 .search-result-card {
   display: flex;
   gap: 14px;
-  align-items: flex-start;
+  align-items: center;
   padding: 14px;
   border: 1px solid var(--border-gray);
   border-radius: 12px;
   background: white;
+}
+
+.search-result-card .pizza-badge {
+  flex-shrink: 0;
+  margin-left: auto;
+  align-self: flex-start;
 }
 
 .search-result-photo {

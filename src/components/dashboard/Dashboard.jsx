@@ -273,9 +273,6 @@ function Dashboard() {
                     )}
                   </div>
                   <div className="search-result-info">
-                    <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
-                      <PizzaIcon level={getPizzaLevel(member)} size={18} />
-                    </span>
                     <h3 className="search-result-name">{member.firstName} {member.lastName}</h3>
                     <div className="search-result-location">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -285,6 +282,9 @@ function Dashboard() {
                       <span>{member.livesIn}</span>
                     </div>
                   </div>
+                  <span className={`pizza-badge pizza-${getPizzaLevel(member)}`}>
+                    <PizzaIcon level={getPizzaLevel(member)} size={21} />
+                  </span>
                 </Link>
               ))}
               {filteredMembers.length === 0 && (
