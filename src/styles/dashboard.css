@@ -275,32 +275,25 @@
   color: var(--medium-gray);
 }
 
-/* New Members Scroll */
-.new-members-scroll {
+/* New Members List */
+.new-members-list {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding: 4px 0;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.new-members-scroll::-webkit-scrollbar {
-  display: none;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .new-member-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 8px;
-  min-width: 70px;
+  gap: 12px;
 }
 
 .new-member-avatar {
   position: relative;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   border-radius: 50%;
   background-color: var(--primary-green);
   display: flex;
@@ -308,7 +301,7 @@
   justify-content: center;
   color: white;
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   overflow: visible;
 }
@@ -322,10 +315,10 @@
 
 .member-status-dot {
   position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 14px;
-  height: 14px;
+  bottom: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   border: 2px solid white;
 }
@@ -342,15 +335,30 @@
   background-color: var(--medium-gray);
 }
 
+.new-member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
 .new-member-name {
   font-family: var(--font-secondary);
   font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--dark-gray);
-  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 70px;
+}
+
+.new-member-location {
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  color: var(--medium-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Search Bar */

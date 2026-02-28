@@ -203,7 +203,7 @@ function Dashboard() {
           <div className="members-joined-header">
             <h2 className="members-joined-title">New Members</h2>
           </div>
-          <div className="new-members-scroll">
+          <div className="new-members-list">
             {newMembers.slice(0, 4).map((member) => (
               <div key={member.id} className="new-member-card">
                 <div className="new-member-avatar">
@@ -214,7 +214,10 @@ function Dashboard() {
                   )}
                   <span className={`member-status-dot ${getStatusBadgeClass(member.status)}`} />
                 </div>
-                <span className="new-member-name">{member.firstName}</span>
+                <div className="new-member-info">
+                  <span className="new-member-name">{member.firstName} {member.lastName}</span>
+                  {member.livesIn && <span className="new-member-location">{member.livesIn}</span>}
+                </div>
               </div>
             ))}
           </div>
