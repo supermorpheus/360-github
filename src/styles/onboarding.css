@@ -1665,7 +1665,7 @@
   width: 56px;
   height: 56px;
   min-width: 56px;
-  background-color: transparent;
+  background-color: #DCDCDC;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -1676,7 +1676,7 @@
 
 .life-story-card.card-approved .story-card-icon,
 .life-story-card.card-review .story-card-icon {
-  background-color: transparent;
+  background-color: #DCDCDC;
 }
 
 .story-card-content {
@@ -1754,6 +1754,7 @@
   height: 56px;
   overflow: hidden;
   border-radius: 10px;
+  background-color: #DCDCDC;
 }
 
 /* Input Method Selection */
