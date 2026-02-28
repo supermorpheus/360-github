@@ -6,7 +6,7 @@
  * Uses Milk Green (#D5CC8E) from SM logo
  */
 function PizzaIcon({ level, size = 20 }) {
-  const milkGreen = '#D5CC8E'
+  const milkGreen = '#C8872E'
   const bgColor = '#E8E8E8'
 
   if (level === 'full') {
